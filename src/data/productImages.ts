@@ -5,6 +5,7 @@ export type ProductImageKey =
   | 'svezhiyeNovosti'
   | 'brestLitovsk'
   | 'lyakhovichok'
+  | 'milkLyakhovichok1l'
   | 'rogachev'
   | 'rogachev200'
   | 'minskayaMarka'
@@ -28,17 +29,24 @@ export type ProductImageKey =
   | 'creamCondensedGlubokoe'
   | 'creamCondensedRogachev'
   | 'minskayaMarkaMilk500'
+  | 'minskayaMarkaMilk09'
+  | 'slavyanskieTraditsiiMilk09'
   | 'milkBakedSlavyanskieTraditsii500'
   | 'milkBakedMolochnyyMir500'
   | 'milkDepi250'
   | 'milkBabushkinaKrynka200'
   | 'milkRogachev200ml'
   | 'milkBellakt200ml'
+  | 'milkBellakt900mlBottle'
   | 'milkGoatBellakt200ml'
   | 'molochnyyMirAssorti280'
   | 'chudoKokteylMol200'
   | 'chudoKokteylMol960'
   | 'milkSavushkin1lTBrik'
+  | 'milkSavushkin1lBottle'
+  | 'milkZdravushka093'
+  | 'milkOstromechevskieProstory1l'
+  | 'milkPostavyGorodok1l'
   | 'milkYasBelous1lTba'
   | 'milkMozhno1lTba'
 
@@ -78,6 +86,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   lyakhovichok: {
     name: 'Сливки Ляховичок 10%/20% 250г',
     src: import.meta.env.BASE_URL + 'products/lyakhovichok-cream-250g.webp',
+    source: 'Фото пользователя',
+  },
+  milkLyakhovichok1l: {
+    name: 'Молоко Ляховичок 1л',
+    src: import.meta.env.BASE_URL + 'products/milk-lyakhovichok-1l.webp',
     source: 'Фото пользователя',
   },
   rogachev: {
@@ -200,6 +213,18 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/minskaya-marka-milk-500ml.webp',
     source: 'Фото пользователя',
   },
+  minskayaMarkaMilk09: {
+    name: 'Молоко Минская марка 0.9л',
+    src: import.meta.env.BASE_URL + 'products/minskaya-marka-milk-0-9l.webp',
+    source: 'Фото пользователя',
+  },
+  slavyanskieTraditsiiMilk09: {
+    name: 'Молоко Славянские традиции 0.9л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/slavyanskie-traditsii-milk-0-9l.webp',
+    source: 'Фото пользователя',
+  },
   milkBakedSlavyanskieTraditsii500: {
     name: 'Молоко топленое Славянские традиции 500мл',
     src:
@@ -234,6 +259,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/milk-bellakt-200ml.webp',
     source: 'Фото пользователя',
   },
+  milkBellakt900mlBottle: {
+    name: 'Молоко Беллакт 900мл',
+    src: import.meta.env.BASE_URL + 'products/milk-bellakt-900ml-bottle.webp',
+    source: 'Фото пользователя',
+  },
   milkGoatBellakt200ml: {
     name: 'Молоко козье Беллакт 200мл',
     src: import.meta.env.BASE_URL + 'products/milk-goat-bellakt-200ml.webp',
@@ -257,6 +287,28 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   milkSavushkin1lTBrik: {
     name: 'Молоко Савушкин 1л т-брик',
     src: import.meta.env.BASE_URL + 'products/milk-savushkin-1l-t-brik.webp',
+    source: 'Фото пользователя',
+  },
+  milkSavushkin1lBottle: {
+    name: 'Молоко Савушкин 1л бут',
+    src: import.meta.env.BASE_URL + 'products/milk-savushkin-1l-bottle.webp',
+    source: 'Фото пользователя',
+  },
+  milkZdravushka093: {
+    name: 'Молоко Здравушка 0.93л',
+    src: import.meta.env.BASE_URL + 'products/milk-zdravushka-0-93l.webp',
+    source: 'Фото пользователя',
+  },
+  milkOstromechevskieProstory1l: {
+    name: 'Молоко Остромечевские просторы 1л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-ostromechevskie-prostory-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkPostavyGorodok1l: {
+    name: 'Молоко Поставы городок 1л',
+    src: import.meta.env.BASE_URL + 'products/milk-postavy-gorodok-1l.webp',
     source: 'Фото пользователя',
   },
   milkYasBelous1lTba: {

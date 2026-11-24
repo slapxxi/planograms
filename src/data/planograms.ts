@@ -259,6 +259,46 @@ export const groups: Group[] = [
             faces: 2,
             images: ['milkYasBelous1lTba', 'milkMozhno1lTba'],
           },
+          {
+            name: 'Молоко минская марка/Славянские традиции 0.9 бут',
+            faces: 4,
+            images: ['minskayaMarkaMilk09', 'slavyanskieTraditsiiMilk09'],
+          },
+          {
+            name: 'Молоко Савушкин 1л бут',
+            faces: 7,
+            images: ['milkSavushkin1lBottle'],
+          },
+          {
+            name: 'Молоко Здравушка 0.93л бут',
+            faces: 3,
+            images: ['milkZdravushka093'],
+          },
+          {
+            name: 'Молоко Беллакт 900мл бут',
+            faces: 3,
+            images: ['milkBellakt900mlBottle'],
+          },
+          {
+            name: 'Молоко Остромечевские просторы 1л бут',
+            faces: 2,
+            images: ['milkOstromechevskieProstory1l'],
+          },
+          {
+            name: 'Молоко Поставы городок 1л бут',
+            faces: 2,
+            faceSpan: 3,
+            images: ['milkPostavyGorodok1l'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Молоко Ляховичок 1л п-пак',
+            faces: 3,
+            images: ['milkLyakhovichok1l'],
+          },
         ],
       },
     ],
