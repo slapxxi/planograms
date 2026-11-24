@@ -297,6 +297,128 @@ export const groups: Group[] = [
             faces: 3,
             images: ['milkLyakhovichok1l'],
           },
+          {
+            name: 'Молоко Сновское 1л п-пак',
+            faces: 1,
+            images: ['milkSnovskoe1l'],
+          },
+          {
+            name: 'Молоко Минская марка 1л п-пак',
+            faces: 1,
+            images: ['milkMinskayaMarka1l'],
+          },
+          {
+            name: 'Молоко минская марка/Славянские традиции 0.9 бут',
+            faces: 4,
+            images: ['minskayaMarkaMilk09', 'slavyanskieTraditsiiMilk09'],
+          },
+          {
+            name: 'Молоко Савушкин 1л бут',
+            faces: 7,
+            images: ['milkSavushkin1lBottle'],
+          },
+          {
+            name: 'Молоко Здравушка 0.93л бут',
+            faces: 3,
+            images: ['milkZdravushka093'],
+          },
+          {
+            name: 'Молоко Беллакт 900мл бут',
+            faces: 3,
+            images: ['milkBellakt900mlBottle'],
+          },
+          {
+            name: 'Молоко Молочный мир 0.95л бут',
+            faces: 2,
+            images: ['milkMolochnyyMir095'],
+          },
+          {
+            name: 'Молоко Бабушкина Крынка 0.9л бут',
+            faces: 2,
+            faceSpan: 3,
+            images: ['milkBabushkinaKrynka09'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Молоко Бабушкина крынка 1л т-пак',
+            faces: 2,
+            faceSpan: 3,
+            images: ['milkBabushkinaKrynka1lTpak'],
+          },
+          {
+            name: 'Молоко Молочный мир 1л ТБА',
+            faces: 1,
+            images: ['milkMolochnyyMir1lTba'],
+          },
+          {
+            name: 'Молоко Минская марка 1.5л п-пак',
+            faces: 1,
+            images: ['milkMinskayaMarka15l'],
+          },
+          {
+            name: 'Молоко Минская марка/Славянские традиции 1.5л бут',
+            faces: 3,
+            faceSpan: 4,
+            images: ['minskayaMarkaMilk15', 'slavyanskieTraditsiiMilk15'],
+          },
+          {
+            name: 'Молоко Савушкин 1л бут',
+            faces: 7,
+            images: ['milkSavushkin1lBottle'],
+          },
+          {
+            name: 'Молоко МОЖНО/Здравушка Топленое 0.93л бут',
+            faces: 3,
+            images: ['milkMozhno093', 'milkZdravushkaBaked093'],
+          },
+          {
+            name: 'Молоко Беллакт 1.9л бут',
+            faces: 2,
+            faceSpan: 3,
+            images: ['milkBellakt19'],
+          },
+          {
+            name: 'Молоко Молочный мир 1.45л бут',
+            faces: 2,
+            faceSpan: 2,
+            images: ['milkMolochnyyMir145'],
+          },
+          {
+            name: 'Молоко Бабушкина Крынка 0.9л бут',
+            faces: 2,
+            faceSpan: 3,
+            images: ['milkBabushkinaKrynka09'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Planto Barista/Nemoloko 1л ТБА',
+            faces: 4,
+            faceSpan: 3,
+            images: ['plantoBarista1lTba', 'nemoloko1lTba'],
+          },
+          {
+            name: 'Молоко Беллакт 400г',
+            faces: 1,
+            faceSpan: 1.75,
+            images: ['milkBellakt400'],
+          },
+          {
+            name: 'Сливки Удачный выбор 400г',
+            faces: 2,
+            images: ['udachnyyVyborCream400'],
+          },
+          {
+            name: 'Молоко в пленке различной жирности',
+            faces: 20,
+            faceSpan: 20.25,
+            images: ['milkFilmAssorted'],
+          },
         ],
       },
     ],

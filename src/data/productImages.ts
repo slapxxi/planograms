@@ -6,6 +6,24 @@ export type ProductImageKey =
   | 'brestLitovsk'
   | 'lyakhovichok'
   | 'milkLyakhovichok1l'
+  | 'milkSnovskoe1l'
+  | 'milkMinskayaMarka1l'
+  | 'milkMolochnyyMir095'
+  | 'milkBabushkinaKrynka09'
+  | 'milkBabushkinaKrynka1lTpak'
+  | 'milkMolochnyyMir1lTba'
+  | 'milkMinskayaMarka15l'
+  | 'minskayaMarkaMilk15'
+  | 'slavyanskieTraditsiiMilk15'
+  | 'milkMozhno093'
+  | 'milkZdravushkaBaked093'
+  | 'milkBellakt19'
+  | 'milkMolochnyyMir145'
+  | 'plantoBarista1lTba'
+  | 'nemoloko1lTba'
+  | 'milkBellakt400'
+  | 'udachnyyVyborCream400'
+  | 'milkFilmAssorted'
   | 'rogachev'
   | 'rogachev200'
   | 'minskayaMarka'
@@ -91,6 +109,99 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   milkLyakhovichok1l: {
     name: 'Молоко Ляховичок 1л',
     src: import.meta.env.BASE_URL + 'products/milk-lyakhovichok-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkSnovskoe1l: {
+    name: 'Молоко Сновское 1л',
+    src: import.meta.env.BASE_URL + 'products/milk-snovskoe-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkMinskayaMarka1l: {
+    name: 'Молоко Минская марка 1л',
+    src: import.meta.env.BASE_URL + 'products/milk-minskaya-marka-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkMolochnyyMir095: {
+    name: 'Молоко Молочный мир 0.95л',
+    src: import.meta.env.BASE_URL + 'products/milk-molochnyy-mir-0-95l.webp',
+    source: 'Фото пользователя',
+  },
+  milkBabushkinaKrynka09: {
+    name: 'Молоко Бабушкина крынка 0.9л',
+    src: import.meta.env.BASE_URL + 'products/milk-babushkina-krynka-0-9l.webp',
+    source: 'Фото пользователя',
+  },
+  milkBabushkinaKrynka1lTpak: {
+    name: 'Молоко Бабушкина крынка 1л т-пак',
+    src:
+      import.meta.env.BASE_URL + 'products/milk-babushkina-krynka-1l-tpak.webp',
+    source: 'Фото пользователя',
+  },
+  milkMolochnyyMir1lTba: {
+    name: 'Молоко Молочный мир 1л ТБА',
+    src: import.meta.env.BASE_URL + 'products/milk-molochnyy-mir-1l-tba.webp',
+    source: 'Фото пользователя',
+  },
+  milkMinskayaMarka15l: {
+    name: 'Молоко Минская марка 1.5л',
+    src: import.meta.env.BASE_URL + 'products/milk-minskaya-marka-1-5l.webp',
+    source: 'Фото пользователя',
+  },
+  minskayaMarkaMilk15: {
+    name: 'Молоко Минская марка 1.5л',
+    src: import.meta.env.BASE_URL + 'products/minskaya-marka-milk-1-5l.webp',
+    source: 'Фото пользователя',
+  },
+  slavyanskieTraditsiiMilk15: {
+    name: 'Молоко Славянские традиции 1.5л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/slavyanskie-traditsii-milk-1-5l.webp',
+    source: 'Фото пользователя',
+  },
+  milkMozhno093: {
+    name: 'Молоко МОЖНО 0.93л',
+    src: import.meta.env.BASE_URL + 'products/milk-mozhno-0-93l.webp',
+    source: 'Фото пользователя',
+  },
+  milkZdravushkaBaked093: {
+    name: 'Молоко Здравушка топленое 0.93л',
+    src: import.meta.env.BASE_URL + 'products/milk-zdravushka-baked-0-93l.webp',
+    source: 'Фото пользователя',
+  },
+  milkBellakt19: {
+    name: 'Молоко Беллакт 1.9л',
+    src: import.meta.env.BASE_URL + 'products/milk-bellakt-1-9l.webp',
+    source: 'Фото пользователя',
+  },
+  milkMolochnyyMir145: {
+    name: 'Молоко Молочный мир 1.45л',
+    src: import.meta.env.BASE_URL + 'products/milk-molochnyy-mir-1-45l.webp',
+    source: 'Фото пользователя',
+  },
+  plantoBarista1lTba: {
+    name: 'Planto Barista 1л ТБА',
+    src: import.meta.env.BASE_URL + 'products/planto-barista-1l-tba.webp',
+    source: 'Фото пользователя',
+  },
+  nemoloko1lTba: {
+    name: 'Nemoloko 1л ТБА',
+    src: import.meta.env.BASE_URL + 'products/nemoloko-1l-tba.webp',
+    source: 'Фото пользователя',
+  },
+  milkBellakt400: {
+    name: 'Молоко Беллакт 400г',
+    src: import.meta.env.BASE_URL + 'products/milk-bellakt-400g.webp',
+    source: 'Фото пользователя',
+  },
+  udachnyyVyborCream400: {
+    name: 'Сливки Удачный выбор 400г',
+    src: import.meta.env.BASE_URL + 'products/udachnyy-vybor-cream-400g.webp',
+    source: 'Фото пользователя',
+  },
+  milkFilmAssorted: {
+    name: 'Молоко в пленке различной жирности',
+    src: import.meta.env.BASE_URL + 'products/milk-film-assorted.webp',
     source: 'Фото пользователя',
   },
   rogachev: {
