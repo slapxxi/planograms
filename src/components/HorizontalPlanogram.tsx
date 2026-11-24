@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { Group, NumberedShelf, Product } from '../data/planograms'
 import { groupStyle, numberProducts } from '../data/planograms'
 import { productImages } from '../data/productImages'
+import DragScrollArea from './DragScrollArea'
 import GroupHeading from './GroupHeading'
 import type { GroupView } from './GroupHeading'
 import ProductTooltip from './ProductTooltip'
@@ -55,6 +56,7 @@ function ProductContent({
             <img
               alt=""
               className="max-h-full max-w-full object-contain"
+              draggable={false}
               src={image.src}
             />
           </span>
@@ -73,7 +75,15 @@ function ProductContent({
   )
 }
 
-function ShelfRow({ shelf, view }: { shelf: NumberedShelf; view: GroupView }) {
+function ShelfRow({
+  shelf,
+  view,
+  disabled,
+}: {
+  shelf: NumberedShelf
+  view: GroupView
+  disabled: boolean
+}) {
   const { width } = shelfMetrics(shelf)
 
   return (
@@ -86,6 +96,7 @@ function ShelfRow({ shelf, view }: { shelf: NumberedShelf; view: GroupView }) {
         return (
           <ProductTooltip
             className={`${showFaces ? 'w-full p-1' : 'items-start leading-[1.35]'} flex min-h-25 min-w-0 items-stretch justify-between gap-2 rounded-[2px] border border-[color:var(--border)] bg-(--group-surface) px-2.5 pt-3 pb-2 text-xs`}
+            disabled={disabled}
             hideBackground={showFaces}
             key={`${product.name}-${index}`}
             number={number}
@@ -102,6 +113,7 @@ function ShelfRow({ shelf, view }: { shelf: NumberedShelf; view: GroupView }) {
 
 export default function HorizontalPlanogram({ groups }: Props) {
   const [views, setViews] = useState<Record<string, GroupView>>({})
+  const [draggingGroup, setDraggingGroup] = useState<string | null>(null)
   const numberedGroups = numberProducts(groups)
 
   return (
@@ -123,17 +135,26 @@ export default function HorizontalPlanogram({ groups }: Props) {
               }
               view={view}
             />
-            <div className="overflow-x-auto">
+            <DragScrollArea
+              onDraggingChange={(next) =>
+                setDraggingGroup(next ? group.id : null)
+              }
+            >
               {shelves.length === 0 ? (
                 <p className="px-4 py-4 text-sm text-(--empty-text)">
                   Пока нет товаров
                 </p>
               ) : (
                 shelves.map((shelf, index) => (
-                  <ShelfRow key={index} shelf={shelf} view={view} />
+                  <ShelfRow
+                    disabled={draggingGroup === group.id}
+                    key={index}
+                    shelf={shelf}
+                    view={view}
+                  />
                 ))
               )}
-            </div>
+            </DragScrollArea>
           </section>
         )
       })}

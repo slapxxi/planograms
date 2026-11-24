@@ -45,3 +45,52 @@
   --group-surface: color-mix(in srgb, var(--group-color) 20%, #151a23);
   --group-accent: color-mix(in srgb, var(--group-color) 65%, #e6eaf2);
 }
+
+.drag-scroll img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .drag-scroll {
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+  }
+
+  .drag-scroll,
+  .drag-scroll button {
+    cursor: grab;
+  }
+
+  .drag-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .drag-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .drag-scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 2px;
+  }
+
+  .drag-scroll:hover,
+  .drag-scroll.is-dragging {
+    scrollbar-color: var(--control-text) transparent;
+  }
+
+  .drag-scroll:hover::-webkit-scrollbar-thumb,
+  .drag-scroll.is-dragging::-webkit-scrollbar-thumb {
+    background: var(--control-text);
+  }
+
+  .drag-scroll.is-dragging,
+  .drag-scroll.is-dragging button {
+    cursor: grabbing;
+  }
+
+  .drag-scroll.is-dragging {
+    user-select: none;
+  }
+}

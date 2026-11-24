@@ -8,6 +8,7 @@ import type {
 import { createPortal } from 'react-dom'
 import type { Product } from '../data/planograms'
 import { productImages } from '../data/productImages'
+import { DRAG_SCROLL_START } from './DragScrollArea'
 
 type Props = {
   product: Product
@@ -16,6 +17,7 @@ type Props = {
   className?: string
   style?: CSSProperties
   hideBackground?: boolean
+  disabled?: boolean
 }
 
 type TooltipPosition = {
@@ -33,8 +35,10 @@ export default function ProductTooltip({
   className = '',
   style,
   hideBackground = false,
+  disabled = false,
 }: Props) {
-  const [open, setOpen] = useState(false)
+  const [opened, setOpened] = useState(false)
+  const open = opened && !disabled
   const [position, setPosition] = useState<TooltipPosition | null>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -89,6 +93,12 @@ export default function ProductTooltip({
   }, [open, images.length])
 
   useEffect(() => {
+    const close = () => setOpened(false)
+    window.addEventListener(DRAG_SCROLL_START, close)
+    return () => window.removeEventListener(DRAG_SCROLL_START, close)
+  }, [])
+
+  useEffect(() => {
     if (!open) return
 
     const handlePointerDown = (event: PointerEvent) => {
@@ -99,11 +109,11 @@ export default function ProductTooltip({
       ) {
         return
       }
-      setOpen(false)
+      setOpened(false)
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') setOpened(false)
     }
 
     document.addEventListener('pointerdown', handlePointerDown)
@@ -121,11 +131,11 @@ export default function ProductTooltip({
 
   const handlePointerEnter = (event: ReactPointerEvent<HTMLButtonElement>) => {
     pointerType.current = event.pointerType
-    if (event.pointerType === 'mouse') setOpen(true)
+    if (event.pointerType === 'mouse' && !disabled) setOpened(true)
   }
 
   const handlePointerLeave = (event: ReactPointerEvent<HTMLButtonElement>) => {
-    if (event.pointerType === 'mouse') setOpen(false)
+    if (event.pointerType === 'mouse') setOpened(false)
   }
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
@@ -152,8 +162,8 @@ export default function ProductTooltip({
         }
         className={`relative isolate overflow-hidden text-left ${hasTooltip ? 'cursor-help' : ''} ${className}`}
         onClick={() => {
-          if (hasTooltip && pointerType.current !== 'mouse') {
-            setOpen((value) => !value)
+          if (hasTooltip && pointerType.current !== 'mouse' && !disabled) {
+            setOpened((value) => !value)
           }
         }}
         onKeyDown={handleKeyDown}
@@ -202,6 +212,7 @@ export default function ProductTooltip({
                   <img
                     alt={image.name}
                     className="max-h-40 w-full rounded-[2px] border border-[color:var(--border-subtle)] object-contain"
+                    draggable={false}
                     src={image.src}
                   />
                   <figcaption className="text-center text-xs leading-snug text-(--muted-text)">
