@@ -34,6 +34,20 @@ export type NumberedGroup = {
   shelves: NumberedShelf[]
 }
 
+export const CM_PER_FACE = 8
+
+export function faceSpanToCm(span: number) {
+  return span * CM_PER_FACE
+}
+
+export function cmToFaceSpan(cm: number) {
+  return cm / CM_PER_FACE
+}
+
+export function formatCm(cm: number) {
+  return Number(cm.toFixed(1)).toString()
+}
+
 export function numberProducts(groups: Group[]): NumberedGroup[] {
   let nextNumber = 1
 
@@ -428,7 +442,22 @@ export const groups: Group[] = [
     title: 'Кефиры',
     color: '#6a1b9a',
     background: '#f3e9fb',
-    shelves: [],
+    shelves: [
+      {
+        products: [
+          {
+            name: 'Кефир Лесные ягоды 2.5% 500г',
+            faces: 2,
+            images: ['kefirLesnyeYagody25'],
+          },
+          {
+            name: 'Беллакт Гранд Айранд 220г пл.ст.',
+            faces: 2,
+            images: ['kefirBellaktGrandAiran220'],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'tvorog',

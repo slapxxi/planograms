@@ -24,6 +24,8 @@ export type ProductImageKey =
   | 'milkBellakt400'
   | 'udachnyyVyborCream400'
   | 'milkFilmAssorted'
+  | 'kefirLesnyeYagody25'
+  | 'kefirBellaktGrandAiran220'
   | 'rogachev'
   | 'rogachev200'
   | 'minskayaMarka'
@@ -202,6 +204,17 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   milkFilmAssorted: {
     name: 'Молоко в пленке различной жирности',
     src: import.meta.env.BASE_URL + 'products/milk-film-assorted.webp',
+    source: 'Фото пользователя',
+  },
+  kefirLesnyeYagody25: {
+    name: 'Кефир Лесные ягоды 2.5% 500г',
+    src: import.meta.env.BASE_URL + 'products/kefir-lesnye-yagody-25-500g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirBellaktGrandAiran220: {
+    name: 'Беллакт Гранд Айранд 220г пл.ст.',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-bellakt-grand-airan-220g.webp',
     source: 'Фото пользователя',
   },
   rogachev: {

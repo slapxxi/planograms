@@ -7,6 +7,7 @@ import type {
 } from 'react'
 import { createPortal } from 'react-dom'
 import type { Product } from '../data/planograms'
+import { faceSpanToCm, formatCm } from '../data/planograms'
 import { productImages } from '../data/productImages'
 import { DRAG_SCROLL_START } from './DragScrollArea'
 
@@ -185,7 +186,9 @@ export default function ProductTooltip({
         {number === undefined ? null : (
           <span className="pointer-events-none absolute left-1 top-0.5 z-10 select-none text-[10px] font-semibold leading-none text-(--number-text)">
             {number}
-            <span className="opacity-70">/{span}</span>
+            <span className="opacity-70">
+              /{span} · {formatCm(faceSpanToCm(span))}см
+            </span>
           </span>
         )}
         {children}
