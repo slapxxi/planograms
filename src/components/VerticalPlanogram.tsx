@@ -1,19 +1,18 @@
 import type { Group } from '../data/planograms'
-import { groupStyle } from '../data/planograms'
+import { groupStyle, numberProducts } from '../data/planograms'
 import GroupHeading from './GroupHeading'
+import ProductTooltip from './ProductTooltip'
 
 type Props = {
   groups: Group[]
 }
 
 export default function VerticalPlanogram({ groups }: Props) {
+  const numberedGroups = numberProducts(groups)
+
   return (
     <div className="mx-auto w-full max-w-[375px]">
-      {groups.map((group) => {
-        const shelves = group.shelves.filter(
-          (shelf) => shelf.products.length > 0,
-        )
-
+      {numberedGroups.map(({ group, shelves }) => {
         return (
           <section className="mb-7" key={group.id} style={groupStyle(group)}>
             <GroupHeading
@@ -35,15 +34,23 @@ export default function VerticalPlanogram({ groups }: Props) {
                     aria-hidden="true"
                   />
                   <ul className="flex flex-col gap-2">
-                    {shelf.products.map((product, index) => (
+                    {shelf.products.map(({ product, number }, index) => (
                       <li
-                        className="flex items-start justify-between gap-3 rounded-[1px] bg-[var(--group-bg)] px-2.5 py-2 text-sm leading-[1.4]"
+                        className="min-h-[120px] rounded-[1px] bg-[var(--group-bg)] px-2.5 pb-2 pt-3 text-sm leading-[1.4]"
                         key={`${product.name}-${index}`}
                       >
-                        <span className="break-words">{product.name}</span>
-                        <span className="shrink-0 whitespace-nowrap text-[13px] font-bold text-[color:var(--group-color)]">
-                          {product.faces} ф.
-                        </span>
+                        <ProductTooltip
+                          className="flex w-full items-start justify-between gap-3"
+                          number={number}
+                          product={product}
+                        >
+                          <span className="min-w-0 flex-1 break-words">
+                            {product.name}
+                          </span>
+                          <span className="shrink-0 whitespace-nowrap text-[13px] font-bold text-[color:var(--group-color)]">
+                            {product.faces} ф.
+                          </span>
+                        </ProductTooltip>
                       </li>
                     ))}
                   </ul>

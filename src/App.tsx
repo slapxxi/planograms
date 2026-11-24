@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-[#f5f6f8] px-3 py-4 font-sans text-[#1f2430] antialiased sm:px-6 sm:py-6">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-[calc(100vw-48px)]">
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="text-[24px] font-semibold leading-tight sm:text-[28px]">
