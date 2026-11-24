@@ -25,7 +25,7 @@ export default function App() {
       <div className="mx-auto max-w-[calc(100vw-48px)]">
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-[24px] font-semibold leading-tight sm:text-[28px]">
+            <h1 className="text-[24px] leading-tight font-semibold sm:text-[28px]">
               Планограммы
             </h1>
             <p className="mt-1 text-sm text-(--muted-text)">
@@ -33,13 +33,13 @@ export default function App() {
             </p>
           </div>
           <div
-            className="inline-flex w-full gap-1 rounded-[2px] bg-(--control-bg) p-1 sm:w-auto"
+            className="inline-flex w-full gap-1 rounded-xs bg-(--control-bg) p-1 sm:w-auto"
             role="group"
             aria-label="Режим отображения"
           >
             {modes.map((item) => (
               <button
-                className={`flex-1 rounded-[2px] px-3.5 py-2 text-sm transition-colors sm:flex-none ${mode === item.id ? 'bg-(--control-active-bg) font-semibold text-(--control-active-text) shadow-sm' : 'text-(--control-text) hover:bg-(--control-hover)'}`}
+                className={`${mode === item.id ? 'bg-(--control-active-bg) shadow-sm' : 'text-(--control-text) hover:bg-(--control-hover)'} flex-1 rounded-xs px-3.5 py-2 text-sm font-semibold text-(--control-active-text) transition-colors sm:flex-none`}
                 key={item.id}
                 onClick={() => setMode(item.id)}
                 type="button"
@@ -51,7 +51,7 @@ export default function App() {
           <ThemeSwitcher onChange={setTheme} theme={theme} />
         </header>
 
-        <p className="mb-5 mt-3.5 text-[13px] text-(--muted-text)">
+        <p className="mt-3.5 mb-5 text-[13px] text-(--muted-text)">
           Позиций: {products.length} · Фейсов: {totalFaces}
         </p>
 
