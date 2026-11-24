@@ -455,6 +455,76 @@ export const groups: Group[] = [
             faces: 2,
             images: ['kefirBellaktGrandAiran220'],
           },
+          {
+            name: 'Молочные горки Тайран 220г пл.ст.',
+            faces: 2,
+            faceSpan: 2,
+            images: ['kefirMolochnyeGorkiTairan220'],
+          },
+          {
+            name: 'Кефир Савушкин 415г бут',
+            faces: 5,
+            faceSpan: 4,
+            images: ['kefirSavushkin415'],
+          },
+          {
+            name: 'Простокваша Славянские Традиции/Ряженка Славянские традиции 380г ст',
+            faces: 2,
+            images: [
+              'kefirProstokvashaSlavyanskie380',
+              'kefirRyazhenkaSlavyanskie380',
+            ],
+          },
+          {
+            name: 'Ряженка Минская марка 500г. пюр-пак',
+            faces: 1,
+            images: ['kefirRyazhenkaMinskaya500'],
+          },
+          {
+            name: 'Протеиновый коктейль Рогачевъ 210г ТБА',
+            faces: 1,
+            images: ['kefirRogachevProtein210'],
+          },
+          {
+            name: 'Напиток Exponenta пюр-пак',
+            faces: 6,
+            faceSpan: 5,
+            images: ['kefirExponenta'],
+          },
+          {
+            name: 'Напиток Экспонента НОРМ-ПРО 250г бут',
+            faces: 3,
+            faceSpan: 2,
+            images: ['kefirExponentaNormPro250'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Кефир Минская марка 0.5л т-пак',
+            faces: 2,
+            images: ['kefirMinskayaMarka05Tpak'],
+          },
+          {
+            name: 'БиоФит 480г бут',
+            faces: 2,
+            images: ['kefirBioFit480'],
+          },
+          {
+            name: 'Молочный мир Бифитат/Молочный мир ДарАйран 500г бут',
+            faces: 2,
+            images: [
+              'kefirMolochnyyMirBifitat500',
+              'kefirMolochnyyMirDarAyran500',
+            ],
+          },
+          {
+            name: 'Кефир Савушкин 415г бут',
+            faces: 5,
+            faceSpan: 4,
+            images: ['kefirSavushkin415'],
+          },
         ],
       },
     ],

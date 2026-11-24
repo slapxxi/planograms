@@ -26,6 +26,18 @@ export type ProductImageKey =
   | 'milkFilmAssorted'
   | 'kefirLesnyeYagody25'
   | 'kefirBellaktGrandAiran220'
+  | 'kefirMolochnyeGorkiTairan220'
+  | 'kefirSavushkin415'
+  | 'kefirProstokvashaSlavyanskie380'
+  | 'kefirRyazhenkaSlavyanskie380'
+  | 'kefirRyazhenkaMinskaya500'
+  | 'kefirRogachevProtein210'
+  | 'kefirExponenta'
+  | 'kefirExponentaNormPro250'
+  | 'kefirMinskayaMarka05Tpak'
+  | 'kefirBioFit480'
+  | 'kefirMolochnyyMirBifitat500'
+  | 'kefirMolochnyyMirDarAyran500'
   | 'rogachev'
   | 'rogachev200'
   | 'minskayaMarka'
@@ -215,6 +227,82 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     name: 'Беллакт Гранд Айранд 220г пл.ст.',
     src:
       import.meta.env.BASE_URL + 'products/kefir-bellakt-grand-airan-220g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMolochnyeGorkiTairan220: {
+    name: 'Молочные горки Тайран 220г пл.ст.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-molochnye-gorki-tairan-220g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirSavushkin415: {
+    name: 'Кефир Савушкин 415г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-savushkin-415g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirProstokvashaSlavyanskie380: {
+    name: 'Простокваша Славянские Традиции 380г ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-prostokvasha-slavyanskie-380g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirRyazhenkaSlavyanskie380: {
+    name: 'Ряженка Славянские традиции 380г ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-ryazhenka-slavyanskie-380g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirRyazhenkaMinskaya500: {
+    name: 'Ряженка Минская марка 500г пюр-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-ryazhenka-minskaya-marka-500g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirRogachevProtein210: {
+    name: 'Протеиновый коктейль Рогачевъ 210г ТБА',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-rogachev-protein-cocktail-210g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirExponenta: {
+    name: 'Напиток Exponenta пюр-пак',
+    src: import.meta.env.BASE_URL + 'products/kefir-exponenta-drink.webp',
+    source: 'Фото пользователя',
+  },
+  kefirExponentaNormPro250: {
+    name: 'Напиток Экспонента НОРМ-ПРО 250г бут',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-exponenta-norm-pro-250g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMinskayaMarka05Tpak: {
+    name: 'Кефир Минская марка 0.5л т-пак',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-minskaya-marka-05-tpak.webp',
+    source: 'Фото пользователя',
+  },
+  kefirBioFit480: {
+    name: 'БиоФит 480г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-biofit-480g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMolochnyyMirBifitat500: {
+    name: 'Молочный мир Бифитат 500г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-molochnyy-mir-bifitat-500g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMolochnyyMirDarAyran500: {
+    name: 'Молочный мир ДарАйран 500г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-molochnyy-mir-darayran-500g.webp',
     source: 'Фото пользователя',
   },
   rogachev: {
