@@ -1,1 +1,47 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --app-bg: #f5f6f8;
+  --app-text: #1f2430;
+  --muted-text: #667085;
+  --empty-text: #98a2b3;
+  --control-bg: #e9ecf1;
+  --control-text: #475467;
+  --control-hover: rgb(255 255 255 / 60%);
+  --control-active-bg: #ffffff;
+  --control-active-text: #101828;
+  --surface: #ffffff;
+  --border: #e4e7ec;
+  --border-subtle: #eef0f3;
+  --number-text: #cbd2dc;
+}
+
+.dark {
+  color-scheme: dark;
+  --app-bg: #0f141c;
+  --app-text: #e6eaf2;
+  --muted-text: #98a2b3;
+  --empty-text: #667085;
+  --control-bg: #252d3a;
+  --control-text: #aeb8c7;
+  --control-hover: rgb(255 255 255 / 8%);
+  --control-active-bg: #333d4d;
+  --control-active-text: #f2f4f7;
+  --surface: #171d27;
+  --border: #2b3442;
+  --border-subtle: #242c38;
+  --number-text: #5b6678;
+}
+
+.planogram-group {
+  --group-surface: var(--group-bg);
+  --group-accent: var(--group-color);
+}
+
+.dark .planogram-group {
+  --group-surface: color-mix(in srgb, var(--group-color) 20%, #151a23);
+  --group-accent: color-mix(in srgb, var(--group-color) 65%, #e6eaf2);
+}

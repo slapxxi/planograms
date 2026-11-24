@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import HorizontalPlanogram from './components/HorizontalPlanogram'
+import ThemeSwitcher from './components/ThemeSwitcher'
 import VerticalPlanogram from './components/VerticalPlanogram'
 import { groups } from './data/planograms'
 import type { ViewMode } from './data/planograms'
+import { useTheme } from './theme'
 
 const modes: { id: ViewMode; label: string }[] = [
   { id: 'horizontal', label: 'Горизонтально' },
@@ -11,6 +13,7 @@ const modes: { id: ViewMode; label: string }[] = [
 
 export default function App() {
   const [mode, setMode] = useState<ViewMode>('horizontal')
+  const { theme, setTheme } = useTheme()
 
   const products = groups.flatMap((group) =>
     group.shelves.flatMap((shelf) => shelf.products),
@@ -18,25 +21,25 @@ export default function App() {
   const totalFaces = products.reduce((sum, product) => sum + product.faces, 0)
 
   return (
-    <main className="min-h-screen bg-[#f5f6f8] px-3 py-4 font-sans text-[#1f2430] antialiased sm:px-6 sm:py-6">
+    <main className="min-h-screen bg-(--app-bg) px-3 py-4 font-sans text-(--app-text) antialiased sm:px-6 sm:py-6">
       <div className="mx-auto max-w-[calc(100vw-48px)]">
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="text-[24px] font-semibold leading-tight sm:text-[28px]">
               Планограммы
             </h1>
-            <p className="mt-1 text-sm text-[#667085]">
+            <p className="mt-1 text-sm text-(--muted-text)">
               Товары слева направо, полки сверху вниз
             </p>
           </div>
           <div
-            className="inline-flex w-full gap-1 rounded-[1px] bg-[#e9ecf1] p-1 sm:w-auto"
+            className="inline-flex w-full gap-1 rounded-[2px] bg-(--control-bg) p-1 sm:w-auto"
             role="group"
             aria-label="Режим отображения"
           >
             {modes.map((item) => (
               <button
-                className={`flex-1 rounded-[1px] px-3.5 py-2 text-sm text-[#475467] transition-colors hover:bg-white/60 sm:flex-none ${mode === item.id ? 'bg-white font-semibold text-[#101828] shadow-sm' : ''}`}
+                className={`flex-1 rounded-[2px] px-3.5 py-2 text-sm transition-colors sm:flex-none ${mode === item.id ? 'bg-(--control-active-bg) font-semibold text-(--control-active-text) shadow-sm' : 'text-(--control-text) hover:bg-(--control-hover)'}`}
                 key={item.id}
                 onClick={() => setMode(item.id)}
                 type="button"
@@ -45,9 +48,10 @@ export default function App() {
               </button>
             ))}
           </div>
+          <ThemeSwitcher onChange={setTheme} theme={theme} />
         </header>
 
-        <p className="mb-5 mt-3.5 text-[13px] text-[#667085]">
+        <p className="mb-5 mt-3.5 text-[13px] text-(--muted-text)">
           Позиций: {products.length} · Фейсов: {totalFaces}
         </p>
 

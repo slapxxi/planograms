@@ -170,7 +170,7 @@ export default function ProductTooltip({
           />
         ) : null}
         {number === undefined ? null : (
-          <span className="pointer-events-none absolute left-1 top-0.5 select-none text-[10px] font-semibold leading-none text-[#cbd2dc]">
+          <span className="pointer-events-none absolute left-1 top-0.5 select-none text-[10px] font-semibold leading-none text-(--number-text)">
             {number}
           </span>
         )}
@@ -181,7 +181,7 @@ export default function ProductTooltip({
         open &&
         createPortal(
           <div
-            className="pointer-events-none fixed z-50 w-[min(320px,calc(100vw-16px))] rounded-[1px] border border-[#e4e7ec] bg-white p-3 shadow-lg"
+            className="pointer-events-none fixed z-50 w-[min(320px,calc(100vw-16px))] rounded-[2px] border border-[color:var(--border)] bg-(--surface) p-3 shadow-lg"
             id={tooltipId}
             ref={tooltipRef}
             role="tooltip"
@@ -199,10 +199,10 @@ export default function ProductTooltip({
                 >
                   <img
                     alt={image.name}
-                    className="max-h-40 w-full rounded-[1px] border border-[#eef0f3] object-contain"
+                    className="max-h-40 w-full rounded-[2px] border border-[color:var(--border-subtle)] object-contain"
                     src={image.src}
                   />
-                  <figcaption className="text-center text-xs leading-snug text-[#475467]">
+                  <figcaption className="text-center text-xs leading-snug text-(--muted-text)">
                     {image.name}
                   </figcaption>
                 </figure>

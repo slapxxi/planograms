@@ -11,14 +11,14 @@ type Props = {
 export default function GroupHeading({ group, className = '', style }: Props) {
   return (
     <div
-      className={`flex items-center gap-2.5 rounded-[1px] border-l-[6px] border-[color:var(--group-color)] bg-[var(--group-bg)] px-4 py-3 ${className}`}
+      className={`flex items-center gap-2.5 rounded-[2px] border-l-[6px] border-[color:var(--group-accent)] bg-(--group-surface) px-4 py-3 ${className}`}
       style={{ ...groupStyle(group), ...style }}
     >
       <span
-        className="size-2.5 shrink-0 rounded-full bg-[var(--group-color)]"
+        className="size-2.5 shrink-0 rounded-full bg-(--group-accent)"
         aria-hidden="true"
       />
-      <h2 className="text-[18px] font-medium leading-tight text-[color:var(--group-color)]">
+      <h2 className="text-[18px] font-medium leading-tight text-(--group-accent)">
         {group.title}
       </h2>
     </div>
