@@ -1,18 +1,9 @@
-import { useState } from 'react'
 import HorizontalPlanogram from './components/HorizontalPlanogram'
 import ThemeSwitcher from './components/ThemeSwitcher'
-import VerticalPlanogram from './components/VerticalPlanogram'
 import { groups } from './data/planograms'
-import type { ViewMode } from './data/planograms'
 import { useTheme } from './theme'
 
-const modes: { id: ViewMode; label: string }[] = [
-  { id: 'horizontal', label: 'Горизонтально' },
-  { id: 'vertical', label: 'Вертикально' },
-]
-
 export default function App() {
-  const [mode, setMode] = useState<ViewMode>('horizontal')
   const { theme, setTheme } = useTheme()
 
   const products = groups.flatMap((group) =>
@@ -32,22 +23,6 @@ export default function App() {
               Товары слева направо, полки сверху вниз
             </p>
           </div>
-          <div
-            className="inline-flex w-full gap-1 rounded-xs bg-(--control-bg) p-1 sm:w-auto"
-            role="group"
-            aria-label="Режим отображения"
-          >
-            {modes.map((item) => (
-              <button
-                className={`${mode === item.id ? 'bg-(--control-active-bg) shadow-sm' : 'text-(--control-text) hover:bg-(--control-hover)'} flex-1 rounded-xs px-3.5 py-2 text-sm font-semibold text-(--control-active-text) transition-colors sm:flex-none`}
-                key={item.id}
-                onClick={() => setMode(item.id)}
-                type="button"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
           <ThemeSwitcher onChange={setTheme} theme={theme} />
         </header>
 
@@ -55,11 +30,7 @@ export default function App() {
           Позиций: {products.length} · Фейсов: {totalFaces}
         </p>
 
-        {mode === 'horizontal' ? (
-          <HorizontalPlanogram groups={groups} />
-        ) : (
-          <VerticalPlanogram groups={groups} />
-        )}
+        <HorizontalPlanogram groups={groups} />
       </div>
     </main>
   )

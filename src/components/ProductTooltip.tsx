@@ -15,6 +15,7 @@ type Props = {
   number?: number
   className?: string
   style?: CSSProperties
+  hideBackground?: boolean
 }
 
 type TooltipPosition = {
@@ -31,6 +32,7 @@ export default function ProductTooltip({
   number,
   className = '',
   style,
+  hideBackground = false,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [position, setPosition] = useState<TooltipPosition | null>(null)
@@ -162,7 +164,7 @@ export default function ProductTooltip({
         style={style}
         type="button"
       >
-        {backgroundSrc ? (
+        {backgroundSrc && !hideBackground ? (
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 right-1 -z-10 m-auto size-16 bg-contain bg-no-repeat bg-right opacity-20"
@@ -170,7 +172,7 @@ export default function ProductTooltip({
           />
         ) : null}
         {number === undefined ? null : (
-          <span className="pointer-events-none absolute left-1 top-0.5 select-none text-[10px] font-semibold leading-none text-(--number-text)">
+          <span className="pointer-events-none absolute left-1 top-0.5 z-10 select-none text-[10px] font-semibold leading-none text-(--number-text)">
             {number}
           </span>
         )}

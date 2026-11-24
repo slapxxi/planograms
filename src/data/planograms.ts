@@ -1,8 +1,6 @@
 import type { CSSProperties } from 'react'
 import type { ProductImageKey } from './productImages'
 
-export type ViewMode = 'horizontal' | 'vertical'
-
 export type Product = {
   name: string
   faces: number
