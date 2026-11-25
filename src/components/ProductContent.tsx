@@ -27,6 +27,15 @@ const facePadding: Record<CellSize, string> = {
   lg: 'p-1',
 }
 
+const nameFontSize: Record<CellSize, string> = {
+  '3xs': 'text-[9px]',
+  '2xs': 'text-[10px]',
+  xs: 'text-[11px]',
+  sm: 'text-[11px]',
+  md: 'text-xs',
+  lg: 'text-sm',
+}
+
 let ProductContent = (props: Props) => {
   const { cellSize, product, view } = props
   const image = firstImage(product)
@@ -54,7 +63,7 @@ let ProductContent = (props: Props) => {
   return (
     <>
       <span
-        className="line-clamp-6 min-w-0 flex-1 wrap-break-word"
+        className={`line-clamp-6 min-w-0 flex-1 wrap-break-word ${nameFontSize[cellSize]}`}
         title={product.name}
       >
         {product.name}

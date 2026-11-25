@@ -26,6 +26,7 @@ export type ProductImageKey =
   | 'milkFilmAssorted'
   | 'kefirLesnyeYagody25'
   | 'kefirBellaktGrandAiran220'
+  | 'kefirBellakt900'
   | 'kefirMolochnyeGorkiTairan220'
   | 'kefirSavushkin415'
   | 'kefirSavushkin950'
@@ -48,6 +49,8 @@ export type ProductImageKey =
   | 'kefirTeosPro'
   | 'kefirTeosPro250'
   | 'kefirTopPower'
+  | 'kefirMilkCocktailTop330450'
+  | 'kefirBionapitokAktivl500'
   | 'kefirZdravushkaBio930'
   | 'kefirMozhno930'
   | 'kefirMolochnyyMirBifitat500'
@@ -243,6 +246,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
       import.meta.env.BASE_URL + 'products/kefir-bellakt-grand-airan-220g.webp',
     source: 'Фото пользователя',
   },
+  kefirBellakt900: {
+    name: 'Кефир Беллакт 900г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-bellakt-900g.webp',
+    source: 'Фото пользователя',
+  },
   kefirMolochnyeGorkiTairan220: {
     name: 'Молочные горки Тайран 220г пл.ст.',
     src:
@@ -368,6 +376,19 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   kefirTopPower: {
     name: 'ТОП POWER',
     src: import.meta.env.BASE_URL + 'products/kefir-top-power.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMilkCocktailTop330450: {
+    name: 'Коктейль молочный ТМ ТОП, ШЕЙК, ПАУЭР, КАФЕ, КУЛ, МИСТЕРИ 330-450г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-milk-cocktail-top-330-450g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirBionapitokAktivl500: {
+    name: 'Бионапиток Активил 500г бут',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-bionapitok-aktivl-500g.webp',
     source: 'Фото пользователя',
   },
   kefirZdravushkaBio930: {

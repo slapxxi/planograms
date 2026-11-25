@@ -604,6 +604,33 @@ export const groups: Group[] = [
             faces: 2,
             images: ['kefirZdravushkaBio930', 'kefirMozhno930'],
           },
+          {
+            name: 'Кефир Беллакт 900г бут',
+            faces: 2,
+            images: ['kefirBellakt900'],
+          },
+          {
+            name: 'Кефир Савушкин 950г бут',
+            faces: 6,
+            images: ['kefirSavushkin950'],
+          },
+          {
+            name: 'Ряженка Савушкин 950г бут',
+            faces: 2,
+            images: ['ryazhenkaSavushkin950'],
+          },
+          {
+            name: 'Коктейль молочный ТМ ТОП, ШЕЙК, ПАУЭР, КАФЕ, КУЛ, МИСТЕРИ 330-450г бут',
+            faces: 6,
+            faceSpan: 5,
+            images: ['kefirMilkCocktailTop330450'],
+          },
+          {
+            name: 'Бионапиток Активил 500г бут',
+            faces: 4,
+            faceSpan: 3,
+            images: ['kefirBionapitokAktivl500'],
+          },
         ],
       },
     ],

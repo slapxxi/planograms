@@ -174,7 +174,7 @@ let App = () => {
           <div className="flex flex-wrap items-center gap-2">
             <CellSizeSwitcher onChange={setCellSize} size={cellSize} />
             <button
-              className="rounded-[2px] border border-(--border) bg-(--surface) px-3 py-2 text-xs text-(--control-text) transition-colors hover:bg-(--control-hover)"
+              className="rounded-xs border border-(--border) bg-(--surface) px-3 py-2 text-xs text-(--control-text) transition-colors hover:bg-(--control-hover)"
               onClick={handleClearStorage}
               title="Удалить сохранённые настройки интерфейса"
               type="button"
