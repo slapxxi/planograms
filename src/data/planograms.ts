@@ -213,7 +213,7 @@ export const groups: Group[] = [
           {
             name: 'Молоко Депи 250мл',
             faces: 6,
-            faceSpan: 4,
+            faceSpan: 4.25,
             images: ['milkDepi250'],
           },
           {
@@ -231,30 +231,31 @@ export const groups: Group[] = [
           {
             name: 'Молоко Беллакт 200мл',
             faces: 3,
-            faceSpan: 2.5,
+            faceSpan: 2.25,
             images: ['milkBellakt200ml'],
           },
           {
             name: 'Молоко козье Беллакт 200мл',
             faces: 2,
-            faceSpan: 1,
+            faceSpan: 1.5,
             images: ['milkGoatBellakt200ml'],
           },
           {
             name: 'Молочный мир асс. 280г бут',
             faces: 3,
+            faceSpan: 2.25,
             images: ['molochnyyMirAssorti280'],
           },
           {
             name: 'Чудо коктейль мол 200мл',
             faces: 5,
-            faceSpan: 2.5,
+            faceSpan: 3.125,
             images: ['chudoKokteylMol200'],
           },
           {
             name: 'Чудо коктейль мол 960г',
             faces: 3,
-            faceSpan: 4,
+            faceSpan: 3.75,
             images: ['chudoKokteylMol960'],
           },
         ],
@@ -462,7 +463,7 @@ export const groups: Group[] = [
             images: ['kefirMolochnyeGorkiTairan220'],
           },
           {
-            name: 'Кефир Савушкин 415г бут',
+            name: 'Ряженка Савушкин 415г бут',
             faces: 5,
             faceSpan: 4,
             images: ['kefirSavushkin415'],
@@ -524,6 +525,12 @@ export const groups: Group[] = [
             faces: 5,
             faceSpan: 4,
             images: ['kefirSavushkin415'],
+          },
+          {
+            name: 'Ряженка Савушкин 415г бут',
+            faces: 4,
+            faceSpan: 3,
+            images: ['ryazhenkaSavushkin415'],
           },
         ],
       },

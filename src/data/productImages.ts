@@ -28,6 +28,7 @@ export type ProductImageKey =
   | 'kefirBellaktGrandAiran220'
   | 'kefirMolochnyeGorkiTairan220'
   | 'kefirSavushkin415'
+  | 'ryazhenkaSavushkin415'
   | 'kefirProstokvashaSlavyanskie380'
   | 'kefirRyazhenkaSlavyanskie380'
   | 'kefirRyazhenkaMinskaya500'
@@ -239,6 +240,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   kefirSavushkin415: {
     name: 'Кефир Савушкин 415г бут',
     src: import.meta.env.BASE_URL + 'products/kefir-savushkin-415g.webp',
+    source: 'Фото пользователя',
+  },
+  ryazhenkaSavushkin415: {
+    name: 'Ряженка Савушкин 415г бут',
+    src: import.meta.env.BASE_URL + 'products/ryazhenka-savushkin-415g.webp',
     source: 'Фото пользователя',
   },
   kefirProstokvashaSlavyanskie380: {

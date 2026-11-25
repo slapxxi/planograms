@@ -8,10 +8,13 @@ import type { GroupView } from '~/lib/planogram'
 
 type Props = {
   groups: Group[]
+  matchedNumbers: Set<number>
+  searching: boolean
+  selectedNumber: number | null
 }
 
 let HorizontalPlanogram = (props: Props) => {
-  const { groups } = props
+  const { groups, matchedNumbers, searching, selectedNumber } = props
   const [views, setViews] = useState<Record<string, GroupView>>({})
   const [draggingGroup, setDraggingGroup] = useState<string | null>(null)
   const numberedGroups = numberProducts(groups)
@@ -24,6 +27,7 @@ let HorizontalPlanogram = (props: Props) => {
         return (
           <section
             className="planogram-group mb-6 overflow-x-clip rounded-xs border border-(--border) bg-(--surface)"
+            data-group-id={group.id}
             key={group.id}
             style={groupStyle(group)}
           >
@@ -49,6 +53,9 @@ let HorizontalPlanogram = (props: Props) => {
                   <ShelfRow
                     disabled={draggingGroup === group.id}
                     key={index}
+                    matchedNumbers={matchedNumbers}
+                    searching={searching}
+                    selectedNumber={selectedNumber}
                     shelf={shelf}
                     view={view}
                   />

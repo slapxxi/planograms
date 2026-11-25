@@ -10,6 +10,7 @@ import type { Product } from '~/data/planograms'
 import { faceSpanToCm, formatCm } from '~/data/planograms'
 import { productImages } from '~/data/productImages'
 import { DRAG_SCROLL_START } from '~/lib/constants'
+import { notifyCopy } from '~/lib/notifications'
 
 type Props = {
   product: Product
@@ -153,6 +154,27 @@ let ProductTooltip = (props: Props) => {
 
   const numberLabel = number === undefined ? '' : `${number}. `
 
+  const handleClick = () => {
+    const clipboard = navigator.clipboard
+    if (!clipboard) {
+      notifyCopy({ title: 'Не удалось скопировать' })
+    } else {
+      void clipboard
+        .writeText(product.name)
+        .then(() =>
+          notifyCopy({
+            title: 'Название скопировано',
+            text: product.name,
+          }),
+        )
+        .catch(() => notifyCopy({ title: 'Не удалось скопировать' }))
+    }
+
+    if (hasTooltip && pointerType.current !== 'mouse' && !disabled) {
+      setOpened((value) => !value)
+    }
+  }
+
   return (
     <>
       <button
@@ -163,12 +185,9 @@ let ProductTooltip = (props: Props) => {
             ? `${numberLabel}Показать фото: ${product.name}`
             : `Ячейка ${number}`
         }
-        className={`relative isolate overflow-hidden text-left ${hasTooltip ? 'cursor-help' : ''} ${className}`}
-        onClick={() => {
-          if (hasTooltip && pointerType.current !== 'mouse' && !disabled) {
-            setOpened((value) => !value)
-          }
-        }}
+        className={`relative isolate scroll-mt-16 overflow-hidden text-left ${hasTooltip ? 'cursor-help' : ''} ${className}`}
+        data-cell-number={number}
+        onClick={handleClick}
         onKeyDown={handleKeyDown}
         onPointerDown={handlePointerDown}
         onPointerEnter={handlePointerEnter}
