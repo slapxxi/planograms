@@ -3,3 +3,8 @@ export const CELL_GAP = 2
 export const SHELF_PADDING_X = 2
 export const DRAG_SCROLL_START = 'dragscroll-start'
 export const COPY_NOTIFICATION = 'copy-notification'
+export const STORAGE_KEYS = {
+  collapsed: 'planogram-collapsed',
+  search: 'planogram-search',
+  views: 'planogram-views',
+} as const

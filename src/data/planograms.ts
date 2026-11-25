@@ -532,6 +532,37 @@ export const groups: Group[] = [
             faceSpan: 3,
             images: ['ryazhenkaSavushkin415'],
           },
+          {
+            name: 'Протеиновый коктейль Рогачевъ 210г ТБА',
+            faces: 1,
+            images: ['kefirRogachevProtein210'],
+          },
+          {
+            name: 'Напиток Exponenta пюр-пак',
+            faces: 6,
+            faceSpan: 5,
+            images: ['kefirExponenta'],
+          },
+          {
+            name: 'EXPONENTA Экспотоник 500мл бут',
+            faces: 3,
+            faceSpan: 2,
+            images: ['kefirExponentaExpotonik500'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Кефир Славянские традиции/Минская марка 900мл бут',
+            faces: 2,
+            images: ['kefirSlavyanskieTraditsii900', 'kefirMinskayaMarka900'],
+          },
+          {
+            name: 'БиоФит кефирный 930г бут',
+            faces: 2,
+            images: ['kefirBioFit930'],
+          },
         ],
       },
     ],

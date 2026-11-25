@@ -6,7 +6,7 @@ type Props = {
   onQueryChange: (query: string) => void
   results: SearchResult[]
   onSelect: (result: SearchResult) => void
-  onHoverChange: (number: number | null) => void
+  onHoverChange: (result: SearchResult | null) => void
   showResults: boolean
 }
 
@@ -100,9 +100,9 @@ let SearchBar = (props: Props) => {
                     className="flex w-full items-center gap-2 rounded-[2px] px-1 py-1.5 text-left hover:bg-(--control-hover)"
                     onClick={() => onSelect(result)}
                     onBlur={() => onHoverChange(null)}
-                    onFocus={() => onHoverChange(result.number)}
+                    onFocus={() => onHoverChange(result)}
                     onMouseDown={(event) => event.preventDefault()}
-                    onMouseEnter={() => onHoverChange(result.number)}
+                    onMouseEnter={() => onHoverChange(result)}
                     onMouseLeave={() => onHoverChange(null)}
                     type="button"
                   >

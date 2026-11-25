@@ -1,20 +1,70 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CopyNotification from '~/components/CopyNotification'
 import HorizontalPlanogram from '~/components/HorizontalPlanogram'
 import SearchBar from '~/components/SearchBar'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
-import { groups } from '~/data/planograms'
+import { groups, numberProducts } from '~/data/planograms'
+import { STORAGE_KEYS } from '~/lib/constants'
+import type { GroupView } from '~/lib/planogram'
 import type { SearchResult } from '~/lib/search'
 import { searchProducts } from '~/lib/search'
+import { readStorage, removeStorage, writeStorage } from '~/lib/storage'
 import { useTheme } from '~/theme'
+
+type SearchState = {
+  query: string
+  selectedNumber: number | null
+}
+
+function readSearchState(): SearchState {
+  const saved = readStorage<{ query?: unknown; selectedNumber?: unknown }>(
+    STORAGE_KEYS.search,
+    {},
+  )
+  const numbers = new Set(
+    numberProducts(groups).flatMap(({ shelves }) =>
+      shelves.flatMap((shelf) => shelf.products.map(({ number }) => number)),
+    ),
+  )
+
+  return {
+    query: typeof saved.query === 'string' ? saved.query : '',
+    selectedNumber:
+      typeof saved.selectedNumber === 'number' && numbers.has(saved.selectedNumber)
+        ? saved.selectedNumber
+        : null,
+  }
+}
+
+function readCollapsedGroups() {
+  const saved = readStorage<string[]>(STORAGE_KEYS.collapsed, [])
+  const ids = new Set(groups.map((group) => group.id))
+  return new Set(saved.filter((id) => ids.has(id)))
+}
+
+function readViews() {
+  const saved = readStorage<Record<string, unknown>>(STORAGE_KEYS.views, {})
+  if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return {}
+  const ids = new Set(groups.map((group) => group.id))
+
+  return Object.fromEntries(
+    Object.entries(saved).filter(
+      ([id, view]) => ids.has(id) && (view === 'cards' || view === 'faces'),
+    ),
+  ) as Record<string, GroupView>
+}
 
 let App = () => {
   const { theme, setTheme } = useTheme()
-  const [query, setQuery] = useState('')
+  const [search, setSearch] = useState<SearchState>(readSearchState)
   const [resultsVisible, setResultsVisible] = useState(false)
-  const [selectedNumber, setSelectedNumber] = useState<number | null>(null)
   const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(
+    readCollapsedGroups,
+  )
+  const [views, setViews] = useState<Record<string, GroupView>>(readViews)
 
+  const { query, selectedNumber } = search
   const results = searchProducts(groups, query)
   const activeNumber = hoveredNumber ?? selectedNumber
   const matchedNumbers =
@@ -26,10 +76,41 @@ let App = () => {
   )
   const totalFaces = products.reduce((sum, product) => sum + product.faces, 0)
 
+  useEffect(() => {
+    if (!search.query && search.selectedNumber === null)
+      removeStorage(STORAGE_KEYS.search)
+    else writeStorage(STORAGE_KEYS.search, search)
+  }, [search])
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.collapsed, [...collapsedGroups])
+  }, [collapsedGroups])
+
+  useEffect(() => {
+    writeStorage(STORAGE_KEYS.views, views)
+  }, [views])
+
+  const toggleGroup = (id: string) => {
+    setCollapsedGroups((current) => {
+      const next = new Set(current)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const expandGroup = (id: string) => {
+    setCollapsedGroups((current) => {
+      if (!current.has(id)) return current
+      const next = new Set(current)
+      next.delete(id)
+      return next
+    })
+  }
+
   const handleQueryChange = (next: string) => {
-    setQuery(next)
+    setSearch({ query: next, selectedNumber: null })
     setResultsVisible(Boolean(next.trim()))
-    setSelectedNumber(null)
     setHoveredNumber(null)
   }
 
@@ -39,17 +120,29 @@ let App = () => {
       ?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
   }
 
-  const handleHoverChange = (number: number | null) => {
-    setHoveredNumber(number)
-    if (number !== null) scrollToCell(number)
+  const revealCell = (result: SearchResult) => {
+    expandGroup(result.groupId)
+    window.requestAnimationFrame(() => scrollToCell(result.number))
+  }
+
+  const handleHoverChange = (result: SearchResult | null) => {
+    setHoveredNumber(result?.number ?? null)
+    if (result) revealCell(result)
   }
 
   const handleSelect = (result: SearchResult) => {
-    setQuery(result.name)
+    setSearch({ query: result.name, selectedNumber: result.number })
     setResultsVisible(false)
-    setSelectedNumber(result.number)
     setHoveredNumber(null)
-    scrollToCell(result.number)
+    revealCell(result)
+  }
+
+  const handleClearStorage = () => {
+    setSearch({ query: '', selectedNumber: null })
+    setResultsVisible(false)
+    setHoveredNumber(null)
+    setCollapsedGroups(new Set())
+    setViews({})
   }
 
   return (
@@ -64,7 +157,17 @@ let App = () => {
               Товары слева направо, полки сверху вниз
             </p>
           </div>
-          <ThemeSwitcher onChange={setTheme} theme={theme} />
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              className="rounded-[2px] border border-(--border) bg-(--surface) px-3 py-2 text-xs text-(--control-text) transition-colors hover:bg-(--control-hover)"
+              onClick={handleClearStorage}
+              title="Удалить сохранённые настройки интерфейса"
+              type="button"
+            >
+              Очистить хранилище
+            </button>
+            <ThemeSwitcher onChange={setTheme} theme={theme} />
+          </div>
         </header>
 
         <div className="sticky top-0 z-30 bg-(--app-bg) pt-4 pb-2">
@@ -83,10 +186,16 @@ let App = () => {
         </p>
 
         <HorizontalPlanogram
+          collapsedGroups={collapsedGroups}
           groups={groups}
           matchedNumbers={matchedNumbers}
+          onToggleGroup={toggleGroup}
+          onViewChange={(id, view) =>
+            setViews((current) => ({ ...current, [id]: view }))
+          }
           searching={query.trim().length > 0}
           selectedNumber={activeNumber}
+          views={views}
         />
       </div>
 

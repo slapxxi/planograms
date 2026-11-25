@@ -35,8 +35,12 @@ export type ProductImageKey =
   | 'kefirRogachevProtein210'
   | 'kefirExponenta'
   | 'kefirExponentaNormPro250'
+  | 'kefirExponentaExpotonik500'
+  | 'kefirSlavyanskieTraditsii900'
+  | 'kefirMinskayaMarka900'
   | 'kefirMinskayaMarka05Tpak'
   | 'kefirBioFit480'
+  | 'kefirBioFit930'
   | 'kefirMolochnyyMirBifitat500'
   | 'kefirMolochnyyMirDarAyran500'
   | 'rogachev'
@@ -286,6 +290,24 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
       import.meta.env.BASE_URL + 'products/kefir-exponenta-norm-pro-250g.webp',
     source: 'Фото пользователя',
   },
+  kefirExponentaExpotonik500: {
+    name: 'EXPONENTA Экспотоник 500мл бут',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-exponenta-expotonik-500ml.webp',
+    source: 'Фото пользователя',
+  },
+  kefirSlavyanskieTraditsii900: {
+    name: 'Кефир Славянские традиции 900мл бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-slavyanskie-traditsii-900ml.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMinskayaMarka900: {
+    name: 'Кефир Минская марка 900мл бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-minskaya-marka-900ml.webp',
+    source: 'Фото пользователя',
+  },
   kefirMinskayaMarka05Tpak: {
     name: 'Кефир Минская марка 0.5л т-пак',
     src:
@@ -295,6 +317,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   kefirBioFit480: {
     name: 'БиоФит 480г бут',
     src: import.meta.env.BASE_URL + 'products/kefir-biofit-480g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirBioFit930: {
+    name: 'БиоФит кефирный 930г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-biofit-930g.webp',
     source: 'Фото пользователя',
   },
   kefirMolochnyyMirBifitat500: {
