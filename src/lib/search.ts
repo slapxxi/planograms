@@ -106,21 +106,13 @@ export function searchProducts(groups: Group[], query: string) {
   return numberProducts(groups)
     .flatMap(({ group, shelves }) =>
       shelves.flatMap((shelf) =>
-        shelf.products.map(({ product, number }) => {
-          const values = [product.name, String(number), group.title]
-
-          return {
-            number,
-            name: product.name,
-            groupId: group.id,
-            groupTitle: group.title,
-            score: Math.min(
-              ...values.map((value) =>
-                fieldScore(normalizedQuery, needles, value),
-              ),
-            ),
-          }
-        }),
+        shelf.products.map(({ product, number }) => ({
+          number,
+          name: product.name,
+          groupId: group.id,
+          groupTitle: group.title,
+          score: fieldScore(normalizedQuery, needles, product.name),
+        })),
       ),
     )
     .filter((result) => Number.isFinite(result.score))

@@ -73,7 +73,7 @@ let SearchBar = (props: Props) => {
               onHoverChange(null)
             }}
             onFocus={() => setFocused(true)}
-            placeholder="Товар, номер ячейки или группа"
+            placeholder="Название товара"
             ref={inputRef}
             value={query}
           />

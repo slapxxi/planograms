@@ -819,6 +819,281 @@ export const groups: Group[] = [
           },
         ],
       },
+      {
+        products: [
+          {
+            name: 'Сметана ТМ Брест-Литовск 380г пл.ст.',
+            faces: 5,
+            faceSpan: 6.25,
+            images: ['smetanaBrestLitovsk380'],
+          },
+          {
+            name: 'Сметана Славянские традиции/1М Молочный/Минская марка 380г пл.ст.',
+            faces: 3,
+            faceSpan: 3.75,
+            images: ['smetanaSlavyanskieTraditsii1MMolchnyMinskaya380'],
+          },
+          {
+            name: 'Творог Беллакт 5% 280г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogBellakt5280'],
+          },
+          {
+            name: 'Творог Удачный выбор 3%/6% фас вес 1кг шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogUdachnyyVybor361kg'],
+          },
+          {
+            name: 'Творог Славянские традиции 5%/9% 335г. шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogSlavyanskieTraditsii59335'],
+          },
+          {
+            name: 'Творог Славянские традиции 5%/9% 355г шайба',
+            faces: 2,
+            faceSpan: 2.5,
+            images: ['tvorogSlavyanskieTraditsii59355'],
+          },
+          {
+            name: 'Творог Славянские традиции 9% 375г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogSlavyanskieTraditsii9375'],
+          },
+          {
+            name: 'Творог Остромечевские просторы Домашний 9% вес 1кг шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogOstromechevskieProstoryDomashniy91kg'],
+          },
+          {
+            name: 'Творог Брест-Литовск 5% 300г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogBrestLitovsk5300'],
+          },
+          {
+            name: 'Творог Брест-литовск 9% 300г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogBrestLitovsk9300'],
+          },
+          {
+            name: 'Творог Савушкин 1% 300г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogSavushkin1300'],
+          },
+          {
+            name: 'Творог Савушкин 5% 300г шайба',
+            faces: 2,
+            faceSpan: 2.5,
+            images: ['tvorogSavushkin5300'],
+          },
+          {
+            name: 'Творог Савушкин 9% 300г шайба',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogSavushkin9300'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Сметана ТМ Брест-литовск в пл.ст. 180г',
+            faces: 5,
+            faceSpan: 6.25,
+            images: ['smetanaBrestLitovsk180'],
+          },
+          {
+            name: 'Сметана Минская марка 180г пл.ст.',
+            faces: 3,
+            faceSpan: 3.75,
+            images: ['smetanaMinskayaMarka180'],
+          },
+          {
+            name: 'Творог Молочные горки 5% 180г пачка',
+            faces: 1,
+            images: ['tvorogMolochnyeGorki5180'],
+          },
+          {
+            name: 'Творог Беллакт 5%/9% 180г пачка',
+            faces: 1,
+            images: ['tvorogBellakt5180', 'tvorogBellakt9180'],
+          },
+          {
+            name: 'Творог Ляховичок 2%/5%/9%/15% 200г пачка',
+            faces: 2,
+            images: [
+              'tvorogLyakhovichok2200',
+              'tvorogLyakhovichok5200',
+              'tvorogLyakhovichok9200',
+              'tvorogLyakhovichok15200',
+            ],
+          },
+          {
+            name: 'Творог Савушкин 2% 180г пачка',
+            faces: 1,
+            images: ['tvorogSavushkin2180'],
+          },
+          {
+            name: 'Творог Савушкин 5% 180г пачка',
+            faces: 3,
+            images: ['tvorogSavushkin5180'],
+          },
+          {
+            name: 'Творог Савушкин 9% 180г пачка',
+            faces: 2,
+            images: ['tvorogSavushkin9180'],
+          },
+          {
+            name: 'Творог Савушкин 5% 180г клинок',
+            faces: 2,
+            images: ['tvorogSavushkin5180Klinok'],
+          },
+          {
+            name: 'Творог Савушкин 9% 180г клинок',
+            faces: 2,
+            images: ['tvorogSavushkin9180Klinok'],
+          },
+          {
+            name: 'Творог ТМ Свежие новости 7% 220г клинок',
+            faces: 2,
+            images: ['tvorogSvezhiyeNovosti7220'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Сметана ТМ Брест-литовск в пл.ст. 180г',
+            faces: 5,
+            faceSpan: 6.25,
+            images: ['smetanaBrestLitovsk180'],
+          },
+          {
+            name: 'Сметана Свежие новости 180г пл.ст.',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['smetanaSvezhiyeNovosti180'],
+          },
+          {
+            name: 'Сметана Здравушка 180г пл.ст.',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['smetanaZdravushka180'],
+          },
+          {
+            name: 'Сметана Молочный мир 200г пл.ст.',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['smetanaMolochnyyMir200'],
+          },
+          {
+            name: 'Творог Снов 12% 250г линкавер',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogSnov12250'],
+          },
+          {
+            name: 'Творог Ясь Белоус 4%/Творог Здравушка 5%/9% 200г флоу-пак',
+            faces: 2,
+            images: ['tvorogYasBelous4Flow200', 'tvorogZdravushka59Flow200'],
+          },
+          {
+            name: 'Творог Complimilk 6% 200г пачка',
+            faces: 1,
+            images: ['tvorogComplimilk6200'],
+          },
+          {
+            name: 'Творог Минская марка Традиционный 2%/5%/9% 180г пачка',
+            faces: 3,
+            images: [
+              'tvorogMinskayaMarkaTraditsionny2180',
+              'tvorogMinskayaMarkaTraditsionny5180',
+              'tvorogMinskayaMarkaTraditsionny9180',
+            ],
+          },
+          {
+            name: 'Творог Бабушкина крынка 1%/5%/7%/10% 200г пачка',
+            faces: 3,
+            images: [
+              'tvorogBabushkinaKrinka1200',
+              'tvorogBabushkinaKrinka5200',
+              'tvorogBabushkinaKrinka7200',
+              'tvorogBabushkinaKrinka10200',
+            ],
+          },
+          {
+            name: 'Творог Cream Nuvo 9%/5% 200г пл.конт.',
+            faces: 1,
+            faceSpan: 1.375,
+            images: ['tvorogCreamNuvo95200'],
+          },
+          {
+            name: 'Творог Cream Nuvo 9%/5% 380г пл.конт.',
+            faces: 1,
+            faceSpan: 1.375,
+            images: ['tvorogCreamNuvo95380'],
+          },
+          {
+            name: 'Творог Молочная страна Домашний зернен 4% 400г контейнер',
+            faces: 1,
+            faceSpan: 1.75,
+            images: ['tvorogMolochnayaStranaDomashniyZerneny4400'],
+          },
+          {
+            name: 'Творог Молочная страна Домашний зернен 4% 500г ведро',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogMolochnayaStranaDomashniyZerneny4500'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Сметана в пленке различной жирности',
+            faces: 8,
+            faceSpan: 10,
+            images: ['smetanaVPlenkeRazlichnoyZhirkosti'],
+          },
+          {
+            name: 'Маргарины/спреды в асс-те',
+            faces: 1,
+            faceSpan: 2.5,
+            images: ['margarinySpredyAssorte'],
+          },
+          {
+            name: 'Масло топленое',
+            faces: 1,
+            faceSpan: 2.5,
+            images: ['masloToplenoe'],
+          },
+          {
+            name: 'Крем на растительных маслах De Olio',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['kremNaRastitelnykhMaslakhDeOlio'],
+          },
+          {
+            name: 'Масло сливочное',
+            faces: 2,
+            faceSpan: 5,
+            images: ['masloSlivochnoe1', 'masloSlivochnoe2'],
+          },
+          {
+            name: 'Масло сливочное Савушкин',
+            faces: 1,
+            faceSpan: 5,
+            images: ['masloSlivochnoeSavushkin'],
+          },
+        ],
+      },
     ],
   },
   {

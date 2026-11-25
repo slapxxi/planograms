@@ -5,14 +5,31 @@ export type ProductImageKey =
   | 'svezhiyeNovosti'
   | 'brestLitovsk'
   | 'smetanaBrestLitovsk380'
+  | 'smetanaBrestLitovsk180'
+  | 'smetanaMinskayaMarka180'
   | 'smetanaSvezhiyeNovosti380'
+  | 'smetanaSvezhiyeNovosti180'
+  | 'smetanaZdravushka180'
+  | 'smetanaMolochnyyMir200'
+  | 'smetanaVPlenkeRazlichnoyZhirkosti'
+  | 'margarinySpredyAssorte'
+  | 'masloToplenoe'
+  | 'kremNaRastitelnykhMaslakhDeOlio'
+  | 'masloSlivochnoe1'
+  | 'masloSlivochnoe2'
+  | 'masloSlivochnoeSavushkin'
   | 'smetanaMolochnyeGorki300'
   | 'smetanaLyakhovichok350'
   | 'smetanaYasBelous350'
+  | 'smetanaSlavyanskieTraditsii1MMolchnyMinskaya380'
   | 'lyakhovichok'
   | 'tvorogLyakhovichokRassypchatyy5700g'
   | 'tvorogLyakhovichokRassypchatyy5350g'
   | 'tvorogLyakhovichokRassypchatyy2350g'
+  | 'tvorogLyakhovichok2200'
+  | 'tvorogLyakhovichok5200'
+  | 'tvorogLyakhovichok9200'
+  | 'tvorogLyakhovichok15200'
   | 'tvorogKletskayaKrynachkaKlassicheskiyObezhir400'
   | 'tvorogKletskayaKrynachkaKlassicheskiy9400'
   | 'tvorogYasBelousKlassicheskiy5400'
@@ -20,7 +37,42 @@ export type ProductImageKey =
   | 'tvorogSavushkinRassypchatyy5500'
   | 'tvorogSavushkinRassypchat5700'
   | 'tvorogMolochnyeGorkiBezlaktoz5350'
+  | 'tvorogMolochnyeGorki5180'
   | 'tvorog1MBezlaktoz5350'
+  | 'tvorogBellakt5280'
+  | 'tvorogBellakt5180'
+  | 'tvorogBellakt9180'
+  | 'tvorogUdachnyyVybor361kg'
+  | 'tvorogSlavyanskieTraditsii59335'
+  | 'tvorogSlavyanskieTraditsii59355'
+  | 'tvorogSlavyanskieTraditsii9375'
+  | 'tvorogOstromechevskieProstoryDomashniy91kg'
+  | 'tvorogBrestLitovsk5300'
+  | 'tvorogBrestLitovsk9300'
+  | 'tvorogSavushkin1300'
+  | 'tvorogSavushkin2180'
+  | 'tvorogSavushkin5180'
+  | 'tvorogSavushkin9180'
+  | 'tvorogSavushkin5180Klinok'
+  | 'tvorogSavushkin9180Klinok'
+  | 'tvorogSavushkin5300'
+  | 'tvorogSvezhiyeNovosti7220'
+  | 'tvorogSavushkin9300'
+  | 'tvorogSnov12250'
+  | 'tvorogYasBelous4Flow200'
+  | 'tvorogZdravushka59Flow200'
+  | 'tvorogComplimilk6200'
+  | 'tvorogMinskayaMarkaTraditsionny2180'
+  | 'tvorogMinskayaMarkaTraditsionny5180'
+  | 'tvorogMinskayaMarkaTraditsionny9180'
+  | 'tvorogBabushkinaKrinka1200'
+  | 'tvorogBabushkinaKrinka5200'
+  | 'tvorogBabushkinaKrinka7200'
+  | 'tvorogBabushkinaKrinka10200'
+  | 'tvorogCreamNuvo95200'
+  | 'tvorogCreamNuvo95380'
+  | 'tvorogMolochnayaStranaDomashniyZerneny4400'
+  | 'tvorogMolochnayaStranaDomashniyZerneny4500'
   | 'tvorogSlavyanskieTraditsiiRassypchat2'
   | 'tvorogSlavyanskieTraditsiiRassypchat5'
   | 'tvorogMinskayaMarkaRassypchat9350'
@@ -165,10 +217,75 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/smetana-brest-litovsk-380g.webp',
     source: 'Фото пользователя',
   },
+  smetanaBrestLitovsk180: {
+    name: 'Сметана ТМ Брест-литовск в пл.ст. 180г',
+    src: import.meta.env.BASE_URL + 'products/smetana-brest-litovsk-180g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaMinskayaMarka180: {
+    name: 'Сметана Минская марка 180г пл.ст.',
+    src: import.meta.env.BASE_URL + 'products/smetana-minskaya-marka-180g.webp',
+    source: 'Фото пользователя',
+  },
   smetanaSvezhiyeNovosti380: {
     name: 'Сметана Свежие новости 380г пл.ст.',
     src:
       import.meta.env.BASE_URL + 'products/smetana-svezhiye-novosti-380g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaSvezhiyeNovosti180: {
+    name: 'Сметана Свежие новости 180г пл.ст.',
+    src:
+      import.meta.env.BASE_URL + 'products/smetana-svezhiye-novosti-180g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaZdravushka180: {
+    name: 'Сметана Здравушка 180г пл.ст.',
+    src: import.meta.env.BASE_URL + 'products/smetana-zdravushka-180g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaMolochnyyMir200: {
+    name: 'Сметана Молочный мир 200г пл.ст.',
+    src: import.meta.env.BASE_URL + 'products/smetana-molochnyy-mir-200g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaVPlenkeRazlichnoyZhirkosti: {
+    name: 'Сметана в пленке различной жирности',
+    src:
+      import.meta.env.BASE_URL +
+      'products/smetana-v-plenke-razlichnoy-zhirkosti.webp',
+    source: 'Фото пользователя',
+  },
+  margarinySpredyAssorte: {
+    name: 'Маргарины/спреды в асс-те',
+    src: import.meta.env.BASE_URL + 'products/margariny-spredy-v-assorte.webp',
+    source: 'Фото пользователя',
+  },
+  masloToplenoe: {
+    name: 'Масло топленое',
+    src: import.meta.env.BASE_URL + 'products/maslo-toplenoe.webp',
+    source: 'Фото пользователя',
+  },
+  kremNaRastitelnykhMaslakhDeOlio: {
+    name: 'Крем на растительных маслах De Olio',
+    src:
+      import.meta.env.BASE_URL +
+      'products/krem-na-rastitelnykh-maslakh-de-olio.webp',
+    source: 'Фото пользователя',
+  },
+  masloSlivochnoe1: {
+    name: 'Масло сливочное',
+    src: import.meta.env.BASE_URL + 'products/maslo-slivochnoe-1.webp',
+    source: 'Фото пользователя',
+  },
+  masloSlivochnoe2: {
+    name: 'Масло сливочное',
+    src: import.meta.env.BASE_URL + 'products/maslo-slivochnoe-2.webp',
+    source: 'Фото пользователя',
+  },
+  masloSlivochnoeSavushkin: {
+    name: 'Масло сливочное Савушкин',
+    src: import.meta.env.BASE_URL + 'products/maslo-slivochnoe-savushkin.webp',
     source: 'Фото пользователя',
   },
   smetanaMolochnyeGorki300: {
@@ -185,6 +302,13 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   smetanaYasBelous350: {
     name: 'Сметана Ясь Белоус 350г пл.ст.',
     src: import.meta.env.BASE_URL + 'products/smetana-yas-belous-350g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaSlavyanskieTraditsii1MMolchnyMinskaya380: {
+    name: 'Сметана Славянские традиции/1М Молочный/Минская марка 380г пл.ст.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/smetana-slavyanskie-traditsii-1m-minskaya-380g.webp',
     source: 'Фото пользователя',
   },
   lyakhovichok: {
@@ -211,6 +335,26 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src:
       import.meta.env.BASE_URL +
       'products/tvorog-lyakhovichok-rassypchatyy-2-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichok2200: {
+    name: 'Творог Ляховичок 2% 200г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-lyakhovichok-2-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichok5200: {
+    name: 'Творог Ляховичок 5% 200г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-lyakhovichok-5-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichok9200: {
+    name: 'Творог Ляховичок 9% 200г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-lyakhovichok-9-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichok15200: {
+    name: 'Творог Ляховичок 15% 200г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-lyakhovichok-15-200g.webp',
     source: 'Фото пользователя',
   },
   tvorogKletskayaKrynachkaKlassicheskiyObezhir400: {
@@ -262,9 +406,219 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
       'products/tvorog-molochnye-gorki-bezlaktoz-5-350g.webp',
     source: 'Фото пользователя',
   },
+  tvorogMolochnyeGorki5180: {
+    name: 'Творог Молочные горки 5% 180г пачка',
+    src:
+      import.meta.env.BASE_URL + 'products/tvorog-molochnye-gorki-5-180g.webp',
+    source: 'Фото пользователя',
+  },
   tvorog1MBezlaktoz5350: {
     name: 'Творог 1М безлактоз 5% 350г пакет',
     src: import.meta.env.BASE_URL + 'products/tvorog-1m-bezlaktoz-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBellakt5280: {
+    name: 'Творог Беллакт 5% 280г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-bellakt-5-280g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBellakt5180: {
+    name: 'Творог Беллакт 5% 180г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-bellakt-5-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBellakt9180: {
+    name: 'Творог Беллакт 9% 180г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-bellakt-9-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogUdachnyyVybor361kg: {
+    name: 'Творог Удачный выбор 3%/6% фас вес 1кг шайба',
+    src:
+      import.meta.env.BASE_URL + 'products/tvorog-udachnyy-vybor-3-6-1kg.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSlavyanskieTraditsii59335: {
+    name: 'Творог Славянские традиции 5%/9% 335г. шайба',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-slavyanskie-traditsii-5-9-335g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSlavyanskieTraditsii59355: {
+    name: 'Творог Славянские традиции 5%/9% 355г шайба',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-slavyanskie-traditsii-5-9-355g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSlavyanskieTraditsii9375: {
+    name: 'Творог Славянские традиции 9% 375г шайба',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-slavyanskie-traditsii-9-375g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogOstromechevskieProstoryDomashniy91kg: {
+    name: 'Творог Остромечевские просторы Домашний 9% вес 1кг шайба',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-ostromechevskie-prostory-domashniy-9-1kg.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBrestLitovsk5300: {
+    name: 'Творог Брест-Литовск 5% 300г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-brest-litovsk-5-300g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBrestLitovsk9300: {
+    name: 'Творог Брест-литовск 9% 300г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-brest-litovsk-9-300g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin1300: {
+    name: 'Творог Савушкин 1% 300г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-1-300g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin2180: {
+    name: 'Творог Савушкин 2% 180г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-2-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin5180: {
+    name: 'Творог Савушкин 5% 180г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-5-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin9180: {
+    name: 'Творог Савушкин 9% 180г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-9-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin5180Klinok: {
+    name: 'Творог Савушкин 5% 180г клинок',
+    src:
+      import.meta.env.BASE_URL + 'products/tvorog-savushkin-5-180g-klinok.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin9180Klinok: {
+    name: 'Творог Савушкин 9% 180г клинок',
+    src:
+      import.meta.env.BASE_URL + 'products/tvorog-savushkin-9-180g-klinok.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin5300: {
+    name: 'Творог Савушкин 5% 300г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-5-300g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkin9300: {
+    name: 'Творог Савушкин 9% 300г шайба',
+    src: import.meta.env.BASE_URL + 'products/tvorog-savushkin-9-300g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSvezhiyeNovosti7220: {
+    name: 'Творог ТМ Свежие новости 7% 220г клинок',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-svezhiye-novosti-7-220g-klinok.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSnov12250: {
+    name: 'Творог Снов 12% 250г линкавер',
+    src: import.meta.env.BASE_URL + 'products/tvorog-snov-12-250g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogYasBelous4Flow200: {
+    name: 'Творог Ясь Белоус 4% 200г флоу-пак',
+    src:
+      import.meta.env.BASE_URL + 'products/tvorog-yas-belous-4-200g-flow.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZdravushka59Flow200: {
+    name: 'Творог Здравушка 5%/9% 200г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zdravushka-5-9-200g-flow.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogComplimilk6200: {
+    name: 'Творог Complimilk 6% 200г пачка',
+    src: import.meta.env.BASE_URL + 'products/tvorog-complimilk-6-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMinskayaMarkaTraditsionny2180: {
+    name: 'Творог Минская марка Традиционный 2% 180г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-minskaya-marka-traditsionny-2-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMinskayaMarkaTraditsionny5180: {
+    name: 'Творог Минская марка Традиционный 5% 180г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-minskaya-marka-traditsionny-5-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMinskayaMarkaTraditsionny9180: {
+    name: 'Творог Минская марка Традиционный 9% 180г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-minskaya-marka-traditsionny-9-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBabushkinaKrinka1200: {
+    name: 'Творог Бабушкина крынка 1% 200г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-babushkina-krinka-1-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBabushkinaKrinka5200: {
+    name: 'Творог Бабушкина крынка 5% 200г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-babushkina-krinka-5-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBabushkinaKrinka7200: {
+    name: 'Творог Бабушкина крынка 7% 200г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-babushkina-krinka-7-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBabushkinaKrinka10200: {
+    name: 'Творог Бабушкина крынка 10% 200г пачка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-babushkina-krinka-10-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogCreamNuvo95200: {
+    name: 'Творог Cream Nuvo 9%/5% 200г пл.конт.',
+    src: import.meta.env.BASE_URL + 'products/tvorog-cream-nuvo-9-5-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogCreamNuvo95380: {
+    name: 'Творог Cream Nuvo 9%/5% 380г пл.конт.',
+    src: import.meta.env.BASE_URL + 'products/tvorog-cream-nuvo-9-5-380g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMolochnayaStranaDomashniyZerneny4400: {
+    name: 'Творог Молочная страна Домашний зернен 4% 400г контейнер',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-molochnaya-strana-domashniy-zerneny-4-400g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMolochnayaStranaDomashniyZerneny4500: {
+    name: 'Творог Молочная страна Домашний зернен 4% 500г ведро',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-molochnaya-strana-domashniy-zerneny-4-500g.webp',
     source: 'Фото пользователя',
   },
   tvorogSlavyanskieTraditsiiRassypchat2: {
