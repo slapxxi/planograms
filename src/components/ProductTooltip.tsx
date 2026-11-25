@@ -232,6 +232,9 @@ let ProductTooltip = (props: Props) => {
             <p className="mb-2 text-xs font-medium leading-snug text-(--app-text)">
               {product.name}
             </p>
+            <p className="mb-2 text-[11px] leading-none text-(--muted-text)">
+              Фейсы: {product.faces} · {formatCm(faceSpanToCm(span))} см
+            </p>
             <div className="flex flex-wrap gap-3">
               {images.map((image) => (
                 <figure

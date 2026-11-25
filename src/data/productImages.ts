@@ -11,6 +11,9 @@ export type ProductImageKey =
   | 'milkMolochnyyMir095'
   | 'milkBabushkinaKrynka09'
   | 'milkBabushkinaKrynka1lTpak'
+  | 'wheyBabushkinaKrynkaComplimilk1l'
+  | 'wheyTopFreshJuice500'
+  | 'wheySavushkinSvezhest850'
   | 'milkMolochnyyMir1lTba'
   | 'milkMinskayaMarka15l'
   | 'minskayaMarkaMilk15'
@@ -24,14 +27,17 @@ export type ProductImageKey =
   | 'milkBellakt400'
   | 'udachnyyVyborCream400'
   | 'milkFilmAssorted'
+  | 'kefirFilmAssorted'
   | 'kefirLesnyeYagody25'
   | 'kefirBellaktGrandAiran220'
   | 'kefirBellakt900'
   | 'kefirMolochnyeGorkiTairan220'
   | 'kefirSavushkin415'
   | 'kefirSavushkin950'
+  | 'kefirSavushkinCocoa750'
   | 'ryazhenkaSavushkin415'
   | 'ryazhenkaSavushkin950'
+  | 'ryazhenkaZakvaskaAgrokombinatSnov500'
   | 'kefirProstokvashaSlavyanskie380'
   | 'kefirRyazhenkaSlavyanskie380'
   | 'kefirRyazhenkaMinskaya500'
@@ -168,6 +174,24 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
       import.meta.env.BASE_URL + 'products/milk-babushkina-krynka-1l-tpak.webp',
     source: 'Фото пользователя',
   },
+  wheyBabushkinaKrynkaComplimilk1l: {
+    name: 'Сыворотка молочная Бабушкина крныка/Complimilk 1л пленка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/whey-babushkina-krynka-complimilk-1l.webp',
+    source: 'Фото пользователя',
+  },
+  wheyTopFreshJuice500: {
+    name: 'ТОП ФРЕШ сыворочный с соком 500г бут',
+    src: import.meta.env.BASE_URL + 'products/whey-top-fresh-juice-500g.webp',
+    source: 'Фото пользователя',
+  },
+  wheySavushkinSvezhest850: {
+    name: 'Сыворочный Савушкин Свежесть 850г бут',
+    src:
+      import.meta.env.BASE_URL + 'products/whey-savushkin-svezhest-850g.webp',
+    source: 'Фото пользователя',
+  },
   milkMolochnyyMir1lTba: {
     name: 'Молоко Молочный мир 1л ТБА',
     src: import.meta.env.BASE_URL + 'products/milk-molochnyy-mir-1l-tba.webp',
@@ -235,6 +259,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/milk-film-assorted.webp',
     source: 'Фото пользователя',
   },
+  kefirFilmAssorted: {
+    name: 'Кефир/Продукт кефирный в пленке',
+    src: import.meta.env.BASE_URL + 'products/kefir-film-assorted.webp',
+    source: 'Фото пользователя',
+  },
   kefirLesnyeYagody25: {
     name: 'Кефир Лесные ягоды 2.5% 500г',
     src: import.meta.env.BASE_URL + 'products/kefir-lesnye-yagody-25-500g.webp',
@@ -268,6 +297,11 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/kefir-savushkin-950g.webp',
     source: 'Фото пользователя',
   },
+  kefirSavushkinCocoa750: {
+    name: 'Савушкин с какао 750г',
+    src: import.meta.env.BASE_URL + 'products/kefir-savushkin-cocoa-750g.webp',
+    source: 'Фото пользователя',
+  },
   ryazhenkaSavushkin415: {
     name: 'Ряженка Савушкин 415г бут',
     src: import.meta.env.BASE_URL + 'products/ryazhenka-savushkin-415g.webp',
@@ -276,6 +310,13 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   ryazhenkaSavushkin950: {
     name: 'Ряженка Савушкин 950г бут',
     src: import.meta.env.BASE_URL + 'products/ryazhenka-savushkin-950g.webp',
+    source: 'Фото пользователя',
+  },
+  ryazhenkaZakvaskaAgrokombinatSnov500: {
+    name: 'Ряженка/закваска Агрокомбинат Снов 500г пленка',
+    src:
+      import.meta.env.BASE_URL +
+      'products/ryazhenka-zakvaska-agrokombinat-snov-500g.webp',
     source: 'Фото пользователя',
   },
   kefirProstokvashaSlavyanskie380: {

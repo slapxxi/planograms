@@ -633,6 +633,40 @@ export const groups: Group[] = [
           },
         ],
       },
+      {
+        products: [
+          {
+            name: 'Кефир/Продукт кефирный в пленке',
+            faces: 10,
+            images: ['kefirFilmAssorted'],
+          },
+          {
+            name: 'Ряженка/закваска Агрокомбинат Снов 500г пленка',
+            faces: 2,
+            images: ['ryazhenkaZakvaskaAgrokombinatSnov500'],
+          },
+          {
+            name: 'Сыворотка молочная Бабушкина крныка/Complimilk 1л пленка',
+            faces: 2,
+            images: ['wheyBabushkinaKrynkaComplimilk1l'],
+          },
+          {
+            name: 'Савушкин с какао 750г',
+            faces: 2,
+            images: ['kefirSavushkinCocoa750'],
+          },
+          {
+            name: 'ТОП ФРЕШ сыворочный с соком 500г бут',
+            faces: 2,
+            images: ['wheyTopFreshJuice500'],
+          },
+          {
+            name: 'Сыворочный Савушкин Свежесть 850г бут',
+            faces: 4,
+            images: ['wheySavushkinSvezhest850'],
+          },
+        ],
+      },
     ],
   },
   {
