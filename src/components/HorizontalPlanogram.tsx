@@ -10,7 +10,8 @@ type Props = {
   groups: Group[]
 }
 
-export default function HorizontalPlanogram({ groups }: Props) {
+let HorizontalPlanogram = (props: Props) => {
+  const { groups } = props
   const [views, setViews] = useState<Record<string, GroupView>>({})
   const [draggingGroup, setDraggingGroup] = useState<string | null>(null)
   const numberedGroups = numberProducts(groups)
@@ -60,3 +61,5 @@ export default function HorizontalPlanogram({ groups }: Props) {
     </div>
   )
 }
+
+export default HorizontalPlanogram

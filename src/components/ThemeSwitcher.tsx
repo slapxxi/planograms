@@ -57,7 +57,8 @@ const icons: Record<Theme, ReactNode> = {
   ),
 }
 
-export default function ThemeSwitcher({ theme, onChange }: Props) {
+let ThemeSwitcher = (props: Props) => {
+  const { theme, onChange } = props
   return (
     <div
       aria-label="Тема оформления"
@@ -80,3 +81,5 @@ export default function ThemeSwitcher({ theme, onChange }: Props) {
     </div>
   )
 }
+
+export default ThemeSwitcher

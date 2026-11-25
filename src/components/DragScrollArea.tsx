@@ -14,11 +14,8 @@ type Props = {
 
 const THRESHOLD = 4
 
-export default function DragScrollArea({
-  children,
-  className = '',
-  onDraggingChange,
-}: Props) {
+let DragScrollArea = (props: Props) => {
+  const { children, className = '', onDraggingChange } = props
   const ref = useRef<HTMLDivElement>(null)
   const stopRef = useRef<((notify: boolean) => void) | null>(null)
   const suppressClick = useRef(false)
@@ -90,3 +87,5 @@ export default function DragScrollArea({
     </div>
   )
 }
+
+export default DragScrollArea

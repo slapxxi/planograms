@@ -29,15 +29,16 @@ type TooltipPosition = {
 const GAP = 8
 const EDGE = 8
 
-export default function ProductTooltip({
-  product,
-  children,
-  number,
-  className = '',
-  style,
-  hideBackground = false,
-  disabled = false,
-}: Props) {
+let ProductTooltip = (props: Props) => {
+  const {
+    product,
+    children,
+    number,
+    className = '',
+    style,
+    hideBackground = false,
+    disabled = false,
+  } = props
   const [opened, setOpened] = useState(false)
   const open = opened && !disabled
   const [position, setPosition] = useState<TooltipPosition | null>(null)
@@ -236,3 +237,5 @@ export default function ProductTooltip({
     </>
   )
 }
+
+export default ProductTooltip

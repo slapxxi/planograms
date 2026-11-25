@@ -49,13 +49,8 @@ const views: { id: GroupView; label: string; icon: ReactNode }[] = [
   },
 ]
 
-export default function GroupHeading({
-  group,
-  view,
-  onViewChange,
-  className = '',
-  style,
-}: Props) {
+let GroupHeading = (props: Props) => {
+  const { group, view, onViewChange, className = '', style } = props
   return (
     <div
       className={`flex items-center gap-2.5 rounded-[2px] border-l-[6px] border-[color:var(--group-accent)] bg-(--group-surface) px-4 py-3 ${className}`}
@@ -90,3 +85,5 @@ export default function GroupHeading({
     </div>
   )
 }
+
+export default GroupHeading

@@ -11,6 +11,8 @@
 
 - Алиас `~` = `src` (настроен в `vite.config.ts` и `tsconfig.app.json`); компоненты импортируются как `~/components/...`.
 - Каждый компонент лежит в отдельном файле `src/components`. Хелперы/константы, нужные только одному компоненту, остаются в нём; общие — в `~/lib/...`.
+- Компоненты объявлять как `let ComponentName = (props: Props) => { ... }`, без `function ComponentName`; `export default ComponentName` в конце файла.
+- Не деструктурировать props в сигнатуре: `let Component = (props: Props) => { const { ... } = props; ... }`, деструктуризация — первая строка тела.
 
 ## Data model
 
