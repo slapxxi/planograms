@@ -495,7 +495,7 @@ export const groups: Group[] = [
           {
             name: 'Напиток Экспонента НОРМ-ПРО 250г бут',
             faces: 3,
-            faceSpan: 2.5,
+            faceSpan: 3,
             images: ['kefirExponentaNormPro250'],
           },
         ],
@@ -546,7 +546,7 @@ export const groups: Group[] = [
           {
             name: 'EXPONENTA Экспотоник 500мл бут',
             faces: 3,
-            faceSpan: 2.5,
+            faceSpan: 3,
             images: ['kefirExponentaExpotonik500'],
           },
         ],
@@ -663,6 +663,7 @@ export const groups: Group[] = [
           {
             name: 'Сыворочный Савушкин Свежесть 850г бут',
             faces: 4,
+            faceSpan: 4.25,
             images: ['wheySavushkinSvezhest850'],
           },
         ],

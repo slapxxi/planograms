@@ -82,10 +82,7 @@ let SearchBar = (props: Props) => {
           <button
             aria-label="Очистить поиск"
             className="shrink-0 rounded-[2px] border border-(--border) bg-(--surface) px-2.5 py-1.5 text-xs text-(--muted-text) hover:bg-(--control-hover)"
-            onClick={() => {
-              onQueryChange('')
-              inputRef.current?.focus()
-            }}
+            onClick={() => onQueryChange('')}
             onMouseDown={(event) => event.preventDefault()}
             type="button"
           >
