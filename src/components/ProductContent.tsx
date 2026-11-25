@@ -34,7 +34,7 @@ let ProductContent = (props: Props) => {
   return (
     <>
       <span
-        className="line-clamp-2 min-w-0 flex-1 wrap-break-word"
+        className="line-clamp-6 min-w-0 flex-1 wrap-break-word"
         title={product.name}
       >
         {product.name}

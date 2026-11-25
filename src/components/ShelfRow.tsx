@@ -23,7 +23,9 @@ let ShelfRow = (props: Props) => {
 
         return (
           <ProductTooltip
-            className={`${showFaces ? 'w-full p-1' : 'items-start leading-[1.35]'} flex min-w-0 items-stretch justify-between gap-1 rounded-[2px] border border-[color:var(--border)] bg-(--group-surface) px-2 pt-2.5 pb-1.5 text-xs`}
+            className={`${showFaces ? 'w-full p-1' : 'items-start leading-[1.35]'} 
+              flex min-w-0 items-stretch justify-between gap-1 rounded-xs 
+              border border-(--border) bg-(--group-surface) px-2 pt-2.5 pb-1.5 text-xs`}
             disabled={disabled}
             hideBackground={showFaces}
             key={`${product.name}-${index}`}

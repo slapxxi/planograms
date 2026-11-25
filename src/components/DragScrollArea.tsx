@@ -77,7 +77,8 @@ let DragScrollArea = (props: Props) => {
 
   return (
     <div
-      className={`drag-scroll overflow-x-auto ${dragging ? 'is-dragging' : ''} ${className}`}
+      className={`drag-scroll grid auto-rows-fr overflow-x-auto ${dragging ? 'is-dragging' : ''} ${className}`}
+      data-name="DragScrollArea"
       onClickCapture={handleClickCapture}
       onDragStart={(event) => event.preventDefault()}
       onPointerDown={handlePointerDown}
