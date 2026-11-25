@@ -18,6 +18,57 @@ export type ProductImageKey =
   | 'masloSlivochnoe1'
   | 'masloSlivochnoe2'
   | 'masloSlivochnoeSavushkin'
+  | 'yogurtPitievoySavushkinLegkiyAss415'
+  | 'yogurtPitievoySavushkinAss415'
+  | 'yogurtPitievoyOptimalAss415'
+  | 'yogurtnayaGruppaDanonAss'
+  | 'bioyogurtYogurtA2AsablivyAss330'
+  | 'napitokMolochnyyMirYogofitAss420'
+  | 'napitokYogurtnyyMolochnyyMirUznayMirAss420'
+  | 'yogurtZdravushkaGrecheskiyAss430'
+  | 'yogurtPitievoyYoguruProbiotikAss320'
+  | 'yogurtYoguruAss500'
+  | 'yogurtSavushkinAss120'
+  | 'yogurtTeosGrecheskiyAss250'
+  | 'yogurtApetiAss105'
+  | 'yogurtEpicaCrispyAss140'
+  | 'yogurtMolochnyyMirBeloruskiyAss150350'
+  | 'yogurtYoguruAss310'
+  | 'yogurtYoguruAss125'
+  | 'pastaTvorozhnayaSavushkinAss100120'
+  | 'yogurtTeosGrecheskiyAss140'
+  | 'yogurtSuperkidAss103'
+  | 'yogurtBellaktSweetHeartAss150'
+  | 'desertTvorozhnyyGrandDuetAss135'
+  | 'yogurtMolochnyyMirYogoFruitAss150'
+  | 'yogurtYogoBubbleAss120'
+  | 'yogurtBabushkinaKrinkaCreamyAss230'
+  | 'yogurtBabushkinaKrinkaDetoksAss230'
+  | 'yogurtEcoGrecoGrecheskiyAss230310'
+  | 'tvorogMyagkiySavushkinNezhnyy5125'
+  | 'tvorogMyagkiySavushkinNezhnyyObezhir125'
+  | 'tvorogMyagkiyMinskayaMarka4150'
+  | 'tvorogZernenyMinskayaMarka5140'
+  | 'tvorogZernenyYasBelousVyaskovy3200'
+  | 'tvorogZernenySavushkin5200'
+  | 'tvorogZernenySavushkin5130'
+  | 'tvorogZernenySavushkinSNapolnitelem130'
+  | 'syrokGlazirTopShokolad40'
+  | 'syrokGlazirTopKlubnika40'
+  | 'syrokGlazirTopMalinaVBeloyGlazuri40'
+  | 'syrokGlazirTopChernikaVBeloyGlazuri40'
+  | 'syrokTopKh2KaramelSPechenyem45'
+  | 'syrokTopKh2SolenayaKaramel45'
+  | 'syrokTopKh2Kokos45'
+  | 'syrokGlazirMiShu50Folga'
+  | 'syrokGlazirMiShuSKakao50Folga'
+  | 'syrkiGlazirBabushkinaKrinkaVeselyeVnuchataAss4045'
+  | 'syrkiGlazirYasBelousKletskaKrinachkaAss45'
+  | 'syrokGlazirMolochnyyMirAss40'
+  | 'pirozhnoeBellaktAss75100'
+  | 'pirozhnoeSTvorogomSVafleyBellakt50'
+  | 'tortBellakt200'
+  | 'kremaTvorozhnyeBellaktAss200'
   | 'smetanaMolochnyeGorki300'
   | 'smetanaLyakhovichok350'
   | 'smetanaYasBelous350'
@@ -286,6 +337,348 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   masloSlivochnoeSavushkin: {
     name: 'Масло сливочное Савушкин',
     src: import.meta.env.BASE_URL + 'products/maslo-slivochnoe-savushkin.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoySavushkinLegkiyAss415: {
+    name: 'Йогурт питьевой Савушкин Легкий в асс 415г бут.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-savushkin-legkiy-assorted-415g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoySavushkinAss415: {
+    name: 'Йогурт питьевой Савушкин в асс 415г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-savushkin-assorted-415g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyOptimalAss415: {
+    name: 'Йогурт питьевой Оптималь в асс 415г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-optimal-assorted-415g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtnayaGruppaDanonAss: {
+    name: 'Йогуртная группа Данон в асс',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurtnaya-gruppa-danon-assorted.webp',
+    source: 'Фото пользователя',
+  },
+  bioyogurtYogurtA2AsablivyAss330: {
+    name: 'Биойогурт/йогурт А2 АСАБЛИВЫ в асс 330г ст.бан',
+    src:
+      import.meta.env.BASE_URL +
+      'products/bioyogurt-yogurt-a2-asablivy-assorted-330g.webp',
+    source: 'Фото пользователя',
+  },
+  napitokMolochnyyMirYogofitAss420: {
+    name: 'Напиток Молочный мир Йогофит в асс 420г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/napitok-molochnyy-mir-yogofit-assorted-420g.webp',
+    source: 'Фото пользователя',
+  },
+  napitokYogurtnyyMolochnyyMirUznayMirAss420: {
+    name: 'Напиток йогуртный Молочный мир Узнай мир в асс 420г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/napitok-yogurtnyy-molochnyy-mir-uznay-mir-assorted-420g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtZdravushkaGrecheskiyAss430: {
+    name: 'Йогурт Здравушка Греческий в асс 430г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-zdravushka-grecheskiy-assorted-430g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyYoguruProbiotikAss320: {
+    name: 'Йогурт питьевой Yoguru с пробиотиком в асс 320г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-yoguru-probiotik-assorted-320g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruAss500: {
+    name: 'Йогурт Yoguru в асс 500г пюр пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-yoguru-assorted-500g-puree-pack.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtSavushkinAss120: {
+    name: 'Йогурт Савушкин в асс 120г пл.ст',
+    src:
+      import.meta.env.BASE_URL + 'products/yogurt-savushkin-assorted-120g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtTeosGrecheskiyAss250: {
+    name: 'Йогурт TEOS Греческий в асс 250г пл. ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-teos-grecheskiy-assorted-250g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtApetiAss105: {
+    name: 'Йогурт Апети в асс 105г пл.ст',
+    src: import.meta.env.BASE_URL + 'products/yogurt-apeti-assorted-105g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtEpicaCrispyAss140: {
+    name: 'Йогурт EPICA CRISPY в асс 140г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-epica-crispy-assorted-140g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtMolochnyyMirBeloruskiyAss150350: {
+    name: 'Йогурт Молочный мир Белорусский в асс 150-350г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-molochnyy-mir-beloruskiy-assorted-150-350g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruAss310: {
+    name: 'Йогурт Yoguru в асс 310г пл.ст',
+    src: import.meta.env.BASE_URL + 'products/yogurt-yoguru-assorted-310g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruAss125: {
+    name: 'Йогурт Yoguru в асс 125г пл.ст',
+    src: import.meta.env.BASE_URL + 'products/yogurt-yoguru-assorted-125g.webp',
+    source: 'Фото пользователя',
+  },
+  pastaTvorozhnayaSavushkinAss100120: {
+    name: 'Паста творожная Савушкин в асс 100г/120г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/pasta-tvorozhnaya-savushkin-assorted-100-120g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtTeosGrecheskiyAss140: {
+    name: 'Йогурт TEOS Греческий в асс 140г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-teos-grecheskiy-assorted-140g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtSuperkidAss103: {
+    name: 'Йогурт СуперКид в асс 103г пл.ст',
+    src:
+      import.meta.env.BASE_URL + 'products/yogurt-superkid-assorted-103g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBellaktSweetHeartAss150: {
+    name: 'Йогурт Беллакт Sweet Heart в асс 150г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-bellakt-sweet-heart-assorted-150g.webp',
+    source: 'Фото пользователя',
+  },
+  desertTvorozhnyyGrandDuetAss135: {
+    name: 'Десерт творожный GRAND DUET в асс 135г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/desert-tvorozhnyy-grand-duet-assorted-135g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtMolochnyyMirYogoFruitAss150: {
+    name: 'Йогурт Молочный мир Yogo-fruit в асс 150г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-molochnyy-mir-yogo-fruit-assorted-150g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYogoBubbleAss120: {
+    name: 'Йогурт Yogo Bubble в асс 120г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-yogo-bubble-assorted-120g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBabushkinaKrinkaCreamyAss230: {
+    name: 'Йогурт Бабушкина крынка Creamy в асс 230г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-babushkina-krinka-creamy-assorted-230g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBabushkinaKrinkaDetoksAss230: {
+    name: 'Йогурт Бабушкина крынка Детокс в асс 230г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-babushkina-krinka-detoks-assorted-230g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtEcoGrecoGrecheskiyAss230310: {
+    name: 'Йогурт Eco Greco Греческий в асс 230-310г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-eco-greco-grecheskiy-assorted-230-310g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMyagkiySavushkinNezhnyy5125: {
+    name: 'Творог мягкий Савушкин Нежный 5% 125г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-myagkiy-savushkin-nezhnyy-5-125g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMyagkiySavushkinNezhnyyObezhir125: {
+    name: 'Творог мягкий Савушкин Нежный обезжир 125г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-myagkiy-savushkin-nezhnyy-obezhir-125g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMyagkiyMinskayaMarka4150: {
+    name: 'Творог мягкий Минская марка 4% 150г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-myagkiy-minskaya-marka-4-150g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernenyMinskayaMarka5140: {
+    name: 'Творог зерненый Минская марка 5% 140г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zerneny-minskaya-marka-5-140g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernenyYasBelousVyaskovy3200: {
+    name: 'Творог зерненый Ясь Белоус Вясковы 3% 200г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zerneny-yas-belous-vyaskovy-3-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernenySavushkin5200: {
+    name: 'Творог зерненый Савушкин 5% 200г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zerneny-savushkin-5-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernenySavushkin5130: {
+    name: 'Творог зерненый Савушкин 5% 130г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zerneny-savushkin-5-130g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernenySavushkinSNapolnitelem130: {
+    name: 'Творог зерненый Савушкин с наполнителем 130г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zerneny-savushkin-s-napolnitelem-130g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirTopShokolad40: {
+    name: 'Сырок глазир ТОП шоколад 40г',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-top-shokolad-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirTopKlubnika40: {
+    name: 'Сырок глазир ТОП клубника 40г',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-top-klubnika-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirTopMalinaVBeloyGlazuri40: {
+    name: 'Сырок глазир ТОП малина в белой глазури 40г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-top-malina-v-beloy-glazuri-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirTopChernikaVBeloyGlazuri40: {
+    name: 'Сырок глазир ТОП черника в белой глазури 40г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-top-chernika-v-beloy-glazuri-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTopKh2KaramelSPechenyem45: {
+    name: 'Сырок ТОПх2 карамель с печеньем 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-top-kh2-karamel-s-pechenyem-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTopKh2SolenayaKaramel45: {
+    name: 'Сырок ТОПх2 соленая карамель 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-top-kh2-solenaya-karamel-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTopKh2Kokos45: {
+    name: 'Сырок ТОПх2 кокос 45г',
+    src: import.meta.env.BASE_URL + 'products/syrok-top-kh2-kokos-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirMiShu50Folga: {
+    name: 'Сырок глазир Ми-шу! 50г фольга',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-mi-shu-50g-folga.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirMiShuSKakao50Folga: {
+    name: 'Сырок глазир Ми-шу!с какао 50г фольга',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-mi-shu-s-kakao-50g-folga.webp',
+    source: 'Фото пользователя',
+  },
+  syrkiGlazirBabushkinaKrinkaVeselyeVnuchataAss4045: {
+    name: 'Сырки глазир Бабушкина крынка/Веселые внучата в асс 40-45г фольга/флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrki-glazir-babushkina-krinka-veselye-vnuchata-assorted-40-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrkiGlazirYasBelousKletskaKrinachkaAss45: {
+    name: 'Сырки глазир Ясь Белоус/Клецкая крыначка 45г флоу-пак в асс',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrki-glazir-yas-belous-kletska-krinachka-assorted-45g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirMolochnyyMirAss40: {
+    name: 'Сырок глазир Молочный мир в асс 40г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-molochnyy-mir-assorted-40g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  pirozhnoeBellaktAss75100: {
+    name: 'Пирожное Беллакт в асс 75-100г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/pirozhnoe-bellakt-assorted-75-100g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  pirozhnoeSTvorogomSVafleyBellakt50: {
+    name: 'Пирожное с творогом с вафлей Беллакт 50г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/pirozhnoe-s-tvorogom-s-vafley-bellakt-50g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  tortBellakt200: {
+    name: 'Торт Беллакт 200г флоу-пак',
+    src: import.meta.env.BASE_URL + 'products/tort-bellakt-200g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  kremaTvorozhnyeBellaktAss200: {
+    name: 'Крема творожные Беллакт в асс 200г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/krema-tvorozhnye-bellakt-assorted-200g.webp',
     source: 'Фото пользователя',
   },
   smetanaMolochnyeGorki300: {
