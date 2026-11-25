@@ -1433,6 +1433,134 @@ export const groups: Group[] = [
             faceSpan: 2.8125,
             images: ['kremaTvorozhnyeBellaktAss200'],
           },
+          {
+            name: 'Десерт творожный Беллакт в асс-те 120г пл.ст',
+            faces: 1,
+            images: ['desertTvorozhnyyBellaktAss120'],
+          },
+          {
+            name: 'Крема творожные Венский завтрак в асс. 150г пл.ст',
+            faces: 2,
+            faceSpan: 1.875,
+            images: ['kremaTvorozhnyeVenskiyZavtrakAss150'],
+          },
+          {
+            name: 'Десерты творожные Венский завтрак в асс 150г пл.ст.',
+            faces: 4,
+            faceSpan: 3.75,
+            images: ['desertyTvorozhnyeVenskiyZavtrakAss150'],
+          },
+          {
+            name: 'Десерт творожный Венский завтрак взбит в асс 125г пл.ст',
+            faces: 2,
+            faceSpan: 2.375,
+            images: ['desertTvorozhnyyVenskiyZavtrakVzbitAss125'],
+          },
+          {
+            name: 'Пудинг Минская марка в асс 160г пл.ст',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['pudingMinskayaMarkaAss160'],
+          },
+          {
+            name: 'Сырок глазир Моя Аленка 40г',
+            faces: 1,
+            images: ['syrokGlazirMoyaAlenka40'],
+          },
+          {
+            name: 'Сырок глазир Любимая Коровка 40г',
+            faces: 1,
+            images: ['syrokGlazirLyubimayaKorovka40'],
+          },
+          {
+            name: 'Сырок глазир кокос-миндаль 40г/Сырок глазир Савушкин Юбилейный 40г',
+            faces: 1,
+            images: [
+              'syrokGlazirKokosMindal40',
+              'syrokGlazirSavushkinYubileynyy40',
+            ],
+          },
+          {
+            name: 'Сырок глазир Чизкейк 40г/Сырок глазир Муравейник 40г',
+            faces: 1,
+            images: ['syrokGlazirChizkeik40', 'syrokGlazirMuraveynik40'],
+          },
+          {
+            name: 'Сырок глазир Брест Литовск крем-брюле 45г',
+            faces: 1,
+            images: ['syrokGlazirBrestLitovskKremBryule45'],
+          },
+          {
+            name: 'Сырок глазир Брест Литовск ваниль 45г/Сырок Брест Литовск с какао 45г',
+            faces: 1,
+            images: ['syrokBrestLitovskVanilKakao45'],
+          },
+          {
+            name: 'Сырок глазир Плюш ваниль в карамельной глазури 45г',
+            faces: 1,
+            images: ['syrokGlazirPlyushVanilKaramelnoyGlazuri45'],
+          },
+          {
+            name: 'Сырок глазир Плюш ванильный 45г',
+            faces: 1,
+            images: ['syrokGlazirPlyushVanilnyy45'],
+          },
+          {
+            name: 'Сырок глазир Плюш какао 45г',
+            faces: 1,
+            images: ['syrokGlazirPlyushKakao45'],
+          },
+          {
+            name: 'Сырки глазированные "Элитный, Белорусский, 1М Молочный, Минская марка, Молочная страна" в асс',
+            faces: 6,
+            faceSpan: 7.5,
+            images: [
+              'syrokiGlazirovannyeAss1',
+              'syrokBelorusskiyVanilin',
+              'syrokMulazTvorozhnyyDesertKaramel',
+            ],
+          },
+          {
+            name: 'Десерты творожные 1М Молочный в асс 45-50г',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['desertyTvorozhnye1MMolochnyyAss4550'],
+          },
+          {
+            name: 'Сырки глазир Тимоша/Творожкино в асс 60г флоу-пак',
+            faces: 3,
+            faceSpan: 3.75,
+            images: ['syrokiGlazirTimosha60', 'syrokiGlazirTvorozhkino60'],
+          },
+          {
+            name: 'Пирожное бисквит Kinder Пингви/Молочный ломтик фольга',
+            faces: 2,
+            faceSpan: 2.5,
+            images: ['pirozhnoeBiskvitKinderPingviMolochnyyLomtikFolga'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Продукт творожный для запекания сладкий 1кг ведро Беллакт',
+            faces: 1,
+            faceSpan: 1.625,
+            images: ['produktTvorozhnyyDlyaZapekaniyaSladkiy1kgBellakt'],
+          },
+          {
+            name: 'Творог мягкий Славянские традиции 400г',
+            faces: 1,
+            images: ['tvorogMyagkiySlavyanskieTraditsii400'],
+          },
+          {
+            name: 'Десерт шоколадная колбаса пленка/Визави в асс - 300г',
+            faces: 1,
+            images: [
+              'desertShokoladnayaKolbasaPlenka300',
+              'desertVizaviAss300',
+            ],
+          },
         ],
       },
     ],

@@ -69,6 +69,35 @@ export type ProductImageKey =
   | 'pirozhnoeSTvorogomSVafleyBellakt50'
   | 'tortBellakt200'
   | 'kremaTvorozhnyeBellaktAss200'
+  | 'desertTvorozhnyyBellaktAss120'
+  | 'kremaTvorozhnyeVenskiyZavtrakAss150'
+  | 'desertyTvorozhnyeVenskiyZavtrakAss150'
+  | 'desertTvorozhnyyVenskiyZavtrakVzbitAss125'
+  | 'pudingMinskayaMarkaAss160'
+  | 'syrokGlazirMoyaAlenka40'
+  | 'syrokGlazirLyubimayaKorovka40'
+  | 'syrokGlazirKokosMindal40'
+  | 'syrokGlazirSavushkinYubileynyy40'
+  | 'syrokGlazirChizkeik40'
+  | 'syrokGlazirMuraveynik40'
+  | 'syrokGlazirBrestLitovskKremBryule45'
+  | 'syrokBrestLitovskVanilKakao45'
+  | 'syrokGlazirPlyushVanilKaramelnoyGlazuri45'
+  | 'syrokGlazirPlyushVanilnyy45'
+  | 'syrokGlazirPlyushKakao45'
+  | 'syrokiGlazirovannyeAss1'
+  | 'syrokBelorusskiyVanilin'
+  | 'syrokMulazTvorozhnyyDesertKaramel'
+  | 'desertyTvorozhnye1MMolochnyyAss4550'
+  | 'syrokiGlazirTimosha60'
+  | 'syrokiGlazirTvorozhkino60'
+  | 'pirozhnoeBiskvitKinderPingviMolochnyyLomtikFolga'
+  | 'produktTvorozhnyyDlyaZapekaniyaSladkiy1kgBellakt'
+  | 'tvorogMyagkiySlavyanskieTraditsii400'
+  | 'desertShokoladnayaKolbasaPlenka300'
+  | 'desertVizaviAss300'
+  | 'produktTvorozhnyyMinskayaMarkaSnezhekSMakom400'
+  | 'produktTvorozhnyyMolochnyeGorkiTropicheskiyMiks180'
   | 'smetanaMolochnyeGorki300'
   | 'smetanaLyakhovichok350'
   | 'smetanaYasBelous350'
@@ -679,6 +708,199 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src:
       import.meta.env.BASE_URL +
       'products/krema-tvorozhnye-bellakt-assorted-200g.webp',
+    source: 'Фото пользователя',
+  },
+  desertTvorozhnyyBellaktAss120: {
+    name: 'Десерт творожный Беллакт в асс-те 120г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/desert-tvorozhnyy-bellakt-assorted-120g.webp',
+    source: 'Фото пользователя',
+  },
+  kremaTvorozhnyeVenskiyZavtrakAss150: {
+    name: 'Крема творожные Венский завтрак в асс. 150г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/krema-tvorozhnye-venskiy-zavtrak-assorted-150g.webp',
+    source: 'Фото пользователя',
+  },
+  desertyTvorozhnyeVenskiyZavtrakAss150: {
+    name: 'Десерты творожные Венский завтрак в асс 150г пл.ст.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/deserty-tvorozhnye-venskiy-zavtrak-assorted-150g.webp',
+    source: 'Фото пользователя',
+  },
+  desertTvorozhnyyVenskiyZavtrakVzbitAss125: {
+    name: 'Десерт творожный Венский завтрак взбит в асс 125г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/desert-tvorozhnyy-venskiy-zavtrak-vzbit-assorted-125g.webp',
+    source: 'Фото пользователя',
+  },
+  pudingMinskayaMarkaAss160: {
+    name: 'Пудинг Минская марка в асс 160г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/puding-minskaya-marka-assorted-160g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirMoyaAlenka40: {
+    name: 'Сырок глазир Моя Аленка 40г',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-moya-alenka-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirLyubimayaKorovka40: {
+    name: 'Сырок глазир Любимая Коровка 40г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-lyubimaya-korovka-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirKokosMindal40: {
+    name: 'Сырок глазир кокос-миндаль 40г',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-kokos-mindal-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirSavushkinYubileynyy40: {
+    name: 'Сырок глазир Савушкин Юбилейный 40г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-savushkin-yubileynyy-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirChizkeik40: {
+    name: 'Сырок глазир Чизкейк 40г',
+    src: import.meta.env.BASE_URL + 'products/syrok-glazir-chizkeik-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirMuraveynik40: {
+    name: 'Сырок глазир Муравейник 40г',
+    src: import.meta.env.BASE_URL + 'products/syrok-glazir-muraveynik-40g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirBrestLitovskKremBryule45: {
+    name: 'Сырок глазир Брест Литовск крем-брюле 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-brest-litovsk-krem-bryule-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokBrestLitovskVanilKakao45: {
+    name: 'Сырок глазир Брест Литовск ваниль 45г/Сырок Брест Литовск с какао 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-brest-litovsk-vanil-kakao-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirPlyushVanilKaramelnoyGlazuri45: {
+    name: 'Сырок глазир Плюш ваниль в карамельной глазури 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-plyush-vanil-v-karamelnoy-glazuri-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirPlyushVanilnyy45: {
+    name: 'Сырок глазир Плюш ванильный 45г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazir-plyush-vanilnyy-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirPlyushKakao45: {
+    name: 'Сырок глазир Плюш какао 45г',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-glazir-plyush-kakao-45g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokiGlazirovannyeAss1: {
+    name: 'Сырки глазированные "Элитный, Белорусский, 1М Молочный, Минская марка, Молочная страна" в асс',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syroki-glazirovannye-assorted-1.webp',
+    source: 'Фото пользователя',
+  },
+  syrokBelorusskiyVanilin: {
+    name: 'Сырки глазированные "Элитный, Белорусский, 1М Молочный, Минская марка, Молочная страна" в асс',
+    src:
+      import.meta.env.BASE_URL + 'products/syrok-belorusskiy-s-vanilinom.webp',
+    source: 'Фото пользователя',
+  },
+  syrokMulazTvorozhnyyDesertKaramel: {
+    name: 'Сырки глазированные "Элитный, Белорусский, 1М Молочный, Минская марка, Молочная страна" в асс',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-mulaz-tvorozhnyy-desert-karamel.webp',
+    source: 'Фото пользователя',
+  },
+  desertyTvorozhnye1MMolochnyyAss4550: {
+    name: 'Десерты творожные 1М Молочный в асс 45-50г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/deserty-tvorozhnye-1m-molochnyy-assorted-45-50g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokiGlazirTimosha60: {
+    name: 'Сырки глазир Тимоша/Творожкино в асс 60г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syroki-glazir-timosha-60g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  syrokiGlazirTvorozhkino60: {
+    name: 'Сырки глазир Тимоша/Творожкино в асс 60г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syroki-glazir-tvorozhkino-60g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  pirozhnoeBiskvitKinderPingviMolochnyyLomtikFolga: {
+    name: 'Пирожное бисквит Kinder Пингви/Молочный ломтик фольга',
+    src:
+      import.meta.env.BASE_URL +
+      'products/pirozhnoe-biskvit-kinder-pingvi-molochnyy-lomtik-folga.webp',
+    source: 'Фото пользователя',
+  },
+  produktTvorozhnyyDlyaZapekaniyaSladkiy1kgBellakt: {
+    name: 'Продукт творожный для запекания сладкий 1кг ведро Беллакт',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-tvorozhnyy-dlya-zapekaniya-sladkiy-1kg-vedro-bellakt.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMyagkiySlavyanskieTraditsii400: {
+    name: 'Творог мягкий Славянские традиции 400г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-myagkiy-slavyanskie-traditsii-400g.webp',
+    source: 'Фото пользователя',
+  },
+  desertShokoladnayaKolbasaPlenka300: {
+    name: 'Десерт шоколадная колбаса пленка/Визави в асс - 300г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/desert-shokoladnaya-kolbasa-plenka-300g.webp',
+    source: 'Фото пользователя',
+  },
+  desertVizaviAss300: {
+    name: 'Десерт шоколадная колбаса пленка/Визави в асс - 300г',
+    src: import.meta.env.BASE_URL + 'products/desert-vizavi-assorted-300g.webp',
+    source: 'Фото пользователя',
+  },
+  produktTvorozhnyyMinskayaMarkaSnezhekSMakom400: {
+    name: 'Продукт творожный Минская марка Снежок с маком 400г в.уп',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-tvorozhnyy-minskaya-marka-snezhek-s-makom-400g.webp',
+    source: 'Фото пользователя',
+  },
+  produktTvorozhnyyMolochnyeGorkiTropicheskiyMiks180: {
+    name: 'Продукт творожный Молочные горки Тропический микс 180г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-tvorozhnyy-molochnye-gorki-tropicheskiy-miks-180g-flow-pack.webp',
     source: 'Фото пользователя',
   },
   smetanaMolochnyeGorki300: {
