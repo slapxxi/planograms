@@ -30,7 +30,8 @@ function readSearchState(): SearchState {
   return {
     query: typeof saved.query === 'string' ? saved.query : '',
     selectedNumber:
-      typeof saved.selectedNumber === 'number' && numbers.has(saved.selectedNumber)
+      typeof saved.selectedNumber === 'number' &&
+      numbers.has(saved.selectedNumber)
         ? saved.selectedNumber
         : null,
   }
@@ -59,9 +60,8 @@ let App = () => {
   const [search, setSearch] = useState<SearchState>(readSearchState)
   const [resultsVisible, setResultsVisible] = useState(false)
   const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
-  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(
-    readCollapsedGroups,
-  )
+  const [collapsedGroups, setCollapsedGroups] =
+    useState<Set<string>>(readCollapsedGroups)
   const [views, setViews] = useState<Record<string, GroupView>>(readViews)
 
   const { query, selectedNumber } = search
@@ -146,8 +146,8 @@ let App = () => {
   }
 
   return (
-    <main className="min-h-screen bg-(--app-bg) px-3 py-4 font-sans text-(--app-text) antialiased sm:px-6 sm:py-6">
-      <div className="mx-auto max-w-[calc(100vw-48px)]">
+    <main className="min-h-screen bg-(--app-bg) p-2 font-sans text-(--app-text) antialiased md:px-3 md:py-4">
+      <div className="mx-auto">
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="text-[24px] leading-tight font-semibold sm:text-[28px]">
