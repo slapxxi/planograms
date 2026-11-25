@@ -28,7 +28,9 @@ export type ProductImageKey =
   | 'kefirBellaktGrandAiran220'
   | 'kefirMolochnyeGorkiTairan220'
   | 'kefirSavushkin415'
+  | 'kefirSavushkin950'
   | 'ryazhenkaSavushkin415'
+  | 'ryazhenkaSavushkin950'
   | 'kefirProstokvashaSlavyanskie380'
   | 'kefirRyazhenkaSlavyanskie380'
   | 'kefirRyazhenkaMinskaya500'
@@ -41,6 +43,13 @@ export type ProductImageKey =
   | 'kefirMinskayaMarka05Tpak'
   | 'kefirBioFit480'
   | 'kefirBioFit930'
+  | 'kefirSvezhiyeNovosti900'
+  | 'kefirBabushkinaKrynka900'
+  | 'kefirTeosPro'
+  | 'kefirTeosPro250'
+  | 'kefirTopPower'
+  | 'kefirZdravushkaBio930'
+  | 'kefirMozhno930'
   | 'kefirMolochnyyMirBifitat500'
   | 'kefirMolochnyyMirDarAyran500'
   | 'rogachev'
@@ -246,9 +255,19 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/kefir-savushkin-415g.webp',
     source: 'Фото пользователя',
   },
+  kefirSavushkin950: {
+    name: 'Кефир Савушкин 950г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-savushkin-950g.webp',
+    source: 'Фото пользователя',
+  },
   ryazhenkaSavushkin415: {
     name: 'Ряженка Савушкин 415г бут',
     src: import.meta.env.BASE_URL + 'products/ryazhenka-savushkin-415g.webp',
+    source: 'Фото пользователя',
+  },
+  ryazhenkaSavushkin950: {
+    name: 'Ряженка Савушкин 950г бут',
+    src: import.meta.env.BASE_URL + 'products/ryazhenka-savushkin-950g.webp',
     source: 'Фото пользователя',
   },
   kefirProstokvashaSlavyanskie380: {
@@ -322,6 +341,42 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   kefirBioFit930: {
     name: 'БиоФит кефирный 930г бут',
     src: import.meta.env.BASE_URL + 'products/kefir-biofit-930g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirSvezhiyeNovosti900: {
+    name: 'Кефир Свежие новости 900г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-svezhiye-novosti-900g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirBabushkinaKrynka900: {
+    name: 'Кефир Бабушкина крынка 900г бут',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-babushkina-krynka-900g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirTeosPro: {
+    name: 'TEOS PRO',
+    src: import.meta.env.BASE_URL + 'products/kefir-teos-pro.webp',
+    source: 'Фото пользователя',
+  },
+  kefirTeosPro250: {
+    name: 'TEOS PRO 250г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-teos-pro-250g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirTopPower: {
+    name: 'ТОП POWER',
+    src: import.meta.env.BASE_URL + 'products/kefir-top-power.webp',
+    source: 'Фото пользователя',
+  },
+  kefirZdravushkaBio930: {
+    name: 'Биокефир Здравушка 930г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-zdravushka-bio-930g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMozhno930: {
+    name: 'Кефир МОЖНО 930г бут',
+    src: import.meta.env.BASE_URL + 'products/kefir-mozhno-930g.webp',
     source: 'Фото пользователя',
   },
   kefirMolochnyyMirBifitat500: {

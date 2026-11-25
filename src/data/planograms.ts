@@ -489,13 +489,13 @@ export const groups: Group[] = [
           {
             name: 'Напиток Exponenta пюр-пак',
             faces: 6,
-            faceSpan: 5,
+            faceSpan: 5.25,
             images: ['kefirExponenta'],
           },
           {
             name: 'Напиток Экспонента НОРМ-ПРО 250г бут',
             faces: 3,
-            faceSpan: 2,
+            faceSpan: 2.25,
             images: ['kefirExponentaNormPro250'],
           },
         ],
@@ -540,13 +540,13 @@ export const groups: Group[] = [
           {
             name: 'Напиток Exponenta пюр-пак',
             faces: 6,
-            faceSpan: 5,
+            faceSpan: 5.25,
             images: ['kefirExponenta'],
           },
           {
             name: 'EXPONENTA Экспотоник 500мл бут',
             faces: 3,
-            faceSpan: 2,
+            faceSpan: 2.25,
             images: ['kefirExponentaExpotonik500'],
           },
         ],
@@ -562,6 +562,47 @@ export const groups: Group[] = [
             name: 'БиоФит кефирный 930г бут',
             faces: 2,
             images: ['kefirBioFit930'],
+          },
+          {
+            name: 'Кефир Свежие новости/Бабушкина крынка 900г бут',
+            faces: 2,
+            images: ['kefirSvezhiyeNovosti900', 'kefirBabushkinaKrynka900'],
+          },
+          {
+            name: 'Кефир Савушкин 950г бут',
+            faces: 6,
+            images: ['kefirSavushkin950'],
+          },
+          {
+            name: 'Ряженка Савушкин 950г бут',
+            faces: 2,
+            images: ['ryazhenkaSavushkin950'],
+          },
+          {
+            name: 'TEOS PRO/ТОП POWER',
+            faces: 6,
+            faceSpan: 5,
+            images: ['kefirTeosPro', 'kefirTopPower'],
+          },
+          {
+            name: 'TEOS PRO 250г бут',
+            faces: 4,
+            faceSpan: 3,
+            images: ['kefirTeosPro250'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Кефир Славянские традиции/Минская марка 900мл бут',
+            faces: 2,
+            images: ['kefirSlavyanskieTraditsii900', 'kefirMinskayaMarka900'],
+          },
+          {
+            name: 'Биокефир Здравушка/Кефир МОЖНО 930г бут',
+            faces: 2,
+            images: ['kefirZdravushkaBio930', 'kefirMozhno930'],
           },
         ],
       },
