@@ -675,7 +675,151 @@ export const groups: Group[] = [
     title: 'Сметана и творог',
     color: '#2e7d32',
     background: '#e8f6e9',
-    shelves: [],
+    shelves: [
+      {
+        products: [
+          {
+            name: 'Сметана ТМ Брест-Литовск 380г пл.ст.',
+            faces: 5,
+            faceSpan: 6.25,
+            images: ['smetanaBrestLitovsk380'],
+          },
+          {
+            name: 'Сметана Свежие новости 380г пл.ст.',
+            faces: 2,
+            faceSpan: 2.5,
+            images: ['smetanaSvezhiyeNovosti380'],
+          },
+          {
+            name: 'Сметана Молочные горки 300г пл.ст.',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['smetanaMolochnyeGorki300'],
+          },
+          {
+            name: 'Творог Ляховичок Рассыпчатый 5% 700г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorogLyakhovichokRassypchatyy5700g'],
+          },
+          {
+            name: 'Творог Ляховичок рассыпчатый 5% 350г пакет',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogLyakhovichokRassypchatyy5350g'],
+          },
+          {
+            name: 'Творог Ляховичок рассыпчатый 2% 350г пакет',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogLyakhovichokRassypchatyy2350g'],
+          },
+          {
+            name: 'Творог Клецкая крыначка Классический обезжир 400г пакет',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogKletskayaKrynachkaKlassicheskiyObezhir400'],
+          },
+          {
+            name: 'Творог Клецкая крыначка Классический 9% 400г пакет',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogKletskayaKrynachkaKlassicheskiy9400'],
+          },
+          {
+            name: 'Творог Ясь Белоус Классический 5% 400г пакет',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['tvorogYasBelousKlassicheskiy5400'],
+          },
+          {
+            name: 'Творог Ясь Белоус Классический 5% 700г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorogYasBelousKlassicheskiy5700'],
+          },
+          {
+            name: 'Творог Савушкин рассыпчат 5% 500г пакет',
+            faces: 2,
+            faceSpan: 3.25,
+            images: ['tvorogSavushkinRassypchatyy5500'],
+          },
+          {
+            name: 'Творог Савушкин рассыпчат 5% 700г пакет',
+            faces: 2,
+            faceSpan: 3.25,
+            images: ['tvorogSavushkinRassypchat5700'],
+          },
+        ],
+      },
+      {
+        products: [
+          {
+            name: 'Сметана ТМ Брест-Литовск 380г пл.ст.',
+            faces: 5,
+            faceSpan: 6.25,
+            images: ['smetanaBrestLitovsk380'],
+          },
+          {
+            name: 'Сметана Ляховичок 350г пл/ст',
+            faces: 2,
+            faceSpan: 2.5,
+            images: ['smetanaLyakhovichok350'],
+          },
+          {
+            name: 'Сметана Ясь Белоус 350г пл.ст.',
+            faces: 1,
+            faceSpan: 1.25,
+            images: ['smetanaYasBelous350'],
+          },
+          {
+            name: 'Творог Молочные горки безлактоз 5% 350г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorogMolochnyeGorkiBezlaktoz5350'],
+          },
+          {
+            name: 'Творог 1М безлактоз 5% 350г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorog1MBezlaktoz5350'],
+          },
+          {
+            name: 'Творог Славянские традиции рассыпчат 2%/5% 350г пакет',
+            faces: 2,
+            faceSpan: 3.125,
+            images: [
+              'tvorogSlavyanskieTraditsiiRassypchat2',
+              'tvorogSlavyanskieTraditsiiRassypchat5',
+            ],
+          },
+          {
+            name: 'Творог Минская марка рассыпчат 9% 350г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorogMinskayaMarkaRassypchat9350'],
+          },
+          {
+            name: 'Творог Минская марка рассыпчат 5% 350г пакет',
+            faces: 1,
+            faceSpan: 1.5,
+            images: ['tvorogMinskayaMarkaRassypchat5350'],
+          },
+          {
+            name: 'Творог Савушкин рассыпчат 5% 350г пакет',
+            faces: 2,
+            faceSpan: 3.25,
+            images: ['tvorogSavushkinRassypchat5350'],
+          },
+          {
+            name: 'Творог Савушкин рассыпчат 9% 350г пакет',
+            faces: 2,
+            faceSpan: 3.25,
+            images: ['tvorogSavushkinRassypchat9350'],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'yogurt',

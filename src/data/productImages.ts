@@ -4,7 +4,29 @@ export type ProductImageKey =
   | 'molochnyyMir'
   | 'svezhiyeNovosti'
   | 'brestLitovsk'
+  | 'smetanaBrestLitovsk380'
+  | 'smetanaSvezhiyeNovosti380'
+  | 'smetanaMolochnyeGorki300'
+  | 'smetanaLyakhovichok350'
+  | 'smetanaYasBelous350'
   | 'lyakhovichok'
+  | 'tvorogLyakhovichokRassypchatyy5700g'
+  | 'tvorogLyakhovichokRassypchatyy5350g'
+  | 'tvorogLyakhovichokRassypchatyy2350g'
+  | 'tvorogKletskayaKrynachkaKlassicheskiyObezhir400'
+  | 'tvorogKletskayaKrynachkaKlassicheskiy9400'
+  | 'tvorogYasBelousKlassicheskiy5400'
+  | 'tvorogYasBelousKlassicheskiy5700'
+  | 'tvorogSavushkinRassypchatyy5500'
+  | 'tvorogSavushkinRassypchat5700'
+  | 'tvorogMolochnyeGorkiBezlaktoz5350'
+  | 'tvorog1MBezlaktoz5350'
+  | 'tvorogSlavyanskieTraditsiiRassypchat2'
+  | 'tvorogSlavyanskieTraditsiiRassypchat5'
+  | 'tvorogMinskayaMarkaRassypchat9350'
+  | 'tvorogMinskayaMarkaRassypchat5350'
+  | 'tvorogSavushkinRassypchat5350'
+  | 'tvorogSavushkinRassypchat9350'
   | 'milkLyakhovichok1l'
   | 'milkSnovskoe1l'
   | 'milkMinskayaMarka1l'
@@ -138,9 +160,153 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src: import.meta.env.BASE_URL + 'products/brest-litovsk-cream-250g.webp',
     source: 'Фото пользователя',
   },
+  smetanaBrestLitovsk380: {
+    name: 'Сметана ТМ Брест-Литовск 380г пл.ст.',
+    src: import.meta.env.BASE_URL + 'products/smetana-brest-litovsk-380g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaSvezhiyeNovosti380: {
+    name: 'Сметана Свежие новости 380г пл.ст.',
+    src:
+      import.meta.env.BASE_URL + 'products/smetana-svezhiye-novosti-380g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaMolochnyeGorki300: {
+    name: 'Сметана Молочные горки 300г пл.ст.',
+    src:
+      import.meta.env.BASE_URL + 'products/smetana-molochnye-gorki-300g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaLyakhovichok350: {
+    name: 'Сметана Ляховичок 350г пл/ст',
+    src: import.meta.env.BASE_URL + 'products/smetana-lyakhovichok-350g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaYasBelous350: {
+    name: 'Сметана Ясь Белоус 350г пл.ст.',
+    src: import.meta.env.BASE_URL + 'products/smetana-yas-belous-350g.webp',
+    source: 'Фото пользователя',
+  },
   lyakhovichok: {
     name: 'Сливки Ляховичок 10%/20% 250г',
     src: import.meta.env.BASE_URL + 'products/lyakhovichok-cream-250g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichokRassypchatyy5700g: {
+    name: 'Творог Ляховичок Рассыпчатый 5% 700г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-lyakhovichok-rassypchatyy-5-700g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichokRassypchatyy5350g: {
+    name: 'Творог Ляховичок рассыпчатый 5% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-lyakhovichok-rassypchatyy-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogLyakhovichokRassypchatyy2350g: {
+    name: 'Творог Ляховичок рассыпчатый 2% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-lyakhovichok-rassypchatyy-2-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogKletskayaKrynachkaKlassicheskiyObezhir400: {
+    name: 'Творог Клецкая крыначка Классический обезжир 400г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-kletskaya-krynachka-klassicheskiy-obezhir-400g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogKletskayaKrynachkaKlassicheskiy9400: {
+    name: 'Творог Клецкая крыначка Классический 9% 400г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-kletskaya-krynachka-klassicheskiy-9-400g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogYasBelousKlassicheskiy5400: {
+    name: 'Творог Ясь Белоус Классический 5% 400г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-yas-belous-klassicheskiy-5-400g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogYasBelousKlassicheskiy5700: {
+    name: 'Творог Ясь Белоус Классический 5% 700г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-yas-belous-klassicheskiy-5-700g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkinRassypchatyy5500: {
+    name: 'Творог Савушкин рассыпчат 5% 500г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-savushkin-rassypchatyy-5-500g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkinRassypchat5700: {
+    name: 'Творог Савушкин рассыпчат 5% 700г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-savushkin-rassypchat-5-700g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMolochnyeGorkiBezlaktoz5350: {
+    name: 'Творог Молочные горки безлактоз 5% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-molochnye-gorki-bezlaktoz-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorog1MBezlaktoz5350: {
+    name: 'Творог 1М безлактоз 5% 350г пакет',
+    src: import.meta.env.BASE_URL + 'products/tvorog-1m-bezlaktoz-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSlavyanskieTraditsiiRassypchat2: {
+    name: 'Творог Славянские традиции рассыпчат 2% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-slavyanskie-traditsii-rassypchat-2-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSlavyanskieTraditsiiRassypchat5: {
+    name: 'Творог Славянские традиции рассыпчат 5% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-slavyanskie-traditsii-rassypchat-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMinskayaMarkaRassypchat9350: {
+    name: 'Творог Минская марка рассыпчат 9% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-minskaya-marka-rassypchat-9-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogMinskayaMarkaRassypchat5350: {
+    name: 'Творог Минская марка рассыпчат 5% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-minskaya-marka-rassypchat-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkinRassypchat5350: {
+    name: 'Творог Савушкин рассыпчат 5% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-savushkin-rassypchat-5-350g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogSavushkinRassypchat9350: {
+    name: 'Творог Савушкин рассыпчат 9% 350г пакет',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-savushkin-rassypchat-9-350g.webp',
     source: 'Фото пользователя',
   },
   milkLyakhovichok1l: {
