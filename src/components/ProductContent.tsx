@@ -10,10 +10,21 @@ type Props = {
 }
 
 const imageMaxHeight: Record<CellSize, string> = {
+  '3xs': 'max-h-14',
+  '2xs': 'max-h-18',
   xs: 'max-h-22',
   sm: 'max-h-28',
   md: 'max-h-35',
   lg: 'max-h-42',
+}
+
+const facePadding: Record<CellSize, string> = {
+  '3xs': 'p-0.5',
+  '2xs': 'p-0.5',
+  xs: 'p-0.5',
+  sm: 'p-1',
+  md: 'p-1',
+  lg: 'p-1',
 }
 
 let ProductContent = (props: Props) => {
@@ -25,7 +36,7 @@ let ProductContent = (props: Props) => {
       <span aria-hidden="true" className="flex w-full">
         {Array.from({ length: product.faces }, (_, index) => (
           <span
-            className="flex min-w-0 flex-1 items-end justify-center border-r border-(--border-subtle) p-1 last:border-r-0"
+            className={`flex min-w-0 flex-1 items-end justify-center border-r border-(--border-subtle) last:border-r-0 ${facePadding[cellSize]}`}
             key={index}
           >
             <img

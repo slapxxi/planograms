@@ -15,6 +15,24 @@ type Props = {
   selectedNumber: number | null
 }
 
+const cardPadding: Record<CellSize, string> = {
+  '3xs': 'px-0.5 pt-3.5 pb-0.5',
+  '2xs': 'px-1 pt-3.5 pb-0.5',
+  xs: 'px-1 pt-3.5 pb-1',
+  sm: 'px-1.5 pt-4 pb-1',
+  md: 'px-2 pt-4 pb-1.5',
+  lg: 'px-2 pt-4 pb-1.5',
+}
+
+const facePadding: Record<CellSize, string> = {
+  '3xs': 'px-0.5 pt-3.5 pb-0.5',
+  '2xs': 'px-1 pt-3.5 pb-0.5',
+  xs: 'px-1 pt-3.5 pb-1',
+  sm: 'px-1 pt-4 pb-1',
+  md: 'px-1 pt-4 pb-1',
+  lg: 'px-1 pt-4 pb-1',
+}
+
 let ShelfRow = (props: Props) => {
   const {
     cellSize,
@@ -42,10 +60,13 @@ let ShelfRow = (props: Props) => {
           : searching
             ? 'opacity-40'
             : ''
+        const paddingClass = showFaces
+          ? facePadding[cellSize]
+          : cardPadding[cellSize]
 
         return (
           <ProductTooltip
-            className={`${showFaces ? 'w-full p-1' : 'items-start leading-[1.35]'} ${highlightClass} flex min-w-0 items-stretch justify-between gap-1 rounded-xs border border-(--border) bg-(--group-surface) px-2 pt-2.5 pb-1.5 text-xs`}
+            className={`${showFaces ? 'w-full' : 'items-start leading-[1.35]'} ${paddingClass} ${highlightClass} flex min-w-0 items-stretch justify-between gap-1 rounded-xs border border-(--border) bg-(--group-surface) text-xs`}
             disabled={disabled}
             hideBackground={showFaces}
             key={`${product.name}-${index}`}
