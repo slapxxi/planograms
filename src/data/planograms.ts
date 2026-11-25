@@ -495,7 +495,7 @@ export const groups: Group[] = [
           {
             name: 'Напиток Экспонента НОРМ-ПРО 250г бут',
             faces: 3,
-            faceSpan: 2.25,
+            faceSpan: 2.5,
             images: ['kefirExponentaNormPro250'],
           },
         ],
@@ -546,7 +546,7 @@ export const groups: Group[] = [
           {
             name: 'EXPONENTA Экспотоник 500мл бут',
             faces: 3,
-            faceSpan: 2.25,
+            faceSpan: 2.5,
             images: ['kefirExponentaExpotonik500'],
           },
         ],
@@ -581,7 +581,7 @@ export const groups: Group[] = [
           {
             name: 'TEOS PRO/ТОП POWER',
             faces: 6,
-            faceSpan: 5,
+            faceSpan: 5.25,
             images: ['kefirTeosPro', 'kefirTopPower'],
           },
           {
@@ -622,7 +622,7 @@ export const groups: Group[] = [
           {
             name: 'Коктейль молочный ТМ ТОП, ШЕЙК, ПАУЭР, КАФЕ, КУЛ, МИСТЕРИ 330-450г бут',
             faces: 6,
-            faceSpan: 5,
+            faceSpan: 5.25,
             images: ['kefirMilkCocktailTop330450'],
           },
           {

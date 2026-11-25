@@ -25,10 +25,32 @@ type Props = {
 type TooltipPosition = {
   top: number
   left: number
+  width: number
+  maxHeight: number
 }
 
 const GAP = 8
 const EDGE = 8
+const MAX_WIDTH = 320
+
+function viewportBounds() {
+  const viewport = window.visualViewport
+  if (!viewport) {
+    return {
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }
+  }
+
+  return {
+    left: viewport.offsetLeft,
+    top: viewport.offsetTop,
+    width: viewport.width,
+    height: viewport.height,
+  }
+}
 
 let ProductTooltip = (props: Props) => {
   const {
@@ -63,37 +85,46 @@ let ProductTooltip = (props: Props) => {
 
       const triggerRect = trigger.getBoundingClientRect()
       const tooltipRect = tooltip.getBoundingClientRect()
-      const viewportWidth = window.innerWidth
-      const viewportHeight = window.innerHeight
+      const viewport = viewportBounds()
+      const width = Math.min(MAX_WIDTH, Math.max(1, viewport.width - EDGE * 2))
+      const maxHeight = Math.max(0, viewport.height - EDGE * 2)
+      const height = Math.min(tooltipRect.height, maxHeight)
 
-      const centeredLeft =
-        triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2
+      const centeredLeft = triggerRect.left + triggerRect.width / 2 - width / 2
       const left = Math.max(
-        EDGE,
-        Math.min(centeredLeft, viewportWidth - tooltipRect.width - EDGE),
+        viewport.left + EDGE,
+        Math.min(centeredLeft, viewport.left + viewport.width - width - EDGE),
       )
 
       const below = triggerRect.bottom + GAP
-      const above = triggerRect.top - tooltipRect.height - GAP
-      const top =
-        below + tooltipRect.height <= viewportHeight - EDGE
+      const above = triggerRect.top - height - GAP
+      const preferredTop =
+        below + height <= viewport.top + viewport.height - EDGE
           ? below
-          : above >= EDGE
+          : above >= viewport.top + EDGE
             ? above
-            : Math.max(EDGE, viewportHeight - tooltipRect.height - EDGE)
+            : viewport.top + viewport.height - height - EDGE
+      const top = Math.max(
+        viewport.top + EDGE,
+        Math.min(preferredTop, viewport.top + viewport.height - height - EDGE),
+      )
 
-      setPosition({ top, left })
+      setPosition({ top, left, width, maxHeight })
     }
 
     updatePosition()
     window.addEventListener('resize', updatePosition)
     window.addEventListener('scroll', updatePosition, true)
+    window.visualViewport?.addEventListener('resize', updatePosition)
+    window.visualViewport?.addEventListener('scroll', updatePosition)
 
     return () => {
       window.removeEventListener('resize', updatePosition)
       window.removeEventListener('scroll', updatePosition, true)
+      window.visualViewport?.removeEventListener('resize', updatePosition)
+      window.visualViewport?.removeEventListener('scroll', updatePosition)
     }
-  }, [open, images.length])
+  }, [open, images.length, position?.width, position?.maxHeight])
 
   useEffect(() => {
     const close = () => setOpened(false)
@@ -219,13 +250,15 @@ let ProductTooltip = (props: Props) => {
         open &&
         createPortal(
           <div
-            className="pointer-events-none fixed z-50 w-[min(320px,calc(100vw-16px))] rounded-[2px] border border-[color:var(--border)] bg-(--surface) p-3 shadow-lg"
+            className="pointer-events-none fixed z-50 w-[min(320px,calc(100vw-16px))] overflow-y-auto rounded-[2px] border border-[color:var(--border)] bg-(--surface) p-3 shadow-lg"
             id={tooltipId}
             ref={tooltipRef}
             role="tooltip"
             style={{
               top: position?.top ?? 0,
               left: position?.left ?? 0,
+              width: position?.width,
+              maxHeight: position?.maxHeight,
               visibility: position ? 'visible' : 'hidden',
             }}
           >
