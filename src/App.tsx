@@ -18,11 +18,14 @@ type SearchState = {
   selectedNumber: number | null
 }
 
+const SEARCH_QUERY_PARAM = 'q'
+const SEARCH_CELL_PARAM = 'cell'
+
 function readSearchState(): SearchState {
-  const saved = readStorage<{ query?: unknown; selectedNumber?: unknown }>(
-    STORAGE_KEYS.search,
-    {},
-  )
+  const params = new URLSearchParams(window.location.search)
+  const rawNumber = params.get(SEARCH_CELL_PARAM)
+  const parsedNumber =
+    rawNumber !== null && /^\d+$/.test(rawNumber) ? Number(rawNumber) : null
   const numbers = new Set(
     numberProducts(groups).flatMap(({ shelves }) =>
       shelves.flatMap((shelf) => shelf.products.map(({ number }) => number)),
@@ -30,13 +33,26 @@ function readSearchState(): SearchState {
   )
 
   return {
-    query: typeof saved.query === 'string' ? saved.query : '',
+    query: params.get(SEARCH_QUERY_PARAM) ?? '',
     selectedNumber:
-      typeof saved.selectedNumber === 'number' &&
-      numbers.has(saved.selectedNumber)
-        ? saved.selectedNumber
-        : null,
+      parsedNumber !== null && numbers.has(parsedNumber) ? parsedNumber : null,
   }
+}
+
+function writeSearchState(search: SearchState) {
+  const params = new URLSearchParams(window.location.search)
+  if (search.query) params.set(SEARCH_QUERY_PARAM, search.query)
+  else params.delete(SEARCH_QUERY_PARAM)
+  if (search.selectedNumber !== null)
+    params.set(SEARCH_CELL_PARAM, String(search.selectedNumber))
+  else params.delete(SEARCH_CELL_PARAM)
+
+  const queryString = params.toString()
+  const nextUrl =
+    window.location.pathname +
+    (queryString ? `?${queryString}` : '') +
+    window.location.hash
+  window.history.replaceState(window.history.state, '', nextUrl)
 }
 
 function readCellSize(): CellSize {
@@ -90,10 +106,19 @@ let App = () => {
   }, [cellSize])
 
   useEffect(() => {
-    if (!search.query && search.selectedNumber === null)
-      removeStorage(STORAGE_KEYS.search)
-    else writeStorage(STORAGE_KEYS.search, search)
+    writeSearchState(search)
   }, [search])
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const next = readSearchState()
+      setSearch(next)
+      setResultsVisible(Boolean(next.query.trim()))
+      setHoveredNumber(null)
+    }
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
 
   useEffect(() => {
     writeStorage(STORAGE_KEYS.collapsed, [...collapsedGroups])
