@@ -13,7 +13,7 @@ let ProductContent = (props: Props) => {
 
   if (view === 'faces' && image) {
     return (
-      <span aria-hidden="true" className="flex w-full items-stretch">
+      <span aria-hidden="true" className="flex w-full">
         {Array.from({ length: product.faces }, (_, index) => (
           <span
             className="flex min-w-0 flex-1 items-end justify-center border-r border-(--border-subtle) p-1 last:border-r-0"
@@ -21,7 +21,7 @@ let ProductContent = (props: Props) => {
           >
             <img
               alt=""
-              className="max-w-full object-contain object-bottom"
+              className="max-w-full object-contain object-bottom max-h-35"
               draggable={false}
               src={image.src}
             />

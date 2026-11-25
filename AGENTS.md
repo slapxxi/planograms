@@ -19,7 +19,7 @@
 - Источник истины — `src/data/planograms.ts`: `groups → shelves → products`; `src/data/productImages.ts` — реестр ключей и URL изображений.
 - Номера ячеек вычисляются `numberProducts()` сквозь все группы (пустые полки пропускаются): не хардкодить номера, считать этим порядком.
 - `faces` — сколько фото рисовать в режиме «Фейсы»; `faceSpan` — ширина ячейки в фейсах (по умолчанию = `faces`). Бейдж: `номер/span · см`; 1 фейс = 8 см (`CM_PER_FACE` и хелперы в `planograms.ts`).
-- Ширины полок считаются в `~/lib/planogram.ts` (`FACE_WIDTH=64`, `CELL_GAP=2`, `SHELF_PADDING_X=12` из `~/lib/constants.ts`). Чтобы заполнить полку до конца, выравнивать суммарный `faceSpan` по первой полке группы; флаг `fill` был явно отклонён.
+- Полки — flex-ряды (`src/components/ShelfRow.tsx`), ширины считаются в `~/lib/planogram.ts`: условная колонка = 1 см (`UNIT_WIDTH=6.25px` из `FACE_WIDTH=64`, `CELL_GAP=2`, `CM_PER_FACE=8`), ячейка = `faceSpan * CM_PER_FACE` колонок, отступы `SHELF_PADDING_X=4px` с каждой стороны. Чтобы заполнить полку до конца, выравнивать суммарный `faceSpan` по первой полке группы; флаг `fill` был явно отклонён.
 - Режим «Фейсы» берёт только первое фото товара; тултип показывает все. Новый ключ добавлять сразу в `ProductImageKey` и `productImages`, `src: import.meta.env.BASE_URL + 'products/...'`.
 - Группы `tvorog`, `yogurt`, `health`, `baby` — пустые плейсхолдеры.
 
