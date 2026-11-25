@@ -1,8 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
-import type { Group } from '../data/planograms'
-import { groupStyle } from '../data/planograms'
-
-export type GroupView = 'cards' | 'faces'
+import type { Group } from '~/data/planograms'
+import { groupStyle } from '~/data/planograms'
+import type { GroupView } from '~/lib/planogram'
 
 type Props = {
   group: Group

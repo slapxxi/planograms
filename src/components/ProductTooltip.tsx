@@ -6,10 +6,10 @@ import type {
   ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
-import type { Product } from '../data/planograms'
-import { faceSpanToCm, formatCm } from '../data/planograms'
-import { productImages } from '../data/productImages'
-import { DRAG_SCROLL_START } from './DragScrollArea'
+import type { Product } from '~/data/planograms'
+import { faceSpanToCm, formatCm } from '~/data/planograms'
+import { productImages } from '~/data/productImages'
+import { DRAG_SCROLL_START } from '~/lib/constants'
 
 type Props = {
   product: Product
@@ -174,6 +174,7 @@ export default function ProductTooltip({
         onPointerLeave={handlePointerLeave}
         ref={triggerRef}
         style={style}
+        title={product.name}
         type="button"
       >
         {backgroundSrc && !hideBackground ? (
@@ -208,6 +209,9 @@ export default function ProductTooltip({
               visibility: position ? 'visible' : 'hidden',
             }}
           >
+            <p className="mb-2 text-xs font-medium leading-snug text-(--app-text)">
+              {product.name}
+            </p>
             <div className="flex flex-wrap gap-3">
               {images.map((image) => (
                 <figure

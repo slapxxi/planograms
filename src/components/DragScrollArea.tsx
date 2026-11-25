@@ -4,6 +4,7 @@ import type {
   PointerEvent as ReactPointerEvent,
   ReactNode,
 } from 'react'
+import { DRAG_SCROLL_START } from '~/lib/constants'
 
 type Props = {
   children: ReactNode
@@ -12,8 +13,6 @@ type Props = {
 }
 
 const THRESHOLD = 4
-
-export const DRAG_SCROLL_START = 'dragscroll-start'
 
 export default function DragScrollArea({
   children,

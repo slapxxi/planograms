@@ -1,7 +1,7 @@
-import HorizontalPlanogram from './components/HorizontalPlanogram'
-import ThemeSwitcher from './components/ThemeSwitcher'
-import { groups } from './data/planograms'
-import { useTheme } from './theme'
+import HorizontalPlanogram from '~/components/HorizontalPlanogram'
+import ThemeSwitcher from '~/components/ThemeSwitcher'
+import { groups } from '~/data/planograms'
+import { useTheme } from '~/theme'
 
 export default function App() {
   const { theme, setTheme } = useTheme()

@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import type { ProductImageKey } from './productImages'
+import type { ProductImageKey } from '~/data/productImages'
 
 export type Product = {
   name: string
