@@ -98,6 +98,33 @@ export type ProductImageKey =
   | 'desertVizaviAss300'
   | 'produktTvorozhnyyMinskayaMarkaSnezhekSMakom400'
   | 'produktTvorozhnyyMolochnyeGorkiTropicheskiyMiks180'
+  | 'massaTvorSnovAss250'
+  | 'massaTvorBellaktAss180TselUp'
+  | 'desertTvorozhnyyLyakhovichokLakomkaAss100200'
+  | 'desertKartoshkaFlowPack'
+  | 'syrokTvorBellaktSladkiyAss100Vanilin'
+  | 'syrokTvorBellaktSladkiyAss100Mango'
+  | 'syrkiTvorMolochnayaStranaLyubimyyAss100'
+  | 'syrkiTvorozhnyeSavushkinAss100FlowPack1'
+  | 'syrkiTvorozhnyeSavushkinAss100FlowPack2'
+  | 'yogurtBellaktAss400Plenka'
+  | 'pastaDesertnayaBellaktChocoLocoAss250'
+  | 'zheleIzTvorozhnoySyvorotkiBellaktAss150'
+  | 'venskiyZavtrak140PlSt'
+  | 'yoguruAss150PlSt'
+  | 'zheleSoVkusomAss150PlStGMSPro'
+  | 'kremaSTvorogomBuonissimoAss140180250'
+  | 'pudingMolochnyyGrandDesertAss200230'
+  | 'produktYogurtnyyFruttisVkusnyyPereryv175'
+  | 'produktYogurtnyyFruttisAss180PlSt'
+  | 'produktYogurtnyyFruttisSlivochnoeLakomstvo5SuperEkstra8Ass115'
+  | 'pudingErmannErmigurtAss100PlSt'
+  | 'pudingErmannNezhnyyAss100PlSt'
+  | 'pudingMolochnyyChudoAss125PlSt'
+  | 'yogurtPitievoySavushkinLegkiyAss900PBut'
+  | 'yogurtPitievoySavushkinAss900But'
+  | 'yogurtPitievoyTMSvezhieNovostiAss800'
+  | 'molochnyyMirYogofit950But'
   | 'smetanaMolochnyeGorki300'
   | 'smetanaLyakhovichok350'
   | 'smetanaYasBelous350'
@@ -901,6 +928,187 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src:
       import.meta.env.BASE_URL +
       'products/produkt-tvorozhnyy-molochnye-gorki-tropicheskiy-miks-180g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  massaTvorSnovAss250: {
+    name: 'Масса твор. Снов в асс. 250г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/massa-tvor-snov-assorted-250g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  massaTvorBellaktAss180TselUp: {
+    name: 'Масса твор. Беллакт в асс 180г цел.уп',
+    src:
+      import.meta.env.BASE_URL +
+      'products/massa-tvor-bellakt-assorted-180g-tsel-up.webp',
+    source: 'Фото пользователя',
+  },
+  desertTvorozhnyyLyakhovichokLakomkaAss100200: {
+    name: 'Десерт творожный Ляховичок Лакомка в асс 100-200г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/desert-tvorozhnyy-lyakhovichok-lakomka-assorted-100-200g-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  desertKartoshkaFlowPack: {
+    name: 'Десерт Картошка / Сырки твор. Беллакт сладкий в асс 100г флоу-пак',
+    src: import.meta.env.BASE_URL + 'products/desert-kartoshka-flow-pack.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTvorBellaktSladkiyAss100Vanilin: {
+    name: 'Десерт Картошка / Сырки твор. Беллакт сладкий в асс 100г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-tvor-bellakt-sladkiy-ass-100g-vanilin.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTvorBellaktSladkiyAss100Mango: {
+    name: 'Десерт Картошка / Сырки твор. Беллакт сладкий в асс 100г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-tvor-bellakt-sladkiy-ass-100g-mango.webp',
+    source: 'Фото пользователя',
+  },
+  syrkiTvorMolochnayaStranaLyubimyyAss100: {
+    name: 'Сырки твор. Молочная страна Любимый в асс 100г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrki-tvor-molochnaya-strana-lyubimyy-ass-100g.webp',
+    source: 'Фото пользователя',
+  },
+  syrkiTvorozhnyeSavushkinAss100FlowPack1: {
+    name: 'Сырки творожные Савушкин в асс 100г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrki-tvorozhnye-savushkin-ass-100g-flow-pack-1.webp',
+    source: 'Фото пользователя',
+  },
+  syrkiTvorozhnyeSavushkinAss100FlowPack2: {
+    name: 'Сырки творожные Савушкин в асс 100г флоу-пак',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrki-tvorozhnye-savushkin-ass-100g-flow-pack-2.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBellaktAss400Plenka: {
+    name: 'Йогурт Беллакт в асс 400г пленка',
+    src:
+      import.meta.env.BASE_URL + 'products/yogurt-bellakt-ass-400g-plenka.webp',
+    source: 'Фото пользователя',
+  },
+  pastaDesertnayaBellaktChocoLocoAss250: {
+    name: 'Паста десертная Беллакт ChocoLoco в асс 250г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/pasta-desertnaya-bellakt-chocoloco-ass-250g.webp',
+    source: 'Фото пользователя',
+  },
+  zheleIzTvorozhnoySyvorotkiBellaktAss150: {
+    name: 'Желе из творожной сыворотки Беллакт в асс 150г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/zhele-iz-tvorozhnoy-syvorotki-bellakt-ass-150g.webp',
+    source: 'Фото пользователя',
+  },
+  venskiyZavtrak140PlSt: {
+    name: 'Венский завтрак 140г/Yoguru 150г в асс пл.ст',
+    src: import.meta.env.BASE_URL + 'products/venskiy-zavtrak-140g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  yoguruAss150PlSt: {
+    name: 'Венский завтрак 140г/Yoguru 150г в асс пл.ст',
+    src: import.meta.env.BASE_URL + 'products/yoguru-ass-150g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  zheleSoVkusomAss150PlStGMSPro: {
+    name: 'Желе со вкусом в асс 150г пл.ст ГМС Про',
+    src:
+      import.meta.env.BASE_URL +
+      'products/zhele-so-vkusom-ass-150g-pl-st-gms-pro.webp',
+    source: 'Фото пользователя',
+  },
+  kremaSTvorogomBuonissimoAss140180250: {
+    name: 'Крема с творогом Buonissimo в асс 140-180-250г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/krema-s-tvorogom-buonissimo-ass-140-180-250g.webp',
+    source: 'Фото пользователя',
+  },
+  pudingMolochnyyGrandDesertAss200230: {
+    name: 'Пудинг молочный Гранд Десерт в асс 200-230г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/puding-molochnyy-grand-desert-ass-200-230g.webp',
+    source: 'Фото пользователя',
+  },
+  produktYogurtnyyFruttisVkusnyyPereryv175: {
+    name: 'Продукт йогуртный Fruttis Вкусный перерыв 175г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-yogurtnyy-fruttis-vkusnyy-pereryv-175g.webp',
+    source: 'Фото пользователя',
+  },
+  produktYogurtnyyFruttisAss180PlSt: {
+    name: 'Продукт йогуртный Fruttis в асс 180г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-yogurtnyy-fruttis-ass-180g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  produktYogurtnyyFruttisSlivochnoeLakomstvo5SuperEkstra8Ass115: {
+    name: 'Продукт йогуртный Fruttis сливочное лакомство 5%/Супер-экстра 8% в асс 115г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/produkt-yogurtnyy-fruttis-slivochnoe-lakomstvo-5-super-ekstra-8-ass-115g.webp',
+    source: 'Фото пользователя',
+  },
+  pudingErmannErmigurtAss100PlSt: {
+    name: 'Пудинг Эрманн Эрмигурт/Нежный в асс 100г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/puding-ermann-ermigurt-ass-100g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  pudingErmannNezhnyyAss100PlSt: {
+    name: 'Пудинг Эрманн Эрмигурт/Нежный в асс 100г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/puding-ermann-nezhnyy-ass-100g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  pudingMolochnyyChudoAss125PlSt: {
+    name: 'Пудинг молочный Чудо в асс 125г пл.ст',
+    src:
+      import.meta.env.BASE_URL +
+      'products/puding-molochnyy-chudo-ass-125g-pl-st.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoySavushkinLegkiyAss900PBut: {
+    name: 'Йогурт питьевой Савушкин Легкий в асс 900г п.бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-savushkin-legkiy-ass-900g-p-but.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoySavushkinAss900But: {
+    name: 'Йогурт питьевой Савушкин в асс 900г бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-savushkin-ass-900g-but.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyTMSvezhieNovostiAss800: {
+    name: 'Йогурт питьевой ТМ Свежие Новости в асс 800г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-tm-svezhie-novosti-ass-800g.webp',
+    source: 'Фото пользователя',
+  },
+  molochnyyMirYogofit950But: {
+    name: 'Молочный мир Йогофит 950г бут',
+    src:
+      import.meta.env.BASE_URL + 'products/molochnyy-mir-yogofit-950g-but.webp',
     source: 'Фото пользователя',
   },
   smetanaMolochnyeGorki300: {
