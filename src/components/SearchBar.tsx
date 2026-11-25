@@ -11,8 +11,14 @@ type Props = {
 }
 
 let SearchBar = (props: Props) => {
-  const { query, onQueryChange, results, onSelect, onHoverChange, showResults } =
-    props
+  const {
+    query,
+    onQueryChange,
+    results,
+    onSelect,
+    onHoverChange,
+    showResults,
+  } = props
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -29,7 +35,10 @@ let SearchBar = (props: Props) => {
         inputRef.current?.focus()
       }
 
-      if (event.key === 'Escape' && document.activeElement === inputRef.current) {
+      if (
+        event.key === 'Escape' &&
+        document.activeElement === inputRef.current
+      ) {
         onQueryChange('')
         inputRef.current?.blur()
       }

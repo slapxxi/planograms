@@ -312,7 +312,8 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
   kefirExponentaExpotonik500: {
     name: 'EXPONENTA Экспотоник 500мл бут',
     src:
-      import.meta.env.BASE_URL + 'products/kefir-exponenta-expotonik-500ml.webp',
+      import.meta.env.BASE_URL +
+      'products/kefir-exponenta-expotonik-500ml.webp',
     source: 'Фото пользователя',
   },
   kefirSlavyanskieTraditsii900: {

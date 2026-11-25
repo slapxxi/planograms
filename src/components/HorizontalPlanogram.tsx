@@ -4,9 +4,11 @@ import GroupHeading from '~/components/GroupHeading'
 import ShelfRow from '~/components/ShelfRow'
 import type { Group } from '~/data/planograms'
 import { groupStyle, numberProducts } from '~/data/planograms'
+import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 
 type Props = {
+  cellSize: CellSize
   groups: Group[]
   collapsedGroups: Set<string>
   matchedNumbers: Set<number>
@@ -19,6 +21,7 @@ type Props = {
 
 let HorizontalPlanogram = (props: Props) => {
   const {
+    cellSize,
     groups,
     collapsedGroups,
     matchedNumbers,
@@ -65,6 +68,7 @@ let HorizontalPlanogram = (props: Props) => {
                 ) : (
                   shelves.map((shelf, index) => (
                     <ShelfRow
+                      cellSize={cellSize}
                       disabled={draggingGroup === group.id}
                       key={index}
                       matchedNumbers={matchedNumbers}

@@ -1,14 +1,23 @@
 import type { Product } from '~/data/planograms'
+import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import { firstImage } from '~/lib/planogram'
 
 type Props = {
+  cellSize: CellSize
   product: Product
   view: GroupView
 }
 
+const imageMaxHeight: Record<CellSize, string> = {
+  xs: 'max-h-22',
+  sm: 'max-h-28',
+  md: 'max-h-35',
+  lg: 'max-h-42',
+}
+
 let ProductContent = (props: Props) => {
-  const { product, view } = props
+  const { cellSize, product, view } = props
   const image = firstImage(product)
 
   if (view === 'faces' && image) {
@@ -21,7 +30,7 @@ let ProductContent = (props: Props) => {
           >
             <img
               alt=""
-              className="max-w-full object-contain object-bottom max-h-35"
+              className={`max-w-full object-contain object-bottom ${imageMaxHeight[cellSize]}`}
               draggable={false}
               src={image.src}
             />

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import CellSizeSwitcher from '~/components/CellSizeSwitcher'
 import CopyNotification from '~/components/CopyNotification'
 import HorizontalPlanogram from '~/components/HorizontalPlanogram'
 import SearchBar from '~/components/SearchBar'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
 import { groups, numberProducts } from '~/data/planograms'
-import { STORAGE_KEYS } from '~/lib/constants'
+import type { CellSize } from '~/lib/constants'
+import { CELL_SIZES, DEFAULT_CELL_SIZE, STORAGE_KEYS } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import type { SearchResult } from '~/lib/search'
 import { searchProducts } from '~/lib/search'
@@ -37,6 +39,11 @@ function readSearchState(): SearchState {
   }
 }
 
+function readCellSize(): CellSize {
+  const saved = readStorage<string>(STORAGE_KEYS.cellSize, DEFAULT_CELL_SIZE)
+  return CELL_SIZES.find((size) => size === saved) ?? DEFAULT_CELL_SIZE
+}
+
 function readCollapsedGroups() {
   const saved = readStorage<string[]>(STORAGE_KEYS.collapsed, [])
   const ids = new Set(groups.map((group) => group.id))
@@ -57,6 +64,7 @@ function readViews() {
 
 let App = () => {
   const { theme, setTheme } = useTheme()
+  const [cellSize, setCellSize] = useState<CellSize>(readCellSize)
   const [search, setSearch] = useState<SearchState>(readSearchState)
   const [resultsVisible, setResultsVisible] = useState(false)
   const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
@@ -75,6 +83,11 @@ let App = () => {
     group.shelves.flatMap((shelf) => shelf.products),
   )
   const totalFaces = products.reduce((sum, product) => sum + product.faces, 0)
+
+  useEffect(() => {
+    if (cellSize === DEFAULT_CELL_SIZE) removeStorage(STORAGE_KEYS.cellSize)
+    else writeStorage(STORAGE_KEYS.cellSize, cellSize)
+  }, [cellSize])
 
   useEffect(() => {
     if (!search.query && search.selectedNumber === null)
@@ -138,6 +151,7 @@ let App = () => {
   }
 
   const handleClearStorage = () => {
+    setCellSize(DEFAULT_CELL_SIZE)
     setSearch({ query: '', selectedNumber: null })
     setResultsVisible(false)
     setHoveredNumber(null)
@@ -158,6 +172,7 @@ let App = () => {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
+            <CellSizeSwitcher onChange={setCellSize} size={cellSize} />
             <button
               className="rounded-[2px] border border-(--border) bg-(--surface) px-3 py-2 text-xs text-(--control-text) transition-colors hover:bg-(--control-hover)"
               onClick={handleClearStorage}
@@ -186,6 +201,7 @@ let App = () => {
         </p>
 
         <HorizontalPlanogram
+          cellSize={cellSize}
           collapsedGroups={collapsedGroups}
           groups={groups}
           matchedNumbers={matchedNumbers}

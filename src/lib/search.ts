@@ -26,8 +26,8 @@ export function searchProducts(groups: Group[], query: string) {
           groupTitle: group.title,
         }))
         .filter((result) =>
-          [result.name, String(result.number), result.groupTitle].some((value) =>
-            normalize(value).includes(needle),
+          [result.name, String(result.number), result.groupTitle].some(
+            (value) => normalize(value).includes(needle),
           ),
         ),
     ),

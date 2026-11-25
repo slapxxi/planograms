@@ -1,11 +1,19 @@
 import type { NumberedShelf, Product } from '~/data/planograms'
 import { CM_PER_FACE, faceSpanToCm } from '~/data/planograms'
 import { productImages } from '~/data/productImages'
-import { CELL_GAP, FACE_WIDTH, SHELF_PADDING_X } from '~/lib/constants'
+import type { CellSize } from '~/lib/constants'
+import {
+  CELL_GAP,
+  DEFAULT_CELL_SIZE,
+  FACE_WIDTH_BY_SIZE,
+  SHELF_PADDING_X,
+} from '~/lib/constants'
 
 export type GroupView = 'cards' | 'faces'
 
-export const UNIT_WIDTH = (FACE_WIDTH + CELL_GAP) / CM_PER_FACE - CELL_GAP
+export function unitWidth(cellSize: CellSize = DEFAULT_CELL_SIZE) {
+  return (FACE_WIDTH_BY_SIZE[cellSize] + CELL_GAP) / CM_PER_FACE - CELL_GAP
+}
 
 export function firstImage(product: Product) {
   for (const key of product.images ?? []) {
@@ -26,19 +34,31 @@ export function shelfUnits(shelf: NumberedShelf) {
   )
 }
 
-export function cellWidth(product: Product) {
+export function cellWidth(
+  product: Product,
+  cellSize: CellSize = DEFAULT_CELL_SIZE,
+) {
   const units = productUnits(product)
-  return units * UNIT_WIDTH + (units - 1) * CELL_GAP
+  return units * unitWidth(cellSize) + (units - 1) * CELL_GAP
 }
 
-export function cellStyle(product: Product) {
-  return { flex: '0 0 auto', width: cellWidth(product) }
+export function cellStyle(
+  product: Product,
+  cellSize: CellSize = DEFAULT_CELL_SIZE,
+) {
+  return { flex: '0 0 auto', width: cellWidth(product, cellSize) }
 }
 
-export function shelfStyle(shelf: NumberedShelf) {
+export function shelfStyle(
+  shelf: NumberedShelf,
+  cellSize: CellSize = DEFAULT_CELL_SIZE,
+) {
   const units = shelfUnits(shelf)
   return {
-    width: units * UNIT_WIDTH + (units - 1) * CELL_GAP + SHELF_PADDING_X * 2,
+    width:
+      units * unitWidth(cellSize) +
+      (units - 1) * CELL_GAP +
+      SHELF_PADDING_X * 2,
     gap: CELL_GAP,
     paddingInline: SHELF_PADDING_X,
   }

@@ -6,5 +6,7 @@ export type CopyNotice = {
 }
 
 export function notifyCopy(detail: CopyNotice) {
-  window.dispatchEvent(new CustomEvent<CopyNotice>(COPY_NOTIFICATION, { detail }))
+  window.dispatchEvent(
+    new CustomEvent<CopyNotice>(COPY_NOTIFICATION, { detail }),
+  )
 }

@@ -1,10 +1,12 @@
 import ProductContent from '~/components/ProductContent'
 import ProductTooltip from '~/components/ProductTooltip'
 import type { NumberedShelf } from '~/data/planograms'
+import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import { cellStyle, firstImage, shelfStyle } from '~/lib/planogram'
 
 type Props = {
+  cellSize: CellSize
   shelf: NumberedShelf
   view: GroupView
   disabled: boolean
@@ -14,13 +16,20 @@ type Props = {
 }
 
 let ShelfRow = (props: Props) => {
-  const { shelf, view, disabled, matchedNumbers, searching, selectedNumber } =
-    props
+  const {
+    cellSize,
+    shelf,
+    view,
+    disabled,
+    matchedNumbers,
+    searching,
+    selectedNumber,
+  } = props
 
   return (
     <div
       className="flex border-t border-(--border-subtle) py-1"
-      style={shelfStyle(shelf)}
+      style={shelfStyle(shelf, cellSize)}
     >
       {shelf.products.map(({ product, number }, index) => {
         const showFaces = view === 'faces' && Boolean(firstImage(product))
@@ -42,9 +51,9 @@ let ShelfRow = (props: Props) => {
             key={`${product.name}-${index}`}
             number={number}
             product={product}
-            style={cellStyle(product)}
+            style={cellStyle(product, cellSize)}
           >
-            <ProductContent product={product} view={view} />
+            <ProductContent cellSize={cellSize} product={product} view={view} />
           </ProductTooltip>
         )
       })}
