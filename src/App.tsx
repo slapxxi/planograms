@@ -1,107 +1,28 @@
 import { useEffect, useState } from 'react'
+import type { SearchState } from '~/App.config'
+import {
+  readCellSize,
+  readCollapsedGroups,
+  readSearchState,
+  readViews,
+  scrollToCell,
+  writeCellSize,
+  writeCollapsedGroups,
+  writeSearchState,
+  writeViews,
+} from '~/App.config'
 import CellSizeSwitcher from '~/components/CellSizeSwitcher'
 import CopyNotification from '~/components/CopyNotification'
 import HorizontalPlanogram from '~/components/HorizontalPlanogram'
 import SearchBar from '~/components/SearchBar'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
-import { groups, numberProducts } from '~/data/planograms'
+import { groups } from '~/data/planograms'
 import type { CellSize } from '~/lib/constants'
-import { CELL_SIZES, DEFAULT_CELL_SIZE, STORAGE_KEYS } from '~/lib/constants'
+import { DEFAULT_CELL_SIZE } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import type { SearchResult } from '~/lib/search'
 import { searchProducts } from '~/lib/search'
-import { readStorage, removeStorage, writeStorage } from '~/lib/storage'
 import { useTheme } from '~/theme'
-
-type SearchState = {
-  query: string
-  selectedNumber: number | null
-}
-
-const SEARCH_QUERY_PARAM = 'q'
-const SEARCH_CELL_PARAM = 'cell'
-const VIEW_PARAM_PREFIX = 'view.'
-
-function updateUrlParams(update: (params: URLSearchParams) => void) {
-  const params = new URLSearchParams(window.location.search)
-  update(params)
-
-  const queryString = params.toString()
-  const nextUrl =
-    window.location.pathname +
-    (queryString ? `?${queryString}` : '') +
-    window.location.hash
-  window.history.replaceState(window.history.state, '', nextUrl)
-}
-
-function readSearchState(): SearchState {
-  const params = new URLSearchParams(window.location.search)
-  const rawNumber = params.get(SEARCH_CELL_PARAM)
-  const parsedNumber =
-    rawNumber !== null && /^\d+$/.test(rawNumber) ? Number(rawNumber) : null
-  const numbers = new Set(
-    numberProducts(groups).flatMap(({ shelves }) =>
-      shelves.flatMap((shelf) => shelf.products.map(({ number }) => number)),
-    ),
-  )
-
-  return {
-    query: params.get(SEARCH_QUERY_PARAM) ?? '',
-    selectedNumber:
-      parsedNumber !== null && numbers.has(parsedNumber) ? parsedNumber : null,
-  }
-}
-
-function writeSearchState(search: SearchState) {
-  updateUrlParams((params) => {
-    if (search.query) params.set(SEARCH_QUERY_PARAM, search.query)
-    else params.delete(SEARCH_QUERY_PARAM)
-    if (search.selectedNumber !== null)
-      params.set(SEARCH_CELL_PARAM, String(search.selectedNumber))
-    else params.delete(SEARCH_CELL_PARAM)
-  })
-}
-
-function readCellSize(): CellSize {
-  const saved = readStorage<string>(STORAGE_KEYS.cellSize, DEFAULT_CELL_SIZE)
-  return CELL_SIZES.find((size) => size === saved) ?? DEFAULT_CELL_SIZE
-}
-
-function readCollapsedGroups() {
-  const saved = readStorage<string[]>(STORAGE_KEYS.collapsed, [])
-  const ids = new Set(groups.map((group) => group.id))
-  return new Set(saved.filter((id) => ids.has(id)))
-}
-
-function readViews() {
-  const params = new URLSearchParams(window.location.search)
-  const ids = new Set(groups.map((group) => group.id))
-
-  return Object.fromEntries(
-    Array.from(params.entries())
-      .filter(
-        ([key, view]) =>
-          key.startsWith(VIEW_PARAM_PREFIX) &&
-          ids.has(key.slice(VIEW_PARAM_PREFIX.length)) &&
-          (view === 'cards' || view === 'faces') &&
-          view !== 'cards',
-      )
-      .map(
-        ([key, view]) => [key.slice(VIEW_PARAM_PREFIX.length), view] as const,
-      ),
-  ) as Record<string, GroupView>
-}
-
-function writeViews(views: Record<string, GroupView>) {
-  updateUrlParams((params) => {
-    for (const key of Array.from(params.keys())) {
-      if (key.startsWith(VIEW_PARAM_PREFIX)) params.delete(key)
-    }
-    for (const [id, view] of Object.entries(views)) {
-      if (view !== 'cards') params.set(`${VIEW_PARAM_PREFIX}${id}`, view)
-    }
-  })
-}
 
 let App = () => {
   const { theme, setTheme } = useTheme()
@@ -126,8 +47,7 @@ let App = () => {
   const totalFaces = products.reduce((sum, product) => sum + product.faces, 0)
 
   useEffect(() => {
-    if (cellSize === DEFAULT_CELL_SIZE) removeStorage(STORAGE_KEYS.cellSize)
-    else writeStorage(STORAGE_KEYS.cellSize, cellSize)
+    writeCellSize(cellSize)
   }, [cellSize])
 
   useEffect(() => {
@@ -138,6 +58,7 @@ let App = () => {
     const handlePopState = () => {
       const next = readSearchState()
       setSearch(next)
+      setCollapsedGroups(readCollapsedGroups())
       setViews(readViews())
       setResultsVisible(Boolean(next.query.trim()))
       setHoveredNumber(null)
@@ -147,7 +68,7 @@ let App = () => {
   }, [])
 
   useEffect(() => {
-    writeStorage(STORAGE_KEYS.collapsed, [...collapsedGroups])
+    writeCollapsedGroups(collapsedGroups)
   }, [collapsedGroups])
 
   useEffect(() => {
@@ -176,12 +97,6 @@ let App = () => {
     setSearch({ query: next, selectedNumber: null })
     setResultsVisible(Boolean(next.trim()))
     setHoveredNumber(null)
-  }
-
-  const scrollToCell = (number: number) => {
-    document
-      .querySelector(`[data-cell-number="${number}"]`)
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
   }
 
   const revealCell = (result: SearchResult) => {

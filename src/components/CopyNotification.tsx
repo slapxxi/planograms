@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import {
+  NOTICE_DURATION,
+  readCopyNotice,
+} from '~/components/CopyNotification.config'
 import { COPY_NOTIFICATION } from '~/lib/constants'
 import type { CopyNotice } from '~/lib/notifications'
 
@@ -9,9 +13,9 @@ let CopyNotification = () => {
     let timer: number | undefined
 
     const handleNotice = (event: Event) => {
-      setNotice((event as CustomEvent<CopyNotice>).detail)
+      setNotice(readCopyNotice(event))
       window.clearTimeout(timer)
-      timer = window.setTimeout(() => setNotice(null), 2200)
+      timer = window.setTimeout(() => setNotice(null), NOTICE_DURATION)
     }
 
     window.addEventListener(COPY_NOTIFICATION, handleNotice)

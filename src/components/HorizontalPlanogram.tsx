@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import DragScrollArea from '~/components/DragScrollArea'
 import GroupHeading from '~/components/GroupHeading'
+import {
+  getGroupView,
+  isGroupCollapsed,
+} from '~/components/HorizontalPlanogram.config'
 import ShelfRow from '~/components/ShelfRow'
 import type { Group } from '~/data/planograms'
 import { groupStyle, numberProducts } from '~/data/planograms'
@@ -37,8 +41,8 @@ let HorizontalPlanogram = (props: Props) => {
   return (
     <div>
       {numberedGroups.map(({ group, shelves }) => {
-        const view = views[group.id] ?? 'cards'
-        const collapsed = collapsedGroups.has(group.id)
+        const view = getGroupView(views, group.id)
+        const collapsed = isGroupCollapsed(collapsedGroups, group.id)
 
         return (
           <section

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { isTypingTarget } from '~/components/SearchBar.config'
 import type { SearchResult } from '~/lib/search'
 
 type Props = {
@@ -24,13 +25,7 @@ let SearchBar = (props: Props) => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null
-      const typing =
-        target?.tagName === 'INPUT' ||
-        target?.tagName === 'TEXTAREA' ||
-        target?.isContentEditable
-
-      if (event.key === '/' && !typing) {
+      if (event.key === '/' && !isTypingTarget(event.target)) {
         event.preventDefault()
         inputRef.current?.focus()
       }

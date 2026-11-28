@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties } from 'react'
+import { views } from '~/components/GroupHeading.config'
 import type { Group } from '~/data/planograms'
 import { groupStyle } from '~/data/planograms'
 import type { GroupView } from '~/lib/planogram'
@@ -12,44 +13,6 @@ type Props = {
   className?: string
   style?: CSSProperties
 }
-
-const views: { id: GroupView; label: string; icon: ReactNode }[] = [
-  {
-    id: 'cards',
-    label: 'Названия',
-    icon: (
-      <svg
-        aria-hidden="true"
-        className="size-4"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeWidth="1.6"
-        viewBox="0 0 24 24"
-      >
-        <path d="M4 6h16M4 12h10M4 18h16" />
-      </svg>
-    ),
-  },
-  {
-    id: 'faces',
-    label: 'Фейсы',
-    icon: (
-      <svg
-        aria-hidden="true"
-        className="size-4"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        viewBox="0 0 24 24"
-      >
-        <rect height="14" rx="1" width="5" x="3" y="5" />
-        <rect height="14" rx="1" width="5" x="9.5" y="5" />
-        <rect height="14" rx="1" width="5" x="16" y="5" />
-      </svg>
-    ),
-  },
-]
 
 let GroupHeading = (props: Props) => {
   const {

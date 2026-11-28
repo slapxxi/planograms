@@ -1,5 +1,9 @@
 import ProductContent from '~/components/ProductContent'
 import ProductTooltip from '~/components/ProductTooltip'
+import {
+  getHighlightClass,
+  getPaddingClass,
+} from '~/components/ShelfRow.config'
 import type { NumberedShelf } from '~/data/planograms'
 import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
@@ -13,24 +17,6 @@ type Props = {
   matchedNumbers: Set<number>
   searching: boolean
   selectedNumber: number | null
-}
-
-const cardPadding: Record<CellSize, string> = {
-  '3xs': 'px-0.5 pt-3.5 pb-0.5',
-  '2xs': 'px-1 pt-3.5 pb-0.5',
-  xs: 'px-1 pt-3.5 pb-1',
-  sm: 'px-1.5 pt-4 pb-1',
-  md: 'px-2 pt-4 pb-1.5',
-  lg: 'px-2 pt-4 pb-1.5',
-}
-
-const facePadding: Record<CellSize, string> = {
-  '3xs': 'px-0.5 pt-3.5 pb-0.5',
-  '2xs': 'px-1 pt-3.5 pb-0.5',
-  xs: 'px-1 pt-3.5 pb-1',
-  sm: 'px-1 pt-4 pb-1',
-  md: 'px-1 pt-4 pb-1',
-  lg: 'px-1 pt-4 pb-1',
 }
 
 let ShelfRow = (props: Props) => {
@@ -53,16 +39,12 @@ let ShelfRow = (props: Props) => {
         const showFaces = view === 'faces' && Boolean(firstImage(product))
         const matched = matchedNumbers.has(number)
         const selected = selectedNumber === number
-        const highlightClass = matched
-          ? selected
-            ? 'z-10 outline-2 outline-(--group-accent) outline-offset-2'
-            : 'outline-1 outline-(--group-accent) outline-offset-2'
-          : searching
-            ? 'opacity-40'
-            : ''
-        const paddingClass = showFaces
-          ? facePadding[cellSize]
-          : cardPadding[cellSize]
+        const highlightClass = getHighlightClass({
+          matched,
+          searching,
+          selected,
+        })
+        const paddingClass = getPaddingClass(showFaces, cellSize)
 
         return (
           <ProductTooltip
