@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import type {
   CSSProperties,
   KeyboardEvent as ReactKeyboardEvent,
@@ -8,13 +8,15 @@ import type {
 import { createPortal } from 'react-dom'
 import {
   copyProductName,
-  createTooltipPositionUpdater,
   tooltipImages,
 } from '~/components/ProductTooltip.config'
 import type { TooltipPosition } from '~/components/ProductTooltip.config'
+import {
+  useTooltipDismiss,
+  useTooltipPosition,
+} from '~/components/ProductTooltip.hooks'
 import type { Product } from '~/data/planograms'
 import { faceSpanToCm, formatCm } from '~/data/planograms'
-import { DRAG_SCROLL_START } from '~/lib/constants'
 
 type Props = {
   product: Product
@@ -46,61 +48,21 @@ let ProductTooltip = (props: Props) => {
 
   const images = tooltipImages(product)
 
-  useLayoutEffect(() => {
-    if (!open) return
-
-    const updatePosition = createTooltipPositionUpdater(
-      () => triggerRef.current,
-      () => tooltipRef.current,
-      setPosition,
-    )
-
-    updatePosition()
-    window.addEventListener('resize', updatePosition)
-    window.addEventListener('scroll', updatePosition, true)
-    window.visualViewport?.addEventListener('resize', updatePosition)
-    window.visualViewport?.addEventListener('scroll', updatePosition)
-
-    return () => {
-      window.removeEventListener('resize', updatePosition)
-      window.removeEventListener('scroll', updatePosition, true)
-      window.visualViewport?.removeEventListener('resize', updatePosition)
-      window.visualViewport?.removeEventListener('scroll', updatePosition)
-    }
-  }, [open, images.length, position?.width, position?.maxHeight])
-
-  useEffect(() => {
-    const close = () => setOpened(false)
-    window.addEventListener(DRAG_SCROLL_START, close)
-    return () => window.removeEventListener(DRAG_SCROLL_START, close)
-  }, [])
-
-  useEffect(() => {
-    if (!open) return
-
-    const handlePointerDown = (event: PointerEvent) => {
-      const target = event.target as Node
-      if (
-        triggerRef.current?.contains(target) ||
-        tooltipRef.current?.contains(target)
-      ) {
-        return
-      }
-      setOpened(false)
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpened(false)
-    }
-
-    document.addEventListener('pointerdown', handlePointerDown)
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('pointerdown', handlePointerDown)
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [open])
+  useTooltipPosition({
+    imageCount: images.length,
+    maxHeight: position?.maxHeight,
+    open,
+    setPosition,
+    tooltipRef,
+    triggerRef,
+    width: position?.width,
+  })
+  useTooltipDismiss({
+    close: () => setOpened(false),
+    open,
+    tooltipRef,
+    triggerRef,
+  })
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLButtonElement>) => {
     pointerType.current = event.pointerType

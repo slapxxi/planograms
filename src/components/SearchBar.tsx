@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import {
-  isTypingTarget,
-  RECENT_QUERIES_LABEL,
-} from '~/components/SearchBar.config'
+import { useRef, useState } from 'react'
+import type { FormEvent } from 'react'
+import { RECENT_QUERIES_LABEL } from '~/components/SearchBar.config'
+import { useSearchShortcuts } from '~/components/SearchBar.hooks'
 import type { SearchResult } from '~/lib/search'
 
 type Props = {
@@ -31,30 +30,17 @@ let SearchBar = (props: Props) => {
   } = props
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  useSearchShortcuts(inputRef, onQueryChange)
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === '/' && !isTypingTarget(event.target)) {
-        event.preventDefault()
-        inputRef.current?.focus()
-      }
-
-      if (
-        event.key === 'Escape' &&
-        document.activeElement === inputRef.current
-      ) {
-        onQueryChange('')
-        inputRef.current?.blur()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onQueryChange])
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const result = results[0]
+    if (result) onSelect(result)
+  }
 
   return (
     <div className="relative w-full sm:max-w-xl">
-      <div className="flex items-center gap-2">
+      <form className="flex items-center gap-2" onSubmit={handleSubmit}>
         <div className="flex min-w-0 flex-1 items-center gap-2 rounded-[2px] border border-(--border) bg-(--surface) px-2 py-1.5">
           <svg
             aria-hidden="true"
@@ -93,7 +79,7 @@ let SearchBar = (props: Props) => {
             Очистить
           </button>
         ) : null}
-      </div>
+      </form>
 
       {focused &&
       ((query.trim() && showResults) ||

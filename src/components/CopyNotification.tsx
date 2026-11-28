@@ -1,29 +1,7 @@
-import { useEffect, useState } from 'react'
-import {
-  NOTICE_DURATION,
-  readCopyNotice,
-} from '~/components/CopyNotification.config'
-import { COPY_NOTIFICATION } from '~/lib/constants'
-import type { CopyNotice } from '~/lib/notifications'
+import { useCopyNotice } from '~/components/CopyNotification.hooks'
 
 let CopyNotification = () => {
-  const [notice, setNotice] = useState<CopyNotice | null>(null)
-
-  useEffect(() => {
-    let timer: number | undefined
-
-    const handleNotice = (event: Event) => {
-      setNotice(readCopyNotice(event))
-      window.clearTimeout(timer)
-      timer = window.setTimeout(() => setNotice(null), NOTICE_DURATION)
-    }
-
-    window.addEventListener(COPY_NOTIFICATION, handleNotice)
-    return () => {
-      window.clearTimeout(timer)
-      window.removeEventListener(COPY_NOTIFICATION, handleNotice)
-    }
-  }, [])
+  const notice = useCopyNotice()
 
   if (!notice) return null
 

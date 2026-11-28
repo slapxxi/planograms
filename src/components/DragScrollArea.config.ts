@@ -13,6 +13,10 @@ export type DragScrollController = {
   handlePointerDown: (event: ReactPointerEvent<HTMLDivElement>) => void
 }
 
+export function hasHorizontalScroll(element: HTMLElement) {
+  return element.scrollWidth > element.clientWidth
+}
+
 type Options = {
   elementRef: RefObject<HTMLDivElement | null>
   onDraggingChange?: (dragging: boolean) => void
@@ -30,7 +34,7 @@ export function createDragScrollController(
     suppressClick = false
     if (event.pointerType !== 'mouse' || event.button !== 0) return
     const element = options.elementRef.current
-    if (!element) return
+    if (!element || !hasHorizontalScroll(element)) return
 
     const startX = event.clientX
     const startLeft = element.scrollLeft

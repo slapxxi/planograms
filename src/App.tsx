@@ -1,43 +1,33 @@
-import { useEffect, useState } from 'react'
-import type { SearchState } from '~/App.config'
+import { useState } from 'react'
 import {
-  addRecentQuery,
-  readCellSize,
-  readCollapsedGroups,
-  readRecentQueries,
-  readSearchState,
-  readViews,
-  scrollToCell,
-  writeCellSize,
-  writeCollapsedGroups,
-  writeRecentQueries,
-  writeSearchState,
-  writeViews,
-} from '~/App.config'
+  useCellSizeState,
+  useCollapsedGroupsState,
+  useGroupViewsState,
+  useRecentQueriesState,
+  useSearchState,
+  useUrlStateSync,
+} from '~/App.hooks'
+import { addRecentQuery, scrollToCell } from '~/App.config'
 import CellSizeSwitcher from '~/components/CellSizeSwitcher'
 import CopyNotification from '~/components/CopyNotification'
 import HorizontalPlanogram from '~/components/HorizontalPlanogram'
 import SearchBar from '~/components/SearchBar'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
 import { groups } from '~/data/planograms'
-import type { CellSize } from '~/lib/constants'
 import { DEFAULT_CELL_SIZE } from '~/lib/constants'
-import type { GroupView } from '~/lib/planogram'
 import type { SearchResult } from '~/lib/search'
 import { findResultByName, searchProducts } from '~/lib/search'
 import { useTheme } from '~/theme'
 
 let App = () => {
   const { theme, setTheme } = useTheme()
-  const [cellSize, setCellSize] = useState<CellSize>(readCellSize)
-  const [search, setSearch] = useState<SearchState>(readSearchState)
+  const [cellSize, setCellSize] = useCellSizeState()
+  const [search, setSearch] = useSearchState()
   const [resultsVisible, setResultsVisible] = useState(false)
   const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
-  const [collapsedGroups, setCollapsedGroups] =
-    useState<Set<string>>(readCollapsedGroups)
-  const [views, setViews] = useState<Record<string, GroupView>>(readViews)
-  const [recentQueries, setRecentQueries] =
-    useState<string[]>(readRecentQueries)
+  const [collapsedGroups, setCollapsedGroups] = useCollapsedGroupsState()
+  const [views, setViews] = useGroupViewsState()
+  const [recentQueries, setRecentQueries] = useRecentQueriesState()
 
   const { query, selectedNumber } = search
   const results = searchProducts(groups, query)
@@ -50,39 +40,6 @@ let App = () => {
     group.shelves.flatMap((shelf) => shelf.products),
   )
   const totalFaces = products.reduce((sum, product) => sum + product.faces, 0)
-
-  useEffect(() => {
-    writeCellSize(cellSize)
-  }, [cellSize])
-
-  useEffect(() => {
-    writeSearchState(search)
-  }, [search])
-
-  useEffect(() => {
-    const handlePopState = () => {
-      const next = readSearchState()
-      setSearch(next)
-      setCollapsedGroups(readCollapsedGroups())
-      setViews(readViews())
-      setResultsVisible(Boolean(next.query.trim()))
-      setHoveredNumber(null)
-    }
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
-  }, [])
-
-  useEffect(() => {
-    writeCollapsedGroups(collapsedGroups)
-  }, [collapsedGroups])
-
-  useEffect(() => {
-    writeViews(views)
-  }, [views])
-
-  useEffect(() => {
-    writeRecentQueries(recentQueries)
-  }, [recentQueries])
 
   const toggleGroup = (id: string) => {
     setCollapsedGroups((current) => {
@@ -102,9 +59,9 @@ let App = () => {
     })
   }
 
-  const revealCell = (result: SearchResult) => {
+  const revealCell = (result: SearchResult, focus = false) => {
     expandGroup(result.groupId)
-    window.requestAnimationFrame(() => scrollToCell(result.number))
+    window.requestAnimationFrame(() => scrollToCell(result.number, focus))
   }
 
   const handleQueryChange = (next: string) => {
@@ -114,6 +71,18 @@ let App = () => {
     setHoveredNumber(topResult?.number ?? null)
     if (topResult) revealCell(topResult)
   }
+
+  const handleUrlQueryChange = (next: string) => {
+    setResultsVisible(Boolean(next.trim()))
+    setHoveredNumber(null)
+  }
+
+  useUrlStateSync({
+    onCollapsedGroups: setCollapsedGroups,
+    onQueryChange: handleUrlQueryChange,
+    onSearch: setSearch,
+    onViews: setViews,
+  })
 
   const handleHoverChange = (result: SearchResult | null) => {
     setHoveredNumber(result?.number ?? null)
@@ -125,7 +94,7 @@ let App = () => {
     setResultsVisible(false)
     setHoveredNumber(null)
     setRecentQueries((current) => addRecentQuery(current, result.name))
-    revealCell(result)
+    revealCell(result, true)
   }
 
   const handleRecentHover = (query: string) => {

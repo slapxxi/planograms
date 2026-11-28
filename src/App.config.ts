@@ -150,8 +150,11 @@ export function writeViews(views: Record<string, GroupView>) {
   })
 }
 
-export function scrollToCell(number: number) {
-  document
-    .querySelector(`[data-cell-number="${number}"]`)
-    ?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
+export function scrollToCell(number: number, focus = false) {
+  const cell = document.querySelector<HTMLElement>(
+    `[data-cell-number="${number}"]`,
+  )
+  if (!cell) return
+  if (focus) cell.focus({ preventScroll: true })
+  cell.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
 }

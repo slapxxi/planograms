@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import type { ReactNode } from 'react'
-import { createDragScrollController } from '~/components/DragScrollArea.config'
-import type { DragScrollController } from '~/components/DragScrollArea.config'
+import { useDragScroll } from '~/components/DragScrollArea.hooks'
 
 type Props = {
   children: ReactNode
@@ -12,20 +11,7 @@ type Props = {
 let DragScrollArea = (props: Props) => {
   const { children, className = '', onDraggingChange } = props
   const ref = useRef<HTMLDivElement>(null)
-  const controllerRef = useRef<DragScrollController | null>(null)
-  const [dragging, setDragging] = useState(false)
-
-  useEffect(() => {
-    controllerRef.current = createDragScrollController({
-      elementRef: ref,
-      onDraggingChange,
-      setDragging,
-    })
-    return () => {
-      controllerRef.current?.cleanup()
-      controllerRef.current = null
-    }
-  }, [onDraggingChange])
+  const { controllerRef, dragging } = useDragScroll(ref, onDraggingChange)
 
   return (
     <div
