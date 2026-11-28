@@ -1,4 +1,19 @@
+import type { Product } from '~/data/planograms'
+import type { ProductImage } from '~/data/productImages'
+import { productImages } from '~/data/productImages'
 import type { CellSize } from '~/lib/constants'
+
+export function faceImages(product: Product, height: number): ProductImage[] {
+  const images = (product.images ?? [])
+    .map((key) => productImages[key])
+    .filter((image): image is ProductImage => Boolean(image))
+
+  if (images.length > 1 && product.name.includes('/') && height > 1) {
+    return images
+  }
+
+  return images.slice(0, 1)
+}
 
 export const imageMaxHeight: Record<CellSize, string> = {
   '3xs': 'max-h-14',

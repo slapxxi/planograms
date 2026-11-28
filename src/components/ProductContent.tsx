@@ -1,4 +1,5 @@
 import {
+  faceImages,
   facePadding,
   imageMaxHeight,
   nameFontSize,
@@ -7,7 +8,6 @@ import type { Product } from '~/data/planograms'
 import { productHeight } from '~/data/planograms'
 import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
-import { firstImage } from '~/lib/planogram'
 
 type Props = {
   cellSize: CellSize
@@ -17,10 +17,10 @@ type Props = {
 
 let ProductContent = (props: Props) => {
   const { cellSize, product, view } = props
-  const image = firstImage(product)
   const height = productHeight(product)
+  const images = faceImages(product, height)
 
-  if (view === 'faces' && image) {
+  if (view === 'faces' && images.length > 0) {
     return (
       <span aria-hidden="true" className="flex w-full">
         {Array.from({ length: product.faces }, (_, index) => (
@@ -28,15 +28,18 @@ let ProductContent = (props: Props) => {
             className={`flex min-w-0 flex-1 flex-col items-center justify-end border-r border-(--border-subtle) last:border-r-0 ${facePadding[cellSize]}`}
             key={index}
           >
-            {Array.from({ length: height }, (_, imageIndex) => (
-              <img
-                alt=""
-                className={`max-w-full object-contain object-bottom ${imageMaxHeight[cellSize]}`}
-                draggable={false}
-                key={imageIndex}
-                src={image.src}
-              />
-            ))}
+            {Array.from({ length: height }, (_, imageIndex) => {
+              const image = images[imageIndex % images.length]
+              return (
+                <img
+                  alt=""
+                  className={`max-w-full object-contain object-bottom ${imageMaxHeight[cellSize]}`}
+                  draggable={false}
+                  key={imageIndex}
+                  src={image.src}
+                />
+              )
+            })}
           </span>
         ))}
       </span>
