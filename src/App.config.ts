@@ -15,6 +15,7 @@ const VIEW_PARAM_PREFIX = 'view.'
 const EXPANDED_PARAM_PREFIX = 'expanded.'
 const COLLAPSED_EXPANDED_VALUE = '0'
 const RECENT_QUERY_LIMIT = 3
+const FOCUS_VIEWPORT_RATIO = 0.42
 
 export function updateUrlParams(update: (params: URLSearchParams) => void) {
   const params = new URLSearchParams(window.location.search)
@@ -156,5 +157,26 @@ export function scrollToCell(number: number, focus = false) {
   )
   if (!cell) return
   if (focus) cell.focus({ preventScroll: true })
-  cell.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'center' })
+
+  const viewport = window.visualViewport
+  const visibleTop = viewport?.offsetTop ?? 0
+  const visibleHeight = viewport?.height ?? window.innerHeight
+  const targetTop = visibleTop + visibleHeight * FOCUS_VIEWPORT_RATIO
+  window.scrollTo({
+    top: window.scrollY + cell.getBoundingClientRect().top - targetTop,
+    behavior: 'smooth',
+  })
+
+  const scroller = cell.closest<HTMLElement>('.drag-scroll')
+  if (!scroller) return
+  const cellRect = cell.getBoundingClientRect()
+  const scrollerRect = scroller.getBoundingClientRect()
+  scroller.scrollTo({
+    left:
+      scroller.scrollLeft +
+      cellRect.left -
+      scrollerRect.left -
+      (scroller.clientWidth - cellRect.width) / 2,
+    behavior: 'smooth',
+  })
 }

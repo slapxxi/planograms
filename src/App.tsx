@@ -5,6 +5,7 @@ import {
   useCollapsedGroupsState,
   useGroupViewsState,
   useRecentQueriesState,
+  useSearchPreview,
   useSearchState,
   useUrlStateSync,
 } from '~/App.hooks'
@@ -24,13 +25,40 @@ let App = () => {
   const [cellSize, setCellSize] = useCellSizeState()
   const [search, setSearch] = useSearchState()
   const [resultsVisible, setResultsVisible] = useState(false)
-  const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
   const [collapsedGroups, setCollapsedGroups] = useCollapsedGroupsState()
   const [views, setViews] = useGroupViewsState()
   const [recentQueries, setRecentQueries] = useRecentQueriesState()
 
   const { query, selectedNumber } = search
   const results = searchProducts(groups, query)
+
+  const expandGroup = (id: string) => {
+    setCollapsedGroups((current) => {
+      if (!current.has(id)) return current
+      const next = new Set(current)
+      next.delete(id)
+      return next
+    })
+  }
+
+  const revealCell = (result: SearchResult, focus = false) => {
+    expandGroup(result.groupId)
+    window.requestAnimationFrame(() => scrollToCell(result.number, focus))
+  }
+
+  const {
+    clearPreview,
+    commitPreview,
+    handleHoverChange,
+    hoveredNumber,
+    restorePreview,
+    setHoveredNumber,
+  } = useSearchPreview({
+    collapsedGroups,
+    revealCell,
+    setCollapsedGroups,
+  })
+
   const activeNumber = hoveredNumber ?? selectedNumber
   const matchedNumbers =
     activeNumber === null
@@ -50,20 +78,6 @@ let App = () => {
     })
   }
 
-  const expandGroup = (id: string) => {
-    setCollapsedGroups((current) => {
-      if (!current.has(id)) return current
-      const next = new Set(current)
-      next.delete(id)
-      return next
-    })
-  }
-
-  const revealCell = (result: SearchResult, focus = false) => {
-    expandGroup(result.groupId)
-    window.requestAnimationFrame(() => scrollToCell(result.number, focus))
-  }
-
   const handleQueryChange = (next: string) => {
     const topResult = next.trim() ? searchProducts(groups, next)[0] : undefined
     setSearch({ query: next, selectedNumber: null })
@@ -73,8 +87,8 @@ let App = () => {
   }
 
   const handleUrlQueryChange = (next: string) => {
+    clearPreview()
     setResultsVisible(Boolean(next.trim()))
-    setHoveredNumber(null)
   }
 
   useUrlStateSync({
@@ -84,15 +98,10 @@ let App = () => {
     onViews: setViews,
   })
 
-  const handleHoverChange = (result: SearchResult | null) => {
-    setHoveredNumber(result?.number ?? null)
-    if (result) revealCell(result)
-  }
-
   const handleSelect = (result: SearchResult) => {
+    commitPreview(result)
     setSearch({ query: result.name, selectedNumber: result.number })
     setResultsVisible(false)
-    setHoveredNumber(null)
     setRecentQueries((current) => addRecentQuery(current, result.name))
     revealCell(result, true)
   }
@@ -108,10 +117,10 @@ let App = () => {
   }
 
   const handleClearStorage = () => {
+    restorePreview()
     setCellSize(DEFAULT_CELL_SIZE)
     setSearch({ query: '', selectedNumber: null })
     setResultsVisible(false)
-    setHoveredNumber(null)
     setCollapsedGroups(new Set())
     setViews({})
     setRecentQueries([])
@@ -149,6 +158,7 @@ let App = () => {
             onQueryChange={handleQueryChange}
             onRecentHover={handleRecentHover}
             onRecentSelect={handleRecentSelect}
+            onSearchBlur={restorePreview}
             onSelect={handleSelect}
             query={query}
             recentQueries={recentQueries}

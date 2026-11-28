@@ -1,4 +1,5 @@
-import { useEffect, useEffectEvent, useState } from 'react'
+import { useEffect, useEffectEvent, useRef, useState } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import {
   readCellSize,
   readCollapsedGroups,
@@ -14,6 +15,7 @@ import {
 import type { SearchState } from '~/App.config'
 import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
+import type { SearchResult } from '~/lib/search'
 
 export function useCellSizeState() {
   const [cellSize, setCellSize] = useState<CellSize>(readCellSize)
@@ -67,4 +69,54 @@ export function useUrlStateSync(handlers: UrlStateSyncHandlers) {
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
+}
+
+type SearchPreviewOptions = {
+  collapsedGroups: Set<string>
+  revealCell: (result: SearchResult, focus?: boolean) => void
+  setCollapsedGroups: Dispatch<SetStateAction<Set<string>>>
+}
+
+export function useSearchPreview(options: SearchPreviewOptions) {
+  const { collapsedGroups, revealCell, setCollapsedGroups } = options
+  const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
+  const snapshotRef = useRef<Set<string> | null>(null)
+
+  const restorePreview = () => {
+    setHoveredNumber(null)
+    const snapshot = snapshotRef.current
+    snapshotRef.current = null
+    if (snapshot) setCollapsedGroups(snapshot)
+  }
+
+  const clearPreview = () => {
+    snapshotRef.current = null
+    setHoveredNumber(null)
+  }
+
+  const commitPreview = (result: SearchResult) => {
+    const snapshot = snapshotRef.current
+    snapshotRef.current = null
+    setHoveredNumber(null)
+    if (!snapshot) return
+    const next = new Set(snapshot)
+    next.delete(result.groupId)
+    setCollapsedGroups(next)
+  }
+
+  const handleHoverChange = (result: SearchResult | null) => {
+    if (!result) return
+    if (!snapshotRef.current) snapshotRef.current = new Set(collapsedGroups)
+    setHoveredNumber(result.number)
+    revealCell(result)
+  }
+
+  return {
+    clearPreview,
+    commitPreview,
+    handleHoverChange,
+    hoveredNumber,
+    restorePreview,
+    setHoveredNumber,
+  }
 }

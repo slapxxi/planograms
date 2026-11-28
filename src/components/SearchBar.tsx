@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import type { FormEvent } from 'react'
+import type { FocusEvent, FormEvent } from 'react'
 import { RECENT_QUERIES_LABEL } from '~/components/SearchBar.config'
 import { useSearchShortcuts } from '~/components/SearchBar.hooks'
 import type { SearchResult } from '~/lib/search'
@@ -12,6 +12,7 @@ type Props = {
   onHoverChange: (result: SearchResult | null) => void
   onRecentHover: (query: string) => void
   onRecentSelect: (query: string) => void
+  onSearchBlur: () => void
   recentQueries: string[]
   showResults: boolean
 }
@@ -25,6 +26,7 @@ let SearchBar = (props: Props) => {
     onHoverChange,
     onRecentHover,
     onRecentSelect,
+    onSearchBlur,
     recentQueries,
     showResults,
   } = props
@@ -32,14 +34,27 @@ let SearchBar = (props: Props) => {
   const inputRef = useRef<HTMLInputElement>(null)
   useSearchShortcuts(inputRef, onQueryChange)
 
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    if (event.currentTarget.contains(event.relatedTarget as Node | null)) return
+    setFocused(false)
+    onSearchBlur()
+  }
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const result = results[0]
     if (result) onSelect(result)
   }
 
+  const showSearchResults = Boolean(query.trim()) && showResults
+  const showRecentQueries = recentQueries.length > 0
+
   return (
-    <div className="relative w-full sm:max-w-xl">
+    <div
+      className="relative w-full sm:max-w-xl"
+      onBlur={handleBlur}
+      onFocus={() => setFocused(true)}
+    >
       <form className="flex items-center gap-2" onSubmit={handleSubmit}>
         <div className="flex min-w-0 flex-1 items-center gap-2 rounded-[2px] border border-(--border) bg-(--surface) px-2 py-1.5">
           <svg
@@ -58,11 +73,6 @@ let SearchBar = (props: Props) => {
             aria-label="Поиск по планограммам"
             className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-(--empty-text)"
             onChange={(event) => onQueryChange(event.target.value)}
-            onBlur={() => {
-              setFocused(false)
-              onHoverChange(null)
-            }}
-            onFocus={() => setFocused(true)}
             placeholder="Название товара"
             ref={inputRef}
             value={query}
@@ -81,11 +91,9 @@ let SearchBar = (props: Props) => {
         ) : null}
       </form>
 
-      {focused &&
-      ((query.trim() && showResults) ||
-        (!query.trim() && recentQueries.length > 0)) ? (
-        <div className="absolute top-full right-0 left-0 z-40 mt-1 rounded-[2px] border border-(--border) bg-(--surface) p-1.5 text-xs shadow-lg">
-          {query.trim() ? (
+      {focused && (showSearchResults || showRecentQueries) ? (
+        <div className="search-suggestions absolute top-full right-0 left-0 z-40 mt-1 rounded-[2px] border border-(--border) p-1.5 text-xs shadow-lg">
+          {showSearchResults ? (
             <>
               <p className="px-1 pb-1 text-(--muted-text)">
                 Найдено: {results.length}
@@ -101,11 +109,9 @@ let SearchBar = (props: Props) => {
                       <button
                         className="flex w-full items-center gap-2 rounded-[2px] px-1 py-1.5 text-left hover:bg-(--control-hover)"
                         onClick={() => onSelect(result)}
-                        onBlur={() => onHoverChange(null)}
                         onFocus={() => onHoverChange(result)}
                         onMouseDown={(event) => event.preventDefault()}
                         onMouseEnter={() => onHoverChange(result)}
-                        onMouseLeave={() => onHoverChange(null)}
                         type="button"
                       >
                         <span className="shrink-0 font-semibold text-(--app-text)">
@@ -123,7 +129,11 @@ let SearchBar = (props: Props) => {
                 </ul>
               )}
             </>
-          ) : (
+          ) : null}
+          {showSearchResults && showRecentQueries ? (
+            <div className="my-1 border-t border-(--border-subtle)" />
+          ) : null}
+          {showRecentQueries ? (
             <>
               <p className="px-1 pb-1 text-(--muted-text)">
                 {RECENT_QUERIES_LABEL}
@@ -134,11 +144,9 @@ let SearchBar = (props: Props) => {
                     <button
                       className="flex w-full items-center gap-2 rounded-[2px] px-1 py-1.5 text-left hover:bg-(--control-hover)"
                       onClick={() => onRecentSelect(recentQuery)}
-                      onBlur={() => onHoverChange(null)}
                       onFocus={() => onRecentHover(recentQuery)}
                       onMouseDown={(event) => event.preventDefault()}
                       onMouseEnter={() => onRecentHover(recentQuery)}
-                      onMouseLeave={() => onHoverChange(null)}
                       type="button"
                     >
                       <span className="min-w-0 flex-1 truncate">
@@ -149,7 +157,7 @@ let SearchBar = (props: Props) => {
                 ))}
               </ul>
             </>
-          )}
+          ) : null}
         </div>
       ) : null}
     </div>
