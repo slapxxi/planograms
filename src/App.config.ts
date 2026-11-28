@@ -14,6 +14,7 @@ const SEARCH_CELL_PARAM = 'cell'
 const VIEW_PARAM_PREFIX = 'view.'
 const EXPANDED_PARAM_PREFIX = 'expanded.'
 const COLLAPSED_EXPANDED_VALUE = '0'
+const RECENT_QUERY_LIMIT = 3
 
 export function updateUrlParams(update: (params: URLSearchParams) => void) {
   const params = new URLSearchParams(window.location.search)
@@ -63,6 +64,33 @@ export function readCellSize(): CellSize {
 export function writeCellSize(cellSize: CellSize) {
   if (cellSize === DEFAULT_CELL_SIZE) removeStorage(STORAGE_KEYS.cellSize)
   else writeStorage(STORAGE_KEYS.cellSize, cellSize)
+}
+
+function cleanRecentQueries(queries: string[]) {
+  const seen = new Set<string>()
+  return queries
+    .map((query) => query.trim())
+    .filter((query) => {
+      if (!query || seen.has(query)) return false
+      seen.add(query)
+      return true
+    })
+    .slice(0, RECENT_QUERY_LIMIT)
+}
+
+export function readRecentQueries() {
+  const saved = readStorage<unknown>(STORAGE_KEYS.recentQueries, [])
+  return Array.isArray(saved)
+    ? cleanRecentQueries(saved.filter((query) => typeof query === 'string'))
+    : []
+}
+
+export function writeRecentQueries(queries: string[]) {
+  writeStorage(STORAGE_KEYS.recentQueries, queries)
+}
+
+export function addRecentQuery(queries: string[], value: string) {
+  return cleanRecentQueries([value, ...queries])
 }
 
 export function readCollapsedGroups() {

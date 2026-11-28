@@ -15,4 +15,5 @@ export const DRAG_SCROLL_START = 'dragscroll-start'
 export const COPY_NOTIFICATION = 'copy-notification'
 export const STORAGE_KEYS = {
   cellSize: 'planogram-cell-size',
+  recentQueries: 'planogram-recent-queries',
 } as const

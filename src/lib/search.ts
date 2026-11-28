@@ -17,6 +17,28 @@ function normalize(value: string) {
     .trim()
 }
 
+export function findResultByName(
+  groups: Group[],
+  name: string,
+): SearchResult | undefined {
+  const target = normalize(name)
+  for (const { group, shelves } of numberProducts(groups)) {
+    for (const shelf of shelves) {
+      for (const { product, number } of shelf.products) {
+        if (normalize(product.name) === target) {
+          return {
+            number,
+            name: product.name,
+            groupId: group.id,
+            groupTitle: group.title,
+          }
+        }
+      }
+    }
+  }
+  return undefined
+}
+
 function editDistance(left: string, right: string) {
   const width = right.length + 1
   let previous = Array.from({ length: width }, (_, index) => index)
