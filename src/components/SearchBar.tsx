@@ -8,6 +8,7 @@ type Props = {
   query: string
   onQueryChange: (query: string) => void
   results: SearchResult[]
+  onDone: () => void
   onSelect: (result: SearchResult) => void
   onHoverChange: (result: SearchResult | null) => void
   onRecentHover: (query: string) => void
@@ -22,6 +23,7 @@ let SearchBar = (props: Props) => {
     query,
     onQueryChange,
     results,
+    onDone,
     onSelect,
     onHoverChange,
     onRecentHover,
@@ -42,8 +44,9 @@ let SearchBar = (props: Props) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const result = results[0]
-    if (result) onSelect(result)
+    const input = inputRef.current
+    onDone()
+    if (document.activeElement === input) input?.blur()
   }
 
   const showSearchResults = Boolean(query.trim()) && showResults

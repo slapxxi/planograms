@@ -115,12 +115,27 @@ let App = () => {
     onViews: setViews,
   })
 
-  const handleSelect = (result: SearchResult) => {
+  const selectResult = (result: SearchResult, value = result.name) => {
     commitPreview(result)
-    setSearch({ query: result.name, selectedNumber: result.number })
+    setSearch({ query: value, selectedNumber: result.number })
     setResultsVisible(false)
-    setRecentQueries((current) => addRecentQuery(current, result.name))
+    setRecentQueries((current) => addRecentQuery(current, value))
     revealCell(result, true)
+  }
+
+  const handleSelect = (result: SearchResult) => selectResult(result)
+
+  const handleDone = () => {
+    setResultsVisible(false)
+    const result = findResultByName(groups, query)
+    if (result) {
+      selectResult(result, query)
+      return
+    }
+
+    clearPreview()
+    const firstResult = results[0]
+    if (firstResult) revealCell(firstResult)
   }
 
   const handleRecentHover = (query: string) => {
@@ -149,6 +164,7 @@ let App = () => {
       <div className="mx-auto">
         <div className="sticky top-0 z-30 bg-(--app-bg) pt-2 pb-2 md:pt-4">
           <SearchBar
+            onDone={handleDone}
             onHoverChange={handleHoverChange}
             onQueryChange={handleQueryChange}
             onRecentHover={handleRecentHover}
