@@ -25,7 +25,7 @@ export function getHighlightClass(args: {
 }) {
   if (!args.matched) return args.searching ? 'opacity-40' : ''
   return args.selected
-    ? 'z-10 outline-2 outline-(--group-accent) outline-offset-2'
+    ? 'cell-selected z-10 outline-2 outline-(--group-accent) outline-offset-2'
     : 'outline-1 outline-(--group-accent) outline-offset-2'
 }
 

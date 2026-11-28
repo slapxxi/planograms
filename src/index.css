@@ -46,6 +46,14 @@
   --group-accent: color-mix(in srgb, var(--group-color) 65%, #e6eaf2);
 }
 
+.cell-selected {
+  background: color-mix(
+    in srgb,
+    var(--group-surface) 80%,
+    var(--control-active-bg)
+  );
+}
+
 .search-suggestions {
   background: color-mix(in srgb, var(--surface) 90%, transparent);
 }
