@@ -4,6 +4,7 @@ import {
   nameFontSize,
 } from '~/components/ProductContent.config'
 import type { Product } from '~/data/planograms'
+import { productHeight } from '~/data/planograms'
 import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import { firstImage } from '~/lib/planogram'
@@ -17,21 +18,25 @@ type Props = {
 let ProductContent = (props: Props) => {
   const { cellSize, product, view } = props
   const image = firstImage(product)
+  const height = productHeight(product)
 
   if (view === 'faces' && image) {
     return (
       <span aria-hidden="true" className="flex w-full">
         {Array.from({ length: product.faces }, (_, index) => (
           <span
-            className={`flex min-w-0 flex-1 items-end justify-center border-r border-(--border-subtle) last:border-r-0 ${facePadding[cellSize]}`}
+            className={`flex min-w-0 flex-1 flex-col items-center justify-end border-r border-(--border-subtle) last:border-r-0 ${facePadding[cellSize]}`}
             key={index}
           >
-            <img
-              alt=""
-              className={`max-w-full object-contain object-bottom ${imageMaxHeight[cellSize]}`}
-              draggable={false}
-              src={image.src}
-            />
+            {Array.from({ length: height }, (_, imageIndex) => (
+              <img
+                alt=""
+                className={`max-w-full object-contain object-bottom ${imageMaxHeight[cellSize]}`}
+                draggable={false}
+                key={imageIndex}
+                src={image.src}
+              />
+            ))}
           </span>
         ))}
       </span>

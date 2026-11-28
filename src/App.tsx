@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { addRecentQuery, scrollToCell } from '~/App.config'
 import {
   useCellSizeState,
   useCollapsedGroupsState,
@@ -7,7 +8,6 @@ import {
   useSearchState,
   useUrlStateSync,
 } from '~/App.hooks'
-import { addRecentQuery, scrollToCell } from '~/App.config'
 import CellSizeSwitcher from '~/components/CellSizeSwitcher'
 import CopyNotification from '~/components/CopyNotification'
 import HorizontalPlanogram from '~/components/HorizontalPlanogram'
