@@ -186,12 +186,12 @@ export function writeViews(views: Record<string, GroupView>) {
   })
 }
 
-export function scrollToCell(number: number, focus = false) {
+export function scrollToCell(number: number, focusElement = false) {
   const cell = document.querySelector<HTMLElement>(
     `[data-cell-number="${number}"]`,
   )
   if (!cell) return
-  if (focus) cell.focus({ preventScroll: true })
+  if (focusElement) cell.focus({ preventScroll: true })
 
   const viewport = window.visualViewport
   const visibleTop = viewport?.offsetTop ?? 0

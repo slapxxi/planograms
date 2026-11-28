@@ -1,4 +1,10 @@
-import { useEffect, useEffectEvent, useRef, useState } from 'react'
+import {
+  useEffect,
+  useEffectEvent,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import {
   readCellSize,
@@ -13,6 +19,7 @@ import {
   writeRecentQueries,
   writeSearchState,
   writeViews,
+  scrollToCell,
 } from '~/App.config'
 import type { SearchState } from '~/App.config'
 import { groups, numberProducts } from '~/data/planograms'
@@ -115,6 +122,36 @@ export function useUrlStateSync(handlers: UrlStateSyncHandlers) {
   }, [])
 }
 
+type CellRevealOptions = {
+  collapsedGroups: Set<string>
+  expandGroup: (id: string) => void
+}
+
+export function useCellReveal(options: CellRevealOptions) {
+  const { collapsedGroups, expandGroup } = options
+  const pendingRef = useRef<{ focusElement: boolean; number: number } | null>(
+    null,
+  )
+
+  useLayoutEffect(() => {
+    const pending = pendingRef.current
+    if (!pending) return
+    pendingRef.current = null
+    scrollToCell(pending.number, pending.focusElement)
+  }, [collapsedGroups])
+
+  return (result: SearchResult, focusElement = false) => {
+    if (!collapsedGroups.has(result.groupId)) {
+      pendingRef.current = null
+      scrollToCell(result.number, focusElement)
+      return
+    }
+
+    pendingRef.current = { focusElement, number: result.number }
+    expandGroup(result.groupId)
+  }
+}
+
 type SearchPreviewOptions = {
   collapsedGroups: Set<string>
   revealCell: (result: SearchResult, focus?: boolean) => void
@@ -125,6 +162,16 @@ export function useSearchPreview(options: SearchPreviewOptions) {
   const { collapsedGroups, revealCell, setCollapsedGroups } = options
   const [hoveredNumber, setHoveredNumber] = useState<number | null>(null)
   const snapshotRef = useRef<Set<string> | null>(null)
+
+  const capturePreview = () => {
+    if (!snapshotRef.current) snapshotRef.current = new Set(collapsedGroups)
+  }
+
+  const showPreview = (result: SearchResult) => {
+    capturePreview()
+    setHoveredNumber(result.number)
+    revealCell(result)
+  }
 
   const restorePreview = () => {
     setHoveredNumber(null)
@@ -149,18 +196,20 @@ export function useSearchPreview(options: SearchPreviewOptions) {
   }
 
   const handleHoverChange = (result: SearchResult | null) => {
-    if (!result) return
-    if (!snapshotRef.current) snapshotRef.current = new Set(collapsedGroups)
-    setHoveredNumber(result.number)
-    revealCell(result)
+    if (result) showPreview(result)
+  }
+
+  const handleQueryPreview = (result: SearchResult | null) => {
+    if (result) showPreview(result)
+    else setHoveredNumber(null)
   }
 
   return {
     clearPreview,
     commitPreview,
     handleHoverChange,
+    handleQueryPreview,
     hoveredNumber,
     restorePreview,
-    setHoveredNumber,
   }
 }

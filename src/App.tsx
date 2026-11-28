@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { addRecentQuery, scrollToCell } from '~/App.config'
+import { addRecentQuery } from '~/App.config'
 import {
+  useCellReveal,
   useCellSizeState,
   useCollapsedGroupsState,
   useGroupViewsState,
@@ -49,18 +50,15 @@ let App = () => {
     })
   }
 
-  const revealCell = (result: SearchResult, focus = false) => {
-    expandGroup(result.groupId)
-    window.requestAnimationFrame(() => scrollToCell(result.number, focus))
-  }
+  const revealCell = useCellReveal({ collapsedGroups, expandGroup })
 
   const {
     clearPreview,
     commitPreview,
     handleHoverChange,
+    handleQueryPreview,
     hoveredNumber,
     restorePreview,
-    setHoveredNumber,
   } = useSearchPreview({
     collapsedGroups,
     revealCell,
@@ -91,11 +89,17 @@ let App = () => {
   }
 
   const handleQueryChange = (next: string) => {
-    const topResult = next.trim() ? searchProducts(groups, next)[0] : undefined
+    if (!next.trim()) {
+      restorePreview()
+      setSearch({ query: next, selectedNumber: null })
+      setResultsVisible(false)
+      return
+    }
+
+    const topResult = searchProducts(groups, next)[0] ?? null
     setSearch({ query: next, selectedNumber: null })
-    setResultsVisible(Boolean(next.trim()))
-    setHoveredNumber(topResult?.number ?? null)
-    if (topResult) revealCell(topResult)
+    setResultsVisible(true)
+    handleQueryPreview(topResult)
   }
 
   const handleUrlQueryChange = (next: string) => {
@@ -141,8 +145,23 @@ let App = () => {
   }
 
   return (
-    <main className="min-h-screen bg-(--app-bg) p-2 font-sans text-(--app-text) antialiased md:px-3 md:py-4">
+    <main className="min-h-screen bg-(--app-bg) px-2 pb-2 font-sans text-(--app-text) antialiased md:px-3 md:pb-4">
       <div className="mx-auto">
+        <div className="sticky top-0 z-30 bg-(--app-bg) pt-2 pb-2 md:pt-4">
+          <SearchBar
+            onHoverChange={handleHoverChange}
+            onQueryChange={handleQueryChange}
+            onRecentHover={handleRecentHover}
+            onRecentSelect={handleRecentSelect}
+            onSearchBlur={restorePreview}
+            onSelect={handleSelect}
+            query={query}
+            recentQueries={recentQueries}
+            results={results}
+            showResults={resultsVisible}
+          />
+        </div>
+
         <header className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h1 className="text-[24px] leading-tight font-semibold sm:text-[28px]">
@@ -165,21 +184,6 @@ let App = () => {
             <ThemeSwitcher onChange={setTheme} theme={theme} />
           </div>
         </header>
-
-        <div className="sticky top-0 z-30 bg-(--app-bg) pt-4 pb-2">
-          <SearchBar
-            onHoverChange={handleHoverChange}
-            onQueryChange={handleQueryChange}
-            onRecentHover={handleRecentHover}
-            onRecentSelect={handleRecentSelect}
-            onSearchBlur={restorePreview}
-            onSelect={handleSelect}
-            query={query}
-            recentQueries={recentQueries}
-            results={results}
-            showResults={resultsVisible}
-          />
-        </div>
 
         <p className="mt-3.5 mb-5 text-[13px] text-(--muted-text)">
           Позиций: {products.length} · Фейсов: {totalFaces}
