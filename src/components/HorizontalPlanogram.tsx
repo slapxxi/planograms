@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import DragScrollArea from '~/components/DragScrollArea'
 import GroupHeading from '~/components/GroupHeading'
 import {
@@ -35,7 +34,6 @@ let HorizontalPlanogram = (props: Props) => {
     selectedNumber,
     views,
   } = props
-  const [draggingGroup, setDraggingGroup] = useState<string | null>(null)
   const numberedGroups = numberProducts(groups)
 
   return (
@@ -60,11 +58,7 @@ let HorizontalPlanogram = (props: Props) => {
               view={view}
             />
             {collapsed ? null : (
-              <DragScrollArea
-                onDraggingChange={(next) =>
-                  setDraggingGroup(next ? group.id : null)
-                }
-              >
+              <DragScrollArea>
                 {shelves.length === 0 ? (
                   <p className="px-4 py-4 text-sm text-(--empty-text)">
                     Пока нет товаров
@@ -73,7 +67,6 @@ let HorizontalPlanogram = (props: Props) => {
                   shelves.map((shelf, index) => (
                     <ShelfRow
                       cellSize={cellSize}
-                      disabled={draggingGroup === group.id}
                       key={index}
                       matchedNumbers={matchedNumbers}
                       searching={searching}

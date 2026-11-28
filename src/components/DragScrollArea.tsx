@@ -5,13 +5,12 @@ import { useDragScroll } from '~/components/DragScrollArea.hooks'
 type Props = {
   children: ReactNode
   className?: string
-  onDraggingChange?: (dragging: boolean) => void
 }
 
 let DragScrollArea = (props: Props) => {
-  const { children, className = '', onDraggingChange } = props
+  const { children, className = '' } = props
   const ref = useRef<HTMLDivElement>(null)
-  const { controllerRef, dragging } = useDragScroll(ref, onDraggingChange)
+  const { controllerRef, dragging } = useDragScroll(ref)
 
   return (
     <div

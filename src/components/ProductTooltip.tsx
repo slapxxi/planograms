@@ -8,6 +8,7 @@ import type {
 import { createPortal } from 'react-dom'
 import {
   copyProductName,
+  isDragScrollActive,
   tooltipImages,
 } from '~/components/ProductTooltip.config'
 import type { TooltipPosition } from '~/components/ProductTooltip.config'
@@ -25,7 +26,6 @@ type Props = {
   className?: string
   style?: CSSProperties
   hideBackground?: boolean
-  disabled?: boolean
 }
 
 let ProductTooltip = (props: Props) => {
@@ -36,10 +36,9 @@ let ProductTooltip = (props: Props) => {
     className = '',
     style,
     hideBackground = false,
-    disabled = false,
   } = props
   const [opened, setOpened] = useState(false)
-  const open = opened && !disabled
+  const open = opened
   const [position, setPosition] = useState<TooltipPosition | null>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
@@ -70,7 +69,7 @@ let ProductTooltip = (props: Props) => {
 
   const handlePointerEnter = (event: ReactPointerEvent<HTMLButtonElement>) => {
     pointerType.current = event.pointerType
-    if (event.pointerType === 'mouse' && !disabled) setOpened(true)
+    if (event.pointerType === 'mouse' && !isDragScrollActive()) setOpened(true)
   }
 
   const handlePointerLeave = (event: ReactPointerEvent<HTMLButtonElement>) => {
@@ -92,7 +91,7 @@ let ProductTooltip = (props: Props) => {
 
   const handleClick = () => {
     copyProductName(product)
-    if (hasTooltip && pointerType.current !== 'mouse' && !disabled) {
+    if (hasTooltip && pointerType.current !== 'mouse') {
       setOpened((value) => !value)
     }
   }

@@ -3,7 +3,7 @@ import type {
   PointerEvent as ReactPointerEvent,
   RefObject,
 } from 'react'
-import { DRAG_SCROLL_START } from '~/lib/constants'
+import { DRAG_SCROLL_ACTIVE, DRAG_SCROLL_START } from '~/lib/constants'
 
 export const DRAG_THRESHOLD = 4
 
@@ -19,7 +19,6 @@ export function hasHorizontalScroll(element: HTMLElement) {
 
 type Options = {
   elementRef: RefObject<HTMLDivElement | null>
-  onDraggingChange?: (dragging: boolean) => void
   setDragging: (dragging: boolean) => void
 }
 
@@ -38,38 +37,48 @@ export function createDragScrollController(
 
     const startX = event.clientX
     const startLeft = element.scrollLeft
+    let delta = 0
+    let frame = 0
     let moved = false
+
+    window.getSelection()?.removeAllRanges()
+    window.dispatchEvent(new Event(DRAG_SCROLL_START))
+    document.documentElement.setAttribute(DRAG_SCROLL_ACTIVE, '')
+    options.setDragging(true)
+
+    const applyScroll = () => {
+      frame = 0
+      element.scrollLeft = startLeft - delta
+    }
 
     const handleMove = (moveEvent: PointerEvent) => {
       if (moveEvent.pointerType !== 'mouse') return
-      const delta = moveEvent.clientX - startX
-      if (!moved && Math.abs(delta) <= DRAG_THRESHOLD) return
-      if (!moved) {
-        moved = true
-        window.getSelection()?.removeAllRanges()
-        window.dispatchEvent(new Event(DRAG_SCROLL_START))
-        options.setDragging(true)
-        options.onDraggingChange?.(true)
-      }
-      element.scrollLeft = startLeft - delta
+      delta = moveEvent.clientX - startX
+      if (Math.abs(delta) >= DRAG_THRESHOLD) moved = true
+      if (frame === 0) frame = requestAnimationFrame(applyScroll)
     }
 
     const stopDragging = (notify: boolean) => {
       window.removeEventListener('pointermove', handleMove)
       window.removeEventListener('pointerup', handleEnd)
       window.removeEventListener('pointercancel', handleEnd)
+      if (frame) {
+        cancelAnimationFrame(frame)
+        frame = 0
+        element.scrollLeft = startLeft - delta
+      }
       stop = null
-      if (moved && notify) {
-        suppressClick = true
+      document.documentElement.removeAttribute(DRAG_SCROLL_ACTIVE)
+      if (notify) {
+        if (moved) suppressClick = true
         options.setDragging(false)
-        options.onDraggingChange?.(false)
       }
     }
 
     const handleEnd = () => stopDragging(true)
 
     stop = stopDragging
-    window.addEventListener('pointermove', handleMove)
+    window.addEventListener('pointermove', handleMove, { passive: true })
     window.addEventListener('pointerup', handleEnd)
     window.addEventListener('pointercancel', handleEnd)
   }

@@ -1,5 +1,6 @@
 import type { Product } from '~/data/planograms'
 import { productImages } from '~/data/productImages'
+import { DRAG_SCROLL_ACTIVE } from '~/lib/constants'
 import { notifyCopy } from '~/lib/notifications'
 
 export type TooltipPosition = {
@@ -19,6 +20,10 @@ type ViewportBounds = {
 const GAP = 8
 const EDGE = 8
 const MAX_WIDTH = 320
+
+export function isDragScrollActive() {
+  return document.documentElement.hasAttribute(DRAG_SCROLL_ACTIVE)
+}
 
 export function tooltipImages(product: Product) {
   return (product.images ?? []).flatMap((key) => {

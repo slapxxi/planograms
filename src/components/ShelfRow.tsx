@@ -13,22 +13,14 @@ type Props = {
   cellSize: CellSize
   shelf: NumberedShelf
   view: GroupView
-  disabled: boolean
   matchedNumbers: Set<number>
   searching: boolean
   selectedNumber: number | null
 }
 
 let ShelfRow = (props: Props) => {
-  const {
-    cellSize,
-    shelf,
-    view,
-    disabled,
-    matchedNumbers,
-    searching,
-    selectedNumber,
-  } = props
+  const { cellSize, shelf, view, matchedNumbers, searching, selectedNumber } =
+    props
 
   return (
     <div
@@ -49,7 +41,6 @@ let ShelfRow = (props: Props) => {
         return (
           <ProductTooltip
             className={`${showFaces ? 'w-full' : 'items-start leading-[1.35]'} ${paddingClass} ${highlightClass} flex min-w-0 items-stretch justify-between gap-1 rounded-xs border border-(--border) bg-(--group-surface) text-xs`}
-            disabled={disabled}
             hideBackground={showFaces}
             key={`${product.name}-${index}`}
             number={number}

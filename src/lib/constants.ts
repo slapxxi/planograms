@@ -12,6 +12,7 @@ export const FACE_WIDTH_BY_SIZE: Record<CellSize, number> = {
   lg: 84,
 }
 export const DRAG_SCROLL_START = 'dragscroll-start'
+export const DRAG_SCROLL_ACTIVE = 'data-drag-scroll'
 export const COPY_NOTIFICATION = 'copy-notification'
 export const STORAGE_KEYS = {
   cellSize: 'planogram-cell-size',
