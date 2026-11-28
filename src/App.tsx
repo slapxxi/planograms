@@ -20,6 +20,19 @@ type SearchState = {
 
 const SEARCH_QUERY_PARAM = 'q'
 const SEARCH_CELL_PARAM = 'cell'
+const VIEW_PARAM_PREFIX = 'view.'
+
+function updateUrlParams(update: (params: URLSearchParams) => void) {
+  const params = new URLSearchParams(window.location.search)
+  update(params)
+
+  const queryString = params.toString()
+  const nextUrl =
+    window.location.pathname +
+    (queryString ? `?${queryString}` : '') +
+    window.location.hash
+  window.history.replaceState(window.history.state, '', nextUrl)
+}
 
 function readSearchState(): SearchState {
   const params = new URLSearchParams(window.location.search)
@@ -40,19 +53,13 @@ function readSearchState(): SearchState {
 }
 
 function writeSearchState(search: SearchState) {
-  const params = new URLSearchParams(window.location.search)
-  if (search.query) params.set(SEARCH_QUERY_PARAM, search.query)
-  else params.delete(SEARCH_QUERY_PARAM)
-  if (search.selectedNumber !== null)
-    params.set(SEARCH_CELL_PARAM, String(search.selectedNumber))
-  else params.delete(SEARCH_CELL_PARAM)
-
-  const queryString = params.toString()
-  const nextUrl =
-    window.location.pathname +
-    (queryString ? `?${queryString}` : '') +
-    window.location.hash
-  window.history.replaceState(window.history.state, '', nextUrl)
+  updateUrlParams((params) => {
+    if (search.query) params.set(SEARCH_QUERY_PARAM, search.query)
+    else params.delete(SEARCH_QUERY_PARAM)
+    if (search.selectedNumber !== null)
+      params.set(SEARCH_CELL_PARAM, String(search.selectedNumber))
+    else params.delete(SEARCH_CELL_PARAM)
+  })
 }
 
 function readCellSize(): CellSize {
@@ -67,15 +74,33 @@ function readCollapsedGroups() {
 }
 
 function readViews() {
-  const saved = readStorage<Record<string, unknown>>(STORAGE_KEYS.views, {})
-  if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return {}
+  const params = new URLSearchParams(window.location.search)
   const ids = new Set(groups.map((group) => group.id))
 
   return Object.fromEntries(
-    Object.entries(saved).filter(
-      ([id, view]) => ids.has(id) && (view === 'cards' || view === 'faces'),
-    ),
+    Array.from(params.entries())
+      .filter(
+        ([key, view]) =>
+          key.startsWith(VIEW_PARAM_PREFIX) &&
+          ids.has(key.slice(VIEW_PARAM_PREFIX.length)) &&
+          (view === 'cards' || view === 'faces') &&
+          view !== 'cards',
+      )
+      .map(
+        ([key, view]) => [key.slice(VIEW_PARAM_PREFIX.length), view] as const,
+      ),
   ) as Record<string, GroupView>
+}
+
+function writeViews(views: Record<string, GroupView>) {
+  updateUrlParams((params) => {
+    for (const key of Array.from(params.keys())) {
+      if (key.startsWith(VIEW_PARAM_PREFIX)) params.delete(key)
+    }
+    for (const [id, view] of Object.entries(views)) {
+      if (view !== 'cards') params.set(`${VIEW_PARAM_PREFIX}${id}`, view)
+    }
+  })
 }
 
 let App = () => {
@@ -113,6 +138,7 @@ let App = () => {
     const handlePopState = () => {
       const next = readSearchState()
       setSearch(next)
+      setViews(readViews())
       setResultsVisible(Boolean(next.query.trim()))
       setHoveredNumber(null)
     }
@@ -125,7 +151,7 @@ let App = () => {
   }, [collapsedGroups])
 
   useEffect(() => {
-    writeStorage(STORAGE_KEYS.views, views)
+    writeViews(views)
   }, [views])
 
   const toggleGroup = (id: string) => {

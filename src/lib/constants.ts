@@ -16,5 +16,4 @@ export const COPY_NOTIFICATION = 'copy-notification'
 export const STORAGE_KEYS = {
   cellSize: 'planogram-cell-size',
   collapsed: 'planogram-collapsed',
-  views: 'planogram-views',
 } as const
