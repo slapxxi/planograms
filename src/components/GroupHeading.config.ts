@@ -8,6 +8,20 @@ export type GroupViewOption = {
   icon: ReactNode
 }
 
+export const resetSelectionIcon = createElement(
+  'svg',
+  {
+    'aria-hidden': true,
+    className: 'size-4',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeLinecap: 'round',
+    strokeWidth: '1.6',
+    viewBox: '0 0 24 24',
+  },
+  createElement('path', { d: 'M6 6l12 12M18 6 6 18' }),
+)
+
 export const views: GroupViewOption[] = [
   {
     id: 'cards',

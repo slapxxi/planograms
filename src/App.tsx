@@ -4,6 +4,7 @@ import {
   useCellSizeState,
   useCollapsedGroupsState,
   useGroupViewsState,
+  useManualSelection,
   useRecentQueriesState,
   useSearchPreview,
   useSearchState,
@@ -28,6 +29,13 @@ let App = () => {
   const [collapsedGroups, setCollapsedGroups] = useCollapsedGroupsState()
   const [views, setViews] = useGroupViewsState()
   const [recentQueries, setRecentQueries] = useRecentQueriesState()
+  const {
+    clear: clearManualSelection,
+    numbers: manualSelectedNumbers,
+    resetGroup: resetManualGroup,
+    setNumbers: setManualSelection,
+    toggle: toggleManualSelection,
+  } = useManualSelection()
 
   const { query, selectedNumber } = search
   const results = searchProducts(groups, query)
@@ -60,10 +68,14 @@ let App = () => {
   })
 
   const activeNumber = hoveredNumber ?? selectedNumber
-  const matchedNumbers =
+  const searchMatchedNumbers =
     activeNumber === null
       ? new Set(results.map((result) => result.number))
       : new Set([activeNumber])
+  const matchedNumbers = new Set([
+    ...searchMatchedNumbers,
+    ...manualSelectedNumbers,
+  ])
   const products = groups.flatMap((group) =>
     group.shelves.flatMap((shelf) => shelf.products),
   )
@@ -93,6 +105,7 @@ let App = () => {
 
   useUrlStateSync({
     onCollapsedGroups: setCollapsedGroups,
+    onManualSelection: setManualSelection,
     onQueryChange: handleUrlQueryChange,
     onSearch: setSearch,
     onViews: setViews,
@@ -118,6 +131,7 @@ let App = () => {
 
   const handleClearStorage = () => {
     restorePreview()
+    clearManualSelection()
     setCellSize(DEFAULT_CELL_SIZE)
     setSearch({ query: '', selectedNumber: null })
     setResultsVisible(false)
@@ -176,6 +190,9 @@ let App = () => {
           collapsedGroups={collapsedGroups}
           groups={groups}
           matchedNumbers={matchedNumbers}
+          manualSelectedNumbers={manualSelectedNumbers}
+          onResetManualSelection={resetManualGroup}
+          onToggleManualSelection={toggleManualSelection}
           onToggleGroup={toggleGroup}
           onViewChange={(id, view) =>
             setViews((current) => ({ ...current, [id]: view }))

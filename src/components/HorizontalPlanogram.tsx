@@ -15,6 +15,9 @@ type Props = {
   groups: Group[]
   collapsedGroups: Set<string>
   matchedNumbers: Set<number>
+  manualSelectedNumbers: Set<number>
+  onResetManualSelection: (id: string) => void
+  onToggleManualSelection: (number: number) => void
   onToggleGroup: (id: string) => void
   onViewChange: (id: string, view: GroupView) => void
   searching: boolean
@@ -28,6 +31,9 @@ let HorizontalPlanogram = (props: Props) => {
     groups,
     collapsedGroups,
     matchedNumbers,
+    manualSelectedNumbers,
+    onResetManualSelection,
+    onToggleManualSelection,
     onToggleGroup,
     onViewChange,
     searching,
@@ -41,6 +47,14 @@ let HorizontalPlanogram = (props: Props) => {
       {numberedGroups.map(({ group, shelves }) => {
         const view = getGroupView(views, group.id)
         const collapsed = isGroupCollapsed(collapsedGroups, group.id)
+        const manualCount = shelves.reduce(
+          (sum, shelf) =>
+            sum +
+            shelf.products.filter(({ number }) =>
+              manualSelectedNumbers.has(number),
+            ).length,
+          0,
+        )
 
         return (
           <section
@@ -53,8 +67,10 @@ let HorizontalPlanogram = (props: Props) => {
               className="sticky top-0 z-20"
               collapsed={collapsed}
               group={group}
+              onResetSelection={() => onResetManualSelection(group.id)}
               onToggle={() => onToggleGroup(group.id)}
               onViewChange={(next) => onViewChange(group.id, next)}
+              selectionCount={manualCount}
               view={view}
             />
             {collapsed ? null : (
@@ -69,6 +85,8 @@ let HorizontalPlanogram = (props: Props) => {
                       cellSize={cellSize}
                       key={index}
                       matchedNumbers={matchedNumbers}
+                      manualSelectedNumbers={manualSelectedNumbers}
+                      onToggleManualSelection={onToggleManualSelection}
                       searching={searching}
                       selectedNumber={selectedNumber}
                       shelf={shelf}

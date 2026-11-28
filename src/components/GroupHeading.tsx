@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { views } from '~/components/GroupHeading.config'
+import { resetSelectionIcon, views } from '~/components/GroupHeading.config'
 import type { Group } from '~/data/planograms'
 import { groupStyle } from '~/data/planograms'
 import type { GroupView } from '~/lib/planogram'
@@ -11,6 +11,8 @@ type Props = {
   onToggle: () => void
   collapsed: boolean
   className?: string
+  onResetSelection: () => void
+  selectionCount: number
   style?: CSSProperties
 }
 
@@ -22,6 +24,8 @@ let GroupHeading = (props: Props) => {
     onToggle,
     collapsed,
     className = '',
+    onResetSelection,
+    selectionCount,
     style,
   } = props
   return (
@@ -76,6 +80,17 @@ let GroupHeading = (props: Props) => {
           </button>
         ))}
       </div>
+      {selectionCount > 0 ? (
+        <button
+          aria-label={`Сбросить выделение: ${group.title}`}
+          className="ml-auto flex size-7 items-center justify-center rounded-[2px] border border-[color:var(--border)] text-(--control-text) transition-colors hover:bg-(--control-hover)"
+          onClick={onResetSelection}
+          title={`Сбросить выделение (${selectionCount})`}
+          type="button"
+        >
+          {resetSelectionIcon}
+        </button>
+      ) : null}
     </div>
   )
 }

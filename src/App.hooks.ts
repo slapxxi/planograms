@@ -3,16 +3,19 @@ import type { Dispatch, SetStateAction } from 'react'
 import {
   readCellSize,
   readCollapsedGroups,
+  readManualSelection,
   readRecentQueries,
   readSearchState,
   readViews,
   writeCellSize,
   writeCollapsedGroups,
+  writeManualSelection,
   writeRecentQueries,
   writeSearchState,
   writeViews,
 } from '~/App.config'
 import type { SearchState } from '~/App.config'
+import { groups, numberProducts } from '~/data/planograms'
 import type { CellSize } from '~/lib/constants'
 import type { GroupView } from '~/lib/planogram'
 import type { SearchResult } from '~/lib/search'
@@ -49,8 +52,48 @@ export function useRecentQueriesState() {
   return [recentQueries, setRecentQueries] as const
 }
 
+export function useManualSelection() {
+  const [numbers, setNumbers] = useState<Set<number>>(readManualSelection)
+  useEffect(() => writeManualSelection(numbers), [numbers])
+
+  const toggle = (number: number) => {
+    setNumbers((current) => {
+      const next = new Set(current)
+      if (next.has(number)) next.delete(number)
+      else next.add(number)
+      return next
+    })
+  }
+
+  const resetGroup = (groupId: string) => {
+    setNumbers((current) => {
+      if (current.size === 0) return current
+      const numberedGroup = numberProducts(groups).find(
+        ({ group }) => group.id === groupId,
+      )
+      if (!numberedGroup) return current
+      const groupNumbers = new Set(
+        numberedGroup.shelves.flatMap((shelf) =>
+          shelf.products.map(({ number }) => number),
+        ),
+      )
+      const next = new Set(current)
+      let changed = false
+      for (const number of groupNumbers) {
+        if (next.delete(number)) changed = true
+      }
+      return changed ? next : current
+    })
+  }
+
+  const clear = () => setNumbers(new Set<number>())
+
+  return { clear, numbers, resetGroup, setNumbers, toggle }
+}
+
 type UrlStateSyncHandlers = {
   onCollapsedGroups: (groups: Set<string>) => void
+  onManualSelection: (numbers: Set<number>) => void
   onQueryChange: (query: string) => void
   onSearch: (search: SearchState) => void
   onViews: (views: Record<string, GroupView>) => void
@@ -61,6 +104,7 @@ export function useUrlStateSync(handlers: UrlStateSyncHandlers) {
     const next = readSearchState()
     handlers.onSearch(next)
     handlers.onCollapsedGroups(readCollapsedGroups())
+    handlers.onManualSelection(readManualSelection())
     handlers.onViews(readViews())
     handlers.onQueryChange(next.query)
   })

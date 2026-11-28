@@ -2,6 +2,7 @@ import { useId, useRef, useState } from 'react'
 import type {
   CSSProperties,
   KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent as ReactMouseEvent,
   PointerEvent as ReactPointerEvent,
   ReactNode,
 } from 'react'
@@ -26,6 +27,7 @@ type Props = {
   className?: string
   style?: CSSProperties
   hideBackground?: boolean
+  onManualToggle?: () => void
 }
 
 let ProductTooltip = (props: Props) => {
@@ -36,6 +38,7 @@ let ProductTooltip = (props: Props) => {
     className = '',
     style,
     hideBackground = false,
+    onManualToggle,
   } = props
   const [opened, setOpened] = useState(false)
   const open = opened
@@ -62,6 +65,12 @@ let ProductTooltip = (props: Props) => {
     tooltipRef,
     triggerRef,
   })
+
+  const handleContextMenu = (event: ReactMouseEvent<HTMLButtonElement>) => {
+    if (!onManualToggle) return
+    event.preventDefault()
+    onManualToggle()
+  }
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLButtonElement>) => {
     pointerType.current = event.pointerType
@@ -109,13 +118,18 @@ let ProductTooltip = (props: Props) => {
         className={`relative isolate scroll-mt-16 overflow-hidden text-left ${hasTooltip ? 'cursor-help' : ''} ${className}`}
         data-cell-number={number}
         onClick={handleClick}
+        onContextMenu={handleContextMenu}
         onKeyDown={handleKeyDown}
         onPointerDown={handlePointerDown}
         onPointerEnter={handlePointerEnter}
         onPointerLeave={handlePointerLeave}
         ref={triggerRef}
         style={style}
-        title={product.name}
+        title={
+          onManualToggle
+            ? `${product.name} · правый клик — выделить`
+            : product.name
+        }
         type="button"
       >
         {backgroundSrc && !hideBackground ? (

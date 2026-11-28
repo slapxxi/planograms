@@ -10,10 +10,13 @@ export type SearchState = {
 }
 
 const SEARCH_QUERY_PARAM = 'q'
-const SEARCH_CELL_PARAM = 'cell'
-const VIEW_PARAM_PREFIX = 'view.'
-const EXPANDED_PARAM_PREFIX = 'expanded.'
-const COLLAPSED_EXPANDED_VALUE = '0'
+const SEARCH_CELL_PARAM = 'c'
+const VIEW_PARAM = 'v'
+const COLLAPSED_PARAM = 'e'
+const MANUAL_SELECTION_PARAM = 'm'
+const STATE_SEPARATOR = '.'
+const STATE_RADIX = 36
+const STATE_TOKEN_PATTERN = /^[0-9a-z]+$/i
 const RECENT_QUERY_LIMIT = 3
 const FOCUS_VIEWPORT_RATIO = 0.42
 
@@ -29,21 +32,59 @@ export function updateUrlParams(update: (params: URLSearchParams) => void) {
   window.history.replaceState(window.history.state, '', nextUrl)
 }
 
-export function readSearchState(): SearchState {
-  const params = new URLSearchParams(window.location.search)
-  const rawNumber = params.get(SEARCH_CELL_PARAM)
-  const parsedNumber =
-    rawNumber !== null && /^\d+$/.test(rawNumber) ? Number(rawNumber) : null
-  const numbers = new Set(
+function encodeStateList(values: Iterable<number>) {
+  return Array.from(new Set(values))
+    .sort((a, b) => a - b)
+    .map((value) => value.toString(STATE_RADIX))
+    .join(STATE_SEPARATOR)
+}
+
+function decodeStateList(raw: string | null) {
+  if (!raw) return []
+  return raw
+    .split(STATE_SEPARATOR)
+    .filter((token) => STATE_TOKEN_PATTERN.test(token))
+    .map((token) => Number.parseInt(token, STATE_RADIX))
+    .filter((value) => Number.isSafeInteger(value))
+}
+
+function encodeGroupIds(ids: Iterable<string>) {
+  return encodeStateList(
+    Array.from(ids).map((id) => groups.findIndex((group) => group.id === id)),
+  )
+}
+
+function decodeGroupIds(raw: string | null) {
+  return decodeStateList(raw)
+    .filter((index) => index >= 0 && index < groups.length)
+    .map((index) => groups[index].id)
+}
+
+function knownProductNumbers() {
+  return new Set(
     numberProducts(groups).flatMap(({ shelves }) =>
       shelves.flatMap((shelf) => shelf.products.map(({ number }) => number)),
     ),
   )
+}
+
+export function readSearchState(): SearchState {
+  const params = new URLSearchParams(window.location.search)
+  const rawNumber = params.get(SEARCH_CELL_PARAM)
+  const parsedNumber =
+    rawNumber && STATE_TOKEN_PATTERN.test(rawNumber)
+      ? Number.parseInt(rawNumber, STATE_RADIX)
+      : null
+  const numbers = knownProductNumbers()
 
   return {
     query: params.get(SEARCH_QUERY_PARAM) ?? '',
     selectedNumber:
-      parsedNumber !== null && numbers.has(parsedNumber) ? parsedNumber : null,
+      parsedNumber !== null &&
+      Number.isSafeInteger(parsedNumber) &&
+      numbers.has(parsedNumber)
+        ? parsedNumber
+        : null,
   }
 }
 
@@ -52,8 +93,27 @@ export function writeSearchState(search: SearchState) {
     if (search.query) params.set(SEARCH_QUERY_PARAM, search.query)
     else params.delete(SEARCH_QUERY_PARAM)
     if (search.selectedNumber !== null)
-      params.set(SEARCH_CELL_PARAM, String(search.selectedNumber))
+      params.set(SEARCH_CELL_PARAM, search.selectedNumber.toString(STATE_RADIX))
     else params.delete(SEARCH_CELL_PARAM)
+  })
+}
+
+export function readManualSelection() {
+  const raw = new URLSearchParams(window.location.search).get(
+    MANUAL_SELECTION_PARAM,
+  )
+  const knownNumbers = knownProductNumbers()
+
+  return new Set(
+    decodeStateList(raw).filter((number) => knownNumbers.has(number)),
+  )
+}
+
+export function writeManualSelection(numbers: Set<number>) {
+  updateUrlParams((params) => {
+    const encoded = encodeStateList(numbers)
+    if (encoded) params.set(MANUAL_SELECTION_PARAM, encoded)
+    else params.delete(MANUAL_SELECTION_PARAM)
   })
 }
 
@@ -95,59 +155,34 @@ export function addRecentQuery(queries: string[], value: string) {
 }
 
 export function readCollapsedGroups() {
-  const params = new URLSearchParams(window.location.search)
-  const ids = new Set(groups.map((group) => group.id))
-
-  return new Set(
-    Array.from(params.entries())
-      .filter(
-        ([key, value]) =>
-          key.startsWith(EXPANDED_PARAM_PREFIX) &&
-          ids.has(key.slice(EXPANDED_PARAM_PREFIX.length)) &&
-          value === COLLAPSED_EXPANDED_VALUE,
-      )
-      .map(([key]) => key.slice(EXPANDED_PARAM_PREFIX.length)),
-  )
+  const raw = new URLSearchParams(window.location.search).get(COLLAPSED_PARAM)
+  return new Set(decodeGroupIds(raw))
 }
 
 export function writeCollapsedGroups(collapsedGroups: Set<string>) {
   updateUrlParams((params) => {
-    for (const key of Array.from(params.keys())) {
-      if (key.startsWith(EXPANDED_PARAM_PREFIX)) params.delete(key)
-    }
-    for (const id of collapsedGroups) {
-      params.set(`${EXPANDED_PARAM_PREFIX}${id}`, COLLAPSED_EXPANDED_VALUE)
-    }
+    const encoded = encodeGroupIds(collapsedGroups)
+    if (encoded) params.set(COLLAPSED_PARAM, encoded)
+    else params.delete(COLLAPSED_PARAM)
   })
 }
 
 export function readViews() {
-  const params = new URLSearchParams(window.location.search)
-  const ids = new Set(groups.map((group) => group.id))
-
+  const raw = new URLSearchParams(window.location.search).get(VIEW_PARAM)
   return Object.fromEntries(
-    Array.from(params.entries())
-      .filter(
-        ([key, view]) =>
-          key.startsWith(VIEW_PARAM_PREFIX) &&
-          ids.has(key.slice(VIEW_PARAM_PREFIX.length)) &&
-          (view === 'cards' || view === 'faces') &&
-          view !== 'cards',
-      )
-      .map(
-        ([key, view]) => [key.slice(VIEW_PARAM_PREFIX.length), view] as const,
-      ),
+    decodeGroupIds(raw).map((id) => [id, 'faces' as const]),
   ) as Record<string, GroupView>
 }
 
 export function writeViews(views: Record<string, GroupView>) {
   updateUrlParams((params) => {
-    for (const key of Array.from(params.keys())) {
-      if (key.startsWith(VIEW_PARAM_PREFIX)) params.delete(key)
-    }
-    for (const [id, view] of Object.entries(views)) {
-      if (view !== 'cards') params.set(`${VIEW_PARAM_PREFIX}${id}`, view)
-    }
+    const encoded = encodeGroupIds(
+      Object.entries(views)
+        .filter(([, view]) => view === 'faces')
+        .map(([id]) => id),
+    )
+    if (encoded) params.set(VIEW_PARAM, encoded)
+    else params.delete(VIEW_PARAM)
   })
 }
 

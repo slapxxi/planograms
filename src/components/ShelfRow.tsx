@@ -14,13 +14,23 @@ type Props = {
   shelf: NumberedShelf
   view: GroupView
   matchedNumbers: Set<number>
+  manualSelectedNumbers: Set<number>
+  onToggleManualSelection: (number: number) => void
   searching: boolean
   selectedNumber: number | null
 }
 
 let ShelfRow = (props: Props) => {
-  const { cellSize, shelf, view, matchedNumbers, searching, selectedNumber } =
-    props
+  const {
+    cellSize,
+    shelf,
+    view,
+    matchedNumbers,
+    manualSelectedNumbers,
+    onToggleManualSelection,
+    searching,
+    selectedNumber,
+  } = props
 
   return (
     <div
@@ -30,7 +40,8 @@ let ShelfRow = (props: Props) => {
       {shelf.products.map(({ product, number }, index) => {
         const showFaces = view === 'faces' && Boolean(firstImage(product))
         const matched = matchedNumbers.has(number)
-        const selected = selectedNumber === number
+        const manualSelected = manualSelectedNumbers.has(number)
+        const selected = selectedNumber === number || manualSelected
         const highlightClass = getHighlightClass({
           matched,
           searching,
@@ -44,6 +55,7 @@ let ShelfRow = (props: Props) => {
             hideBackground={showFaces}
             key={`${product.name}-${index}`}
             number={number}
+            onManualToggle={() => onToggleManualSelection(number)}
             product={product}
             style={cellStyle(product, cellSize)}
           >
