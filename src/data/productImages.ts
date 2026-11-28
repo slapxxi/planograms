@@ -21,6 +21,67 @@ export type ProductImageKey =
   | 'yogurtPitievoySavushkinLegkiyAss415'
   | 'yogurtPitievoySavushkinAss415'
   | 'yogurtPitievoyOptimalAss415'
+  | 'yogurtPitievoyOptimalBezSakhara415'
+  | 'yogurtPitievoyBabushkinaKrinkaBezSakhara15430'
+  | 'yogurtBabushkinaKrinkaZemlyanikaBezDobavleniyaSakhara15430'
+  | 'bioyogurtPitievoyParmalatBezlaktoznyyAss290'
+  | 'yogurtPitievoyMozhnoBezlaktoznyyAss430'
+  | 'bioyogurtPitievoyAktibioBezSakhara18Ass260'
+  | 'yogurtYoguruProbiotik15PetBut320'
+  | 'yogurtPitievoyDiaVita15280'
+  | 'kokteylYoMilkPtotein15200'
+  | 'kokteylMolochnyyFitElitObezzhirennyyProteynovyy500'
+  | 'bioSkyrExponenta3v1500'
+  | 'kefirExponenta450'
+  | 'yogurtBifido15Yoguru125'
+  | 'yogurtParmalatComfortBezlaktoznyy35BezZmzh130'
+  | 'bioyogurtAktibioBezSakhara3130'
+  | 'yogurtGreekMolochnyyMir18140'
+  | 'yogurtGreekEpicaNatural25130'
+  | 'kokteylMolochyyTopPauerProtein1450'
+  | 'smetanaAsablivayaA212330'
+  | 'bioyogurtAsablivyA236330'
+  | 'yogurtGreek2Rogachev140Stakan'
+  | 'yogurtGreekEcoGreco'
+  | 'yogurtYoguruBifidobakterii15310'
+  | 'yogurtYoguruGreekBezSakhara15180'
+  | 'yogurtMolochnyyMirBelorusskiy2150'
+  | 'yogurtGreekTeosNatural2250'
+  | 'yogurtGustoyTeosGreek2140'
+  | 'kefirExponentaNormPro500'
+  | 'milkAsablivayeA2Pasterizovannoe36075'
+  | 'kefirAsablivyA236075'
+  | 'milkMozhnoBezlaktoznoePasterizovannoe32093'
+  | 'kefirMozhnoBezlaktoznyy32093'
+  | 'kefirnyyProduktBioFit25095'
+  | 'kefirnyyProduktBioFit25048'
+  | 'smetanaBezlaktoznayaMolochnyeGorki20300'
+  | 'smetana1MMolochnyyBezlaktoznaya20380'
+  | 'syrTverdyyActiveLifeBezlaktoznyy45200'
+  | 'syrSverkhtverdyyDankeParmesan180'
+  | 'syrDankeParmesan180'
+  | 'exponentaFitnessCheeseBezLaktozy'
+  | 'napitokKisloMolochyyExponenta250'
+  | 'milkMozhnoBezlaktoznoeSterilizovannoe321'
+  | 'milkSterilizovannyyMolochnyyMirBezlaktoznyy321'
+  | 'napitokMolochnyyParmalatProteinBezlaktoznyy181'
+  | 'milkParmalatProteinBezlaktoznoe1805'
+  | 'slivkiRogachevPitievyeBezlaktoznye1102'
+  | 'syrokTvorozhnyyActiveProtein580'
+  | 'syrokTvorozhnyyGlazBezSakhara1845Babushkina'
+  | 'syrokGlazirovannyyMinskayaMarkaBezSakhara45'
+  | 'yogurtExponentaGreekObezzhirennyyBezSakhara150'
+  | 'exponentaHighPro160'
+  | 'milkSgushchennoeBezlaktoznoeRogachev380'
+  | 'masloSladkoslivochBezlaktoznoe1MMolochnyy825'
+  | 'masloSladkoslivochnoeNesolenoeA2'
+  | 'yogurtMolochnyyMirGreek2BezZmzh280'
+  | 'yogurtGreekMolochnyyMir2500'
+  | 'tvorogBezlaktoznyyActiveLife5MolochnyyMir220'
+  | 'tvorogBezlaktoznyeMolochnyeGorki5180'
+  | 'tvorogZernennyyYasBelousVyaskovyObezzhirennyy200'
+  | 'tvorogA2MassovayaDolyaZhira7'
+  | 'exponentaTvorozhnaya'
   | 'yogurtnayaGruppaDanonAss'
   | 'bioyogurtYogurtA2AsablivyAss330'
   | 'napitokMolochnyyMirYogofitAss420'
@@ -414,6 +475,416 @@ export const productImages: Record<ProductImageKey, ProductImage> = {
     src:
       import.meta.env.BASE_URL +
       'products/yogurt-pitievoy-optimal-assorted-415g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyOptimalBezSakhara415: {
+    name: 'Йогурт питьевой Оптималь без сахара, 2%, 415 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-optimal-bez-sakhara-415g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyBabushkinaKrinkaBezSakhara15430: {
+    name: 'Йогурт питьевой Бабушкина крынка без сахара, 1.5%, 430 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-babushkina-krinka-bez-sakhara-15-430g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBabushkinaKrinkaZemlyanikaBezDobavleniyaSakhara15430: {
+    name: 'Йогурт Бабушкина крынка земляника, без добавления сахара, 1.5%, 430 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-babushkina-krinka-zemlyanika-bez-dobavleniya-sakhara-15-430g.webp',
+    source: 'Фото пользователя',
+  },
+  bioyogurtPitievoyParmalatBezlaktoznyyAss290: {
+    name: 'Биойогурт питьевой Parmalat безлактозный в асс 290 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/bioyogurt-pitievoy-parmalat-bezlaktoznyy-ass-290g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyMozhnoBezlaktoznyyAss430: {
+    name: 'Йогурт питьевой #Можно безлактозный в асс 430 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-mozhno-bezlaktoznyy-ass-430g.webp',
+    source: 'Фото пользователя',
+  },
+  bioyogurtPitievoyAktibioBezSakhara18Ass260: {
+    name: 'Биойогурт питьевой АктиБио без сахара 1.8% в асс 260 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/bioyogurt-pitievoy-aktibio-bez-sakhara-18-ass-260g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruProbiotik15PetBut320: {
+    name: 'Йогурт обог пробиотиком Yoguru 1.5% 320г пэт-бут',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-yoguru-probiotik-15-pet-but-320g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtPitievoyDiaVita15280: {
+    name: 'Йогурт питьевой Dia Vita 1.5% 280 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-pitievoy-dia-vita-15-280g.webp',
+    source: 'Фото пользователя',
+  },
+  kokteylYoMilkPtotein15200: {
+    name: 'Коктейль YoMilk Ptotein 1,5% 200мл',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kokteyl-yomilk-ptotein-15-200ml.webp',
+    source: 'Фото пользователя',
+  },
+  kokteylMolochnyyFitElitObezzhirennyyProteynovyy500: {
+    name: 'Коктейль молочный FitElit обезжиренный, протеиновый, 500 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kokteyl-molochnyy-fitelit-obezhirennyy-proteynovyy-500g.webp',
+    source: 'Фото пользователя',
+  },
+  bioSkyrExponenta3v1500: {
+    name: 'EXPONENTA BIO-SKYR 3 в 1 500 г.',
+    src:
+      import.meta.env.BASE_URL + 'products/bio-skyr-exponenta-3-v-1-500g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirExponenta450: {
+    name: 'EXPONENTA кефирная 450г',
+    src: import.meta.env.BASE_URL + 'products/kefir-exponenta-450g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtBifido15Yoguru125: {
+    name: 'Йогурт с бифидо. 1,5%, 125 г Yoguru',
+    src:
+      import.meta.env.BASE_URL + 'products/yogurt-bifido-15-yoguru-125g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtParmalatComfortBezlaktoznyy35BezZmzh130: {
+    name: 'Йогурт PARMALAT Comfort безлактозный 3,5% без змж 130г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-parmalat-comfort-bezlaktoznyy-35-bez-zmzh-130g.webp',
+    source: 'Фото пользователя',
+  },
+  bioyogurtAktibioBezSakhara3130: {
+    name: 'Биойогурт Актибио без сахара 3% 130г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/bioyogurt-aktibio-bez-sakhara-3-130g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreekMolochnyyMir18140: {
+    name: 'Йогурт Греческий Молочный Мир, 1.8%, 140 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-greek-molochnyy-mir-18-140g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreekEpicaNatural25130: {
+    name: 'Йогурт греческий Epica натуральный, 2.5%, 130 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-greek-epica-natural-25-130g.webp',
+    source: 'Фото пользователя',
+  },
+  kokteylMolochyyTopPauerProtein1450: {
+    name: 'Молочный коктейль Топ пауэр с высоким содержанием белка, 1%, 450 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kokteyl-molochnyy-top-pauer-protein-1-450g.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaAsablivayaA212330: {
+    name: 'Сметана Асаблівая А2 12%, 330 г',
+    src:
+      import.meta.env.BASE_URL + 'products/smetana-asablivaya-a2-12-330g.webp',
+    source: 'Фото пользователя',
+  },
+  bioyogurtAsablivyA236330: {
+    name: 'Биойогурт Асаблівы А2 3.6%, 330 г',
+    src:
+      import.meta.env.BASE_URL + 'products/bioyogurt-asablivy-a2-36-330g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreek2Rogachev140Stakan: {
+    name: 'Йогурт Греческий 2% 140 г Рогачевъ стакан',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-greek-2-rogachev-140g-stakan.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreekEcoGreco: {
+    name: 'Йогурт Греческий Eco Greco',
+    src: import.meta.env.BASE_URL + 'products/yogurt-greek-eco-greco.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruBifidobakterii15310: {
+    name: 'Йогурт Yoguru с бифидобактериями, 1.5%, 310 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-yoguru-bifidobakterii-15-310g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtYoguruGreekBezSakhara15180: {
+    name: 'Йогурт Yoguru Греческий, без сахара, 1.5%, 180 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-yoguru-greek-bez-sakhara-15-180g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtMolochnyyMirBelorusskiy2150: {
+    name: 'Йогурт Молочный мир Белорусский, 2%, 150 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-molochnyy-mir-belorusskiy-2-150g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreekTeosNatural2250: {
+    name: 'Йогурт греческий Teos натуральный 2% 250 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-greek-teos-natural-2-250g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGustoyTeosGreek2140: {
+    name: 'Йогурт густой Teos, греческий, 2 %, 140 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-gustoy-teos-greek-2-140g.webp',
+    source: 'Фото пользователя',
+  },
+  kefirExponentaNormPro500: {
+    name: 'EXPONENTA NORM-PRO 500 г.',
+    src:
+      import.meta.env.BASE_URL + 'products/kefir-exponenta-norm-pro-500g.webp',
+    source: 'Фото пользователя',
+  },
+  milkAsablivayeA2Pasterizovannoe36075: {
+    name: 'Молоко Асаблівае А2 пастеризованное, 3.6%, 0.75 л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-asablivaye-a2-pasterizovannoe-36-075l.webp',
+    source: 'Фото пользователя',
+  },
+  kefirAsablivyA236075: {
+    name: 'Кефир Асаблівы А2, 3.6%, 0.75 кг',
+    src: import.meta.env.BASE_URL + 'products/kefir-asablivy-a2-36-075kg.webp',
+    source: 'Фото пользователя',
+  },
+  milkMozhnoBezlaktoznoePasterizovannoe32093: {
+    name: 'Молоко #Можно безлактозное пастеризованное, 3.2%, 0.93 л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-mozhno-bezlaktoznoe-pasterizovannoe-32-093l.webp',
+    source: 'Фото пользователя',
+  },
+  kefirMozhnoBezlaktoznyy32093: {
+    name: 'Кефир #Можно безлактозный, 3.2%, 0.93 кг',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefir-mozhno-bezlaktoznyy-32-093kg.webp',
+    source: 'Фото пользователя',
+  },
+  kefirnyyProduktBioFit25095: {
+    name: 'Кефирный продукт БиоFit 2.5%, 0.95 кг',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefirnyy-produkt-biofit-25-095kg.webp',
+    source: 'Фото пользователя',
+  },
+  kefirnyyProduktBioFit25048: {
+    name: 'Кефирный продукт БиоFit 2.5%, 0.48 кг',
+    src:
+      import.meta.env.BASE_URL +
+      'products/kefirnyy-produkt-biofit-25-048kg.webp',
+    source: 'Фото пользователя',
+  },
+  smetanaBezlaktoznayaMolochnyeGorki20300: {
+    name: 'Сметана безлактозная «Молочные горки» в стакане 20%, 300 г.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/smetana-bezlaktoznaya-molochnye-gorki-20-300g.webp',
+    source: 'Фото пользователя',
+  },
+  smetana1MMolochnyyBezlaktoznaya20380: {
+    name: 'Сметана 1М Молочный безлактозная, 20%, 380 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/smetana-1m-molochnyy-bezlaktoznaya-20-380g.webp',
+    source: 'Фото пользователя',
+  },
+  syrTverdyyActiveLifeBezlaktoznyy45200: {
+    name: 'Сыр твердый Active life безлактозный, 45%, 200 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syr-tverdyy-active-life-bezlaktoznyy-45-200g.webp',
+    source: 'Фото пользователя',
+  },
+  syrSverkhtverdyyDankeParmesan180: {
+    name: 'Сыр сверхтвердый Danke Пармезан, 6 месяцев созревания, треугольник, 40%, 180 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syr-sverkhtverdyy-danke-parmezan-40-180g.webp',
+    source: 'Фото пользователя',
+  },
+  syrDankeParmesan180: {
+    name: 'Сыр DANKE «Пармезан» 6 месяцев созревания, сверхтвердый 40%, 180 г.',
+    src: import.meta.env.BASE_URL + 'products/syr-danke-parmezan-40-180g.webp',
+    source: 'Фото пользователя',
+  },
+  exponentaFitnessCheeseBezLaktozy: {
+    name: 'EXPONENTA FITNESS CHEESE без лактозы',
+    src:
+      import.meta.env.BASE_URL +
+      'products/exponenta-fitness-cheese-bez-laktozy.webp',
+    source: 'Фото пользователя',
+  },
+  napitokKisloMolochyyExponenta250: {
+    name: 'Напиток кисломолочный Exponenta 250 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/napitok-kislo-molochnyy-exponenta-250g.webp',
+    source: 'Фото пользователя',
+  },
+  milkMozhnoBezlaktoznoeSterilizovannoe321: {
+    name: 'Молоко #Можно безлактозное стерилизованное, 3.2%, 1 л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-mozhno-bezlaktoznoe-sterilizovannoe-32-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkSterilizovannyyMolochnyyMirBezlaktoznyy321: {
+    name: 'Молоко стерилизованное "Молочный Мир" безлактозное 3.2% 1л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-sterilizovannyy-molochnyy-mir-bezlaktoznyy-32-1l.webp',
+    source: 'Фото пользователя',
+  },
+  napitokMolochnyyParmalatProteinBezlaktoznyy181: {
+    name: 'Напиток молочный Parmalat Protein безлактозный ультрапастеризованный 1.8%  1л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/napitok-molochnyy-parmalat-protein-bezlaktoznyy-18-1l.webp',
+    source: 'Фото пользователя',
+  },
+  milkParmalatProteinBezlaktoznoe1805: {
+    name: 'Молоко Parmalat Protein безлактозное, 1.8%, 0.5 л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-parmalat-protein-bezlaktoznoe-18-05l.webp',
+    source: 'Фото пользователя',
+  },
+  slivkiRogachevPitievyeBezlaktoznye1102: {
+    name: 'Сливки Рогачевъ питьевые, безлактозные, стерилизованные, 11%, 0.2 л',
+    src:
+      import.meta.env.BASE_URL +
+      'products/slivki-rogachev-pitievye-bezlaktoznye-11-02l.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTvorozhnyyActiveProtein580: {
+    name: 'Сырок творожный Active Protein 5%, 80 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-tvorozhnyy-active-protein-5-80g.webp',
+    source: 'Фото пользователя',
+  },
+  syrokTvorozhnyyGlazBezSakhara1845Babushkina: {
+    name: 'Сырок творожный глаз без сахара 18% 45г Бабушкина',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-tvorozhnyy-glaz-bez-sakhara-18-45g-babushkina.webp',
+    source: 'Фото пользователя',
+  },
+  syrokGlazirovannyyMinskayaMarkaBezSakhara45: {
+    name: 'Сырок глазированный Минская марка без сахара 45 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/syrok-glazirovannyy-minskaya-marka-bez-sakhara-45g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtExponentaGreekObezzhirennyyBezSakhara150: {
+    name: 'Йогурт Exponenta Greek обезжиренный, без сахара, 150 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-exponenta-greek-obezhirennyy-bez-sakhara-150g.webp',
+    source: 'Фото пользователя',
+  },
+  exponentaHighPro160: {
+    name: 'EXPONENTA HIGH-PRO 160г',
+    src: import.meta.env.BASE_URL + 'products/exponenta-high-pro-160g.webp',
+    source: 'Фото пользователя',
+  },
+  milkSgushchennoeBezlaktoznoeRogachev380: {
+    name: 'Молоко сгущенное безлактозное РОГАЧЕВЪ, 380г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/milk-sgushchennoe-bezlaktoznoe-rogachev-380g.webp',
+    source: 'Фото пользователя',
+  },
+  masloSladkoslivochBezlaktoznoe1MMolochnyy825: {
+    name: 'Масло сладкосливоч безлактозное 1М Молочный 82.5%',
+    src:
+      import.meta.env.BASE_URL +
+      'products/maslo-sladoslivoch-bezlaktoznoe-1m-molochnyy-825.webp',
+    source: 'Фото пользователя',
+  },
+  masloSladkoslivochnoeNesolenoeA2: {
+    name: 'Масло сладкосливочное несоленое А2',
+    src:
+      import.meta.env.BASE_URL +
+      'products/maslo-sladoslivochnoe-nesolenoe-a2.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtMolochnyyMirGreek2BezZmzh280: {
+    name: 'Йогурт МОЛОЧНЫЙ МИР Греческий 2%, без змж, 280г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-molochnyy-mir-greek-2-bez-zmzh-280g.webp',
+    source: 'Фото пользователя',
+  },
+  yogurtGreekMolochnyyMir2500: {
+    name: 'Йогурт греческий Молочный Мир 2%, 500 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/yogurt-greek-molochnyy-mir-2-500g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBezlaktoznyyActiveLife5MolochnyyMir220: {
+    name: 'Творог безлактозный ActiVe life 5% ТМ Молочный мир (220 г)',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-bezlaktoznyy-active-life-5-molochnyy-mir-220g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogBezlaktoznyeMolochnyeGorki5180: {
+    name: 'Творог безлактозные «Молочные горки» 5%, 180 г.',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-bezlaktoznye-molochnye-gorki-5-180g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogZernennyyYasBelousVyaskovyObezzhirennyy200: {
+    name: 'Творог зерненый Ясь Белоус вясковы, обезжиренный, 200 г',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-zernennyy-yas-belous-vyaskovy-obezhirennyy-200g.webp',
+    source: 'Фото пользователя',
+  },
+  tvorogA2MassovayaDolyaZhira7: {
+    name: 'Творог А2 массовая доля жира 7%',
+    src:
+      import.meta.env.BASE_URL +
+      'products/tvorog-a2-massovaya-dolya-zhira-7.webp',
+    source: 'Фото пользователя',
+  },
+  exponentaTvorozhnaya: {
+    name: 'Exponenta творожная',
+    src: import.meta.env.BASE_URL + 'products/exponenta-tvorozhnaya.webp',
     source: 'Фото пользователя',
   },
   yogurtnayaGruppaDanonAss: {
